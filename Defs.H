@@ -60,6 +60,7 @@ enum STATUS
 	LOW,
 	HIGH
 };
+//test num 9
 
 enum MODE	//Modes of operation
 {
