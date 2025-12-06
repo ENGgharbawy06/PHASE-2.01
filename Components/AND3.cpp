@@ -1,3 +1,7 @@
+
+
+
+
 #include "AND3.h"
 
 AND3::AND3(const GraphicsInfo &r_GfxInfo):Gate(3, 5)

@@ -1,6 +1,9 @@
 #pragma once
+#ifndef _AND3_H
+#define _AND3_H
 
-#include "gate.h"
+
+#include "Gate.h"
 class AND3 :public Gate
 
 {
