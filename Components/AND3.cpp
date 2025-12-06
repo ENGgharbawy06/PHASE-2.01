@@ -10,16 +10,7 @@ AND3::AND3(const GraphicsInfo &r_GfxInfo):Gate(3, 5)
 
 void AND3::Operate()
 {
-	//caclulate the output status as the ANDing of the three input pins
-	//Add your code here
-	if (m_InputPins[0].getStatus() == HIGH && m_InputPins[1].getStatus() == HIGH && m_InputPins[2].getStatus() == HIGH)
-	{
-		m_OutputPin.setStatus(HIGH);
-	}
-	else
-	{
-		m_OutputPin.setStatus(LOW);
-	}
+	
 }
 // Function Draw	
 // Draws 3-input AND gate
