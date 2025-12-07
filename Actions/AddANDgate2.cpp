@@ -51,3 +51,4 @@ void AddANDgate2::Undo()
 void AddANDgate2::Redo()
 {}
 
+//test from mari
