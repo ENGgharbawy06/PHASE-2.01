@@ -3,7 +3,7 @@
 
 
 #pragma
-#include "Gaate.h"
+#include "Gate.h"
 
 class NAND2 : public Gate
 {
@@ -19,6 +19,6 @@ class NAND2 : public Gate
 
 
 
-}
+};
 
 #endif
