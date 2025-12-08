@@ -37,7 +37,16 @@ int INV::GetInputPinStatus(int n)
 void INV::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
+
 }
+
+
+Component* INV::Clone(const GraphicsInfo& newGfx) const
+{
+	return new INV(newGfx);
+}
+
+
 INV3::~INV3()
 {
 }

@@ -2,7 +2,7 @@
 #include "Actions\AddANDgate2.h"
 #include "Actions/CopyAction.h"
 #include "Actions/PasteAction.h"
-
+#include "Actions/Delete.h"
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
@@ -45,6 +45,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new CopyAction(this); break;
 		case PASTE:              
 			pAct = new PasteAction(this); break;
+
+		case DEL:               
+			pAct = new Delete(this); break;
+
 
 		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here
@@ -93,3 +97,33 @@ ApplicationManager::~ApplicationManager()
 	delete InputInterface;
 	
 }
+
+// ==== Delete Component =====
+void ApplicationManager::DeleteComponent(Component* pComp)
+{
+	if (!pComp) return;
+
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i] == pComp)
+		{
+			delete CompList[i];
+
+			for (int j = i; j < CompCount - 1; j++)
+				CompList[j] = CompList[j + 1];
+
+			CompList[CompCount - 1] = nullptr;
+			CompCount--;
+			break;
+		}
+
+		// ========= Clipboard SET/GET =================
+		void ApplicationManager::SetClipboard(Component * c)
+		{
+			Clipboard = c;
+		}
+
+		Component* ApplicationManager::GetClipboard() const
+		{
+			return Clipboard;
+		}
