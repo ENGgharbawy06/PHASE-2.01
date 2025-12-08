@@ -4,11 +4,7 @@ class NOR3
 #ifndef _NOR3_H
 #define _NOR3_H
 
-	/*
-	  Class NOR3
-	  -----------
-	  represent the 3-input NOR gate
-	*/
+	
 
 #include "Gate.h"
 
