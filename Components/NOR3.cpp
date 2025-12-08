@@ -16,7 +16,7 @@ void NOR3::Operate()
 	STATUS in3 = m_InputPins[2].getStatus();
 
 	if (in1 == HIGH || in2 == HIGH || in3 == HIGH) {
-		m_OutputPin.setStatus(low);
+		m_OutputPin.setStatus(LOW);
 	}
 	else {
 		m_OutputPin.setStatus(HIGH);
