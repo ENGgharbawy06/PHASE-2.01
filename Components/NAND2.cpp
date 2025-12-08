@@ -8,8 +8,13 @@ NAND2::NAND2(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(2, r_FanOut)
 }
 void NAND2::Operate()
 {
-	//caclulate the output status as the NANDing of the two input pins
-	//Add you code here
+	STATUS in1 = m_InputPins[0].getStatus();
+	STATUS in2 = m_InputPins[1].getStatus();
+	
+	if (in1 == LOW || in2 == LOW)
+		m_OutputPin.setStatus(HIGH);
+	else
+		m_OutputPin.setStatus(LOW);
 }
 // Function Draw
 // Draws 2-input NAND gate

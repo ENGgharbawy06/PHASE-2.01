@@ -10,7 +10,11 @@ INV::INV(const GraphicsInfo& r_GfxInfo) :Gate(3, 5)
 
 void INV::Operate()
 {
-
+	STATUS in1 = m_InputPins[0].getStatus();
+	if (in1 == HIGH)
+		m_OutputPin.setStatus(LOW);
+	else
+		m_OutputPin.setStatus(HIGH);
 }
 // Function Draw	
 // Draws 3-input INV gate

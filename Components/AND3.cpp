@@ -14,6 +14,16 @@ AND3::AND3(const GraphicsInfo &r_GfxInfo):Gate(3, 5)
 
 void AND3::Operate()
 {
+
+	STATUS in1 = m_InputPins[0].getStatus();
+	STATUS in2 = m_InputPins[1].getStatus();
+	STATUS in3 = m_InputPins[2].getStatus();
+
+	if (in1 == HIGH && in2 == HIGH && in3 == HIGH)
+		m_OutputPin.setStatus(HIGH);
+	else
+		m_OutputPin.setStatus(LOW);
+
 	
 }
 // Function Draw	
