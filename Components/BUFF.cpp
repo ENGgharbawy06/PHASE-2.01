@@ -10,7 +10,16 @@ BUFF::BUFF(const GraphicsInfo &r_GfxInfo) :Gate(1, r_GfxInfo)
 }
 void BUFF::Operate()	//Calculates the output according to the inputs
 {
-	//Add you code here
+
+
+
+
+	int inputStatus = GetInputPinStatus(1);
+	if (inputStatus == LOW) {
+		m_OutputPin.setStatus(LOW);
+	} else {
+		m_OutputPin.setStatus(HIGH);
+	}
 }
 // Function Draw	
 // Draws Buffer gate

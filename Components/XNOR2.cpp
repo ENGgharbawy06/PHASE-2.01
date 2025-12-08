@@ -14,7 +14,7 @@ void XNOR2::Operate()
 	STATUS in1 = m_InputPins[0].getStatus();
 	STATUS in2 = m_InputPins[1].getStatus();
 
-	if (in1 == HIGH && in2 == HIGH)
+	if ((in1 == HIGH && in2 == HIGH) || (in1 == LOW && in2 == LOW))
 		m_OutputPin.setStatus(HIGH);
 	else
 		m_OutputPin.setStatus(LOW);
@@ -23,15 +23,15 @@ void XNOR2::Operate()
 // Draws 2-input XNOR gate
 void XNOR2::Draw(Output* pOut)
 {
-	//Call output class and pass gate drawing info to it.
+	// Call output class and pass gate drawing info to it.
 	pOut->DrawXNOR2(m_GfxInfo);
 }
-//returns status of outputpin
+// returns status of outputpin
 int XNOR2::GetOutPinStatus()
 {
 	return m_OutputPin.getStatus();
 }
-//returns status of Inputpin #n
+// returns status of Inputpin #n
 int XNOR2::GetInputPinStatus(int n)
 {
 	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
