@@ -11,14 +11,27 @@ XOR3::XOR3(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 
 void XOR3::Operate()
 {
-	//caclulate the output status as the ANDing of the two input pins
+	STATUS in1 = m_InputPins[0].getStatus();
+	STATUS in2 = m_InputPins[1].getStatus();
+	STATUS in3 = m_InputPins[2].getStatus();
+	if ((in1 == HIGH && in2 == LOW && in3 == LOW) ||
+		(in1 == LOW && in2 == HIGH && in3 == LOW) ||
+		(in1 == LOW && in2 == LOW && in3 == HIGH) ||
+		(in1 == HIGH && in2 == HIGH && in3 == HIGH))
+	{
+		m_OutputPin.setStatus(HIGH);
+	}
+	else
+	{
+		m_OutputPin.setStatus(LOW);
+	}
 
-	//Add you code here
+	//Law el parity odd fa el output 1 otherwise 0
 }
 
 
 // Function Draw
-// Draws 2-input AND gate
+// Draws 3-input XOR gate
 void XOR3::Draw(Output* pOut)
 {
 	//Call output class and pass gate drawing info to it.
