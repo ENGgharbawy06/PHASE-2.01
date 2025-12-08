@@ -5,8 +5,6 @@
 #include "GUI\Output.h"
 #include "GUI\Input.h"
 #include "Actions\Action.h"
-#include "Actions/CopyAction.h"
-#include "Actions/PasteAction.h"
 #include "Components\Component.h"
 
 //Main class that manages everything in the application.
@@ -46,6 +44,14 @@ public:
 
 	//destructor
 	~ApplicationManager();
+
+
+
+	// ==== Clipboard ====
+	void SetClipboard(Component* c);
+	Component* GetClipboard() const;
+	void BreakConnections(Component* comp);
+
 };
 
 #endif
