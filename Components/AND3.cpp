@@ -1,7 +1,3 @@
-
-
-
-
 #include "AND3.h"
 
 AND3::AND3(const GraphicsInfo &r_GfxInfo):Gate(3, 5)
@@ -48,6 +44,13 @@ void AND3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n-1].setStatus(s);
 }
+
+Component* AND3::Clone(const GraphicsInfo& newGfx) const
+{
+	return new AND3(newGfx, AND2_FANOUT);
+
+}
+
 AND3::~AND3()
 {
 }

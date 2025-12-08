@@ -40,3 +40,8 @@ void OR2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n-1].setStatus(s);
 }
+
+Component* OR2::Clone(const GraphicsInfo& newGfx) const
+{
+	return new OR2(newGfx, OR2_FANOUT);
+}

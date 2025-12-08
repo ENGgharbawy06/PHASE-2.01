@@ -49,3 +49,10 @@ void AND2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n-1].setStatus(s);
 }
+
+//
+Component* AND2::Clone(const GraphicsInfo& newGfx) const
+{
+	return new AND2(newGfx, AND2_FANOUT);
+
+}

@@ -49,3 +49,9 @@ void NOR2::setInputPinStatus(int n, STATUS s)
 	m_InputPins[n - 1].setStatus(s);
 }
 
+
+
+Component* NOR2::Clone(const GraphicsInfo& newGfx) const
+{
+	return new NOR2(newGfx, NOR2_FANOUT);
+}

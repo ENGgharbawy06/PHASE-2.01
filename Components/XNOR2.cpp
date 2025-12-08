@@ -41,3 +41,9 @@ void XNOR2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+
+Component* XNOR2::Clone(const GraphicsInfo& newGfx) const
+{
+	return new XNOR2(newGfx, XNOR2_FANOUT);
+}

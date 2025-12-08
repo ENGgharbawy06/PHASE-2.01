@@ -38,6 +38,15 @@ void NAND2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n-1].setStatus(s);
 }
+
+
+
+Component* NAND2::Clone(const GraphicsInfo& newGfx) const
+{
+	return new NAND2(newGfx, NAND2_FANOUT);
+}
+
+
 NAND2::~NAND2()
 {
 }

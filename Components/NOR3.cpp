@@ -51,3 +51,8 @@ void NOR3::setInputPinStatus(int n, STATUS s)  // Updated function to match the 
 	m_InputPins[n - 1].setStatus(s);
 }
 
+
+Component* NOR3::Clone(const GraphicsInfo& newGfx) const
+{
+	return new NOR3(newGfx, NOR3_FANOUT);
+}

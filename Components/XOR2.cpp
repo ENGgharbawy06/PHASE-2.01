@@ -47,3 +47,9 @@ void XOR2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+
+Component* XOR2::Clone(const GraphicsInfo& newGfx) const
+{
+	return new XOR2(newGfx, XOR2_FANOUT);
+}

@@ -1,6 +1,7 @@
 #include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
-
+#include "Actions/CopyAction.h"
+#include "Actions/PasteAction.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -35,6 +36,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_AND_GATE_2:
 			pAct= new AddANDgate2(this);	
 			break;
+		
+			// The rest of the gates here
+
+
+
+		case COPY:               
+			pAct = new CopyAction(this); break;
+		case PASTE:              
+			pAct = new PasteAction(this); break;
 
 		case ADD_CONNECTION:
 			//TODO: Create AddConection Action here

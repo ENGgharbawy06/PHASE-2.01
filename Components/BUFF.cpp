@@ -34,6 +34,13 @@ void BUFF::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+
+Component* BUFF::Clone(const GraphicsInfo& newGfx) const
+{
+	return new BUFF(newGfx);
+}
+
 BUFF::~BUFF()
 {
 }

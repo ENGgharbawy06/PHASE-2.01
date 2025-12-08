@@ -56,3 +56,8 @@ void XOR3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+Component* XOR3::Clone(const GraphicsInfo& newGfx) const
+{
+	return new XOR3(newGfx, XOR3_FANOUT);
+}

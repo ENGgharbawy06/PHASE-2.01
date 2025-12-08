@@ -42,4 +42,11 @@ int LED::GetInputPinStatus(int n)
 void LED::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPin.setStatus(s);
+
+}
+
+Component* LED::Clone(const GraphicsInfo& gfx) const
+{
+
+	return new LED(gfx);
 }

@@ -46,3 +46,8 @@ void Connection::setInputPinStatus(int n, STATUS s)
 {
 	SrcPin->setStatus(s);
 }
+
+Component* Connection::Clone(const GraphicsInfo& gfx) const
+{
+	return new Connection(gfx, nullptr, nullptr);
+}
