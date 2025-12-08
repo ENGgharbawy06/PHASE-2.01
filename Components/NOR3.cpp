@@ -11,16 +11,16 @@ NOR3::NOR3(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(3, r_FanOut)
 
 void NOR3::Operate()
 {
-	//calculate the output status as the NORing of the three input pins
-	int highInputCount = 0;
-	for (int i = 1; i <= 3; i++)
-	{
-		if (GetInputPinStatus(i) == HIGH)
-		{
-			highInputCount++;
-		}
+	STATUS in1 = m_InputPins[0].getStatus();
+	STATUS in2 = m_InputPins[1].getStatus();
+	STATUS in3 = m_InputPins[2].getStatus();
+
+	if (in1 == HIGH || in2 == HIGH || in3 == HIGH) {
+		m_OutputPin.setStatus(low);
 	}
-	m_OutputPin.setStatus(highInputCount == 0 ? HIGH : LOW);
+	else {
+		m_OutputPin.setStatus(HIGH);
+	}
 }
 
 
