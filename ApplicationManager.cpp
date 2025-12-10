@@ -31,7 +31,7 @@ ActionType ApplicationManager::GetUserAction()
 	return InputInterface->GetUserAction();
 }
 
-////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
