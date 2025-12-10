@@ -1,3 +1,4 @@
+
 #ifndef APPLICATION_MANAGER_H
 #define APPLICATION_MANAGER_H
 
@@ -10,7 +11,6 @@
 //Main class that manages everything in the application.
 class ApplicationManager
 {
-
 	enum { MaxCompCount = 200 };	//Max no of Components	
 
 private:
@@ -20,19 +20,17 @@ private:
 	Output* OutputInterface; //pointer to the Output Clase Interface
 	Input* InputInterface; //pointer to the Input Clase Interface
 
+	Component* Clipboard;  //Clipboard for copy/paste/cut operations
 
 public:
-
-
-public:	
 	ApplicationManager(); //constructor
 
 	//Reads the required action from the user and returns the corresponding action type
 	ActionType GetUserAction();
-	
+
 	//Creates an action and executes it
 	void ExecuteAction(ActionType);
-	
+
 	void UpdateInterface();	//Redraws all the drawing window
 
 	//Gets a pointer to Input / Output Object
@@ -42,16 +40,21 @@ public:
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 
-	//destructor
-	~ApplicationManager();
+	//Deletes a component from the list
+	void DeleteComponent(Component* pComp);
 
+	//Finds component at given coordinates
+	Component* GetComponentAt(int x, int y);
 
-
-	// ==== Clipboard ====
-	void SetClipboard(Component* c);
-	Component* GetClipboard() const;
+	//Breaks all connections to/from a component
 	void BreakConnections(Component* comp);
 
+	// ==== Clipboard operations ====
+	void SetClipboard(Component* c);
+	Component* GetClipboard() const;
+
+	//destructor
+	~ApplicationManager();
 };
 
 #endif

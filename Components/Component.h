@@ -12,19 +12,22 @@ private:
 protected:
 	GraphicsInfo m_GfxInfo;	//The parameters required to draw a component
 public:
-	Component(const GraphicsInfo &r_GfxInfo);
+	Component(const GraphicsInfo& r_GfxInfo);
 	virtual void Operate() = 0;	//Calculates the output according to the inputs
 	virtual void Draw(Output* pOut) = 0;	//for each component to Draw itself
-	
-	
-	virtual int GetOutPinStatus()=0;	//returns status of outputpin if LED, return -1
-	virtual int GetInputPinStatus(int n)=0;	//returns status of Inputpin # n if SWITCH, return -1
 
-	virtual void setInputPinStatus(int n, STATUS s)=0;	//set status of Inputpin # n, to be used by connection class.
-	virtual Component* Clone(const GraphicsInfo& newGfx) const override;
-	
-	Component();	
-	
+
+	virtual int GetOutPinStatus() = 0;	//returns status of outputpin if LED, return -1
+	virtual int GetInputPinStatus(int n) = 0;	//returns status of Inputpin # n if SWITCH, return -1
+
+	virtual void setInputPinStatus(int n, STATUS s) = 0;	//set status of Inputpin # n, to be used by connection class.
+	virtual Component* Clone(const GraphicsInfo& newGfx) const = 0; // Clone function to create a copy of the component
+
+	// Get the graphics info of the component
+	GraphicsInfo GetGraphicsInfo() const { return m_GfxInfo; }
+
+	Component();
+
 	//Destructor must be virtual
 	virtual ~Component();
 };
