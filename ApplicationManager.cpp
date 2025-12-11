@@ -1,9 +1,9 @@
 #include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
-#include "Actions/CopyAction.h"
-#include "Actions/PasteAction.h"
-#include "Actions/CutAction.h"
-#include "Actions/Delete.h"
+//#include "Actions/CopyAction.h"
+//#include "Actions/PasteAction.h"
+//#include "Actions/CutAction.h"
+//#include "Actions/Delete.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -43,25 +43,25 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		// The rest of the gates here
 
-	case COPY:
-		pAct = new CopyAction(this);
-		break;
+	//case COPY:
+	//	pAct = new CopyAction(this);
+	//	break;
 
-	case PASTE:
-		pAct = new PasteAction(this);
-		break;
+	//case PASTE:
+	//	pAct = new PasteAction(this);
+	//	break;
 
-	case CUT:
-		pAct = new CutAction(this);
-		break;
+	//case CUT:
+	//	pAct = new CutAction(this);
+	//	break;
 
-	case DEL:
-		pAct = new Delete(this);
-		break;
+	//case DEL:
+	//	pAct = new Delete(this);
+	//	break;
 
-	case ADD_CONNECTION:
-		//TODO: Create AddConnection Action here
-		break;
+	//case ADD_CONNECTION:
+	//	//TODO: Create AddConnection Action here
+	//	break;
 
 	case EXIT:
 		//TODO: create ExitAction here
