@@ -1,6 +1,4 @@
 #pragma once
-class NOR3
-{
 #ifndef _NOR3_H
 #define _NOR3_H
 
@@ -27,5 +25,4 @@ class NOR3
 
 #endif
 
-};
 

@@ -18,4 +18,4 @@ class AND3 :public Gate
 	virtual ~AND3();
 
 };
-
+#endif

@@ -5,20 +5,13 @@
 #include "Actions\AddXORgate2.h"
 #include "Actions\AddXNORgate2.h"
 #include "Actions\AddANDgate3.h"
-#include "Actions\AddORgate3.h"
-#include "Actions\AddNANDgate3.h"
 #include "Actions\AddNORgate3.h"
 #include "Actions\AddXORgate3.h"
-#include "Actions\AddXNORgate3.h"
-#include "Actions\AddNOTgate.h"
-#include "Actions\AddBuffer.h"
+#include "Actions\AddBUFF.h"
 #include "Actions\AddConnection.h"
-#include "Actions\AddLabel.h"
-#include "Actions/AddXNORgate3.h"
-#include "Actions/AddNOTgate.h"
-#include "Actions/AddBuffer.h"
-#include "Actions/AddConnection.h"
-#include "Actions/AddLabel.h"
+//#include "Actions\AddLabel.h"
+//#include "Actions\AddConnection.h"
+
 
 
 ApplicationManager::ApplicationManager()
@@ -81,12 +74,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_XOR_GATE_3:
 		pAct = new AddXORgate3(this);
 		break;
-	case ADD_INV:
+	/*case ADD_INV:
 		pAct = new AddINV(this);
 		break;
 	case ADD_BUFF:
 		pAct = new AddBuffer(this);
-		break;
+		break;*/
 
 
 
@@ -203,7 +196,7 @@ Component* ApplicationManager::GetClipboard() const
 	return Clipboard;
 }
 
-////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 ApplicationManager::~ApplicationManager()
 {
 	for (int i = 0; i < CompCount; i++)

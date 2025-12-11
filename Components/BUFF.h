@@ -16,3 +16,4 @@ class BUFF : public Gate
 
 
 };
+#endif
