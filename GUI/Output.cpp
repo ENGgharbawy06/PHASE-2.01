@@ -215,7 +215,12 @@ void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 
 void Output::DrawLED(GraphicsInfo r_GfxInfo, bool selected) const
 {
-	string GateImage = "..\\Images\\Gates\\LED.jpg";  
+	string GateImage;
+	if(selected)
+		GateImage = "..\\Images\\Gates\\Gate_LED_Hi.jpg";
+	else
+		GateImage = "..\\Images\\Gates\\Gate_LED.jpg";
+
 
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.LED_Width, UI.LED_Height);
 }
