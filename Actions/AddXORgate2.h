@@ -1,5 +1,5 @@
-#ifndef _ADD_XOR_GATE_H
-#define _ADD_XOR_GATE_H
+#ifndef _ADD_XOR_GATE2_H
+#define _ADD_XOR_GATE2_H
 
 #include "action.h"
 #include "..\Components\XOR2.h"
