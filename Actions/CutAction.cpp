@@ -3,7 +3,7 @@
 #include "../GUI/Output.h"
 #include "../GUI/Input.h"
 #include "../Components/Component.h"
-//Testing
+//Test
 CutAction::CutAction(ApplicationManager* pApp)
     : Action(pApp), CompToCut(nullptr)
 {
