@@ -85,7 +85,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddINV(this);
 		break;
 	case ADD_BUFF:
-		pAct = new AddBuffer(this);
+		pAct = new AddBUFF(this);
 		break;
 
 
