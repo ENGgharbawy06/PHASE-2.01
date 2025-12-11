@@ -1,4 +1,4 @@
-#include "AddXNORGate2.h"
+#include "AddXNORgate2.h"
 #include "..\ApplicationManager.h"
 
 AddXNORgate2::AddXNORgate2(ApplicationManager* pApp) :Action(pApp)  //test test test 

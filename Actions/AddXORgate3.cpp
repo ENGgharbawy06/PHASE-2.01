@@ -1,4 +1,4 @@
-#include "AddXORGate3.h"
+#include "AddXORgate3.h"
 #include "..\ApplicationManager.h"
 
 AddXORgate3::AddXORgate3(ApplicationManager* pApp) :Action(pApp)  //test test test 

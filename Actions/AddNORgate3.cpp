@@ -1,4 +1,4 @@
-#include "AddNORGate3.h"
+#include "AddNORgate3.h"
 #include "..\ApplicationManager.h"
 
 AddNORgate3::AddNORgate3(ApplicationManager* pApp) :Action(pApp)  //test test test 

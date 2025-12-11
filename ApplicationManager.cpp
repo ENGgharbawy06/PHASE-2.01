@@ -1,3 +1,4 @@
+#include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
 #include "Actions\AddORgate2.h"
 #include "Actions\AddNANDgate2.h"
@@ -77,13 +78,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	/*case ADD_INV:
 		pAct = new AddINV(this);
 		break;
-	case ADD_BUFF:
+	//case ADD_BUFF:
 		pAct = new AddBuffer(this);
 		break;*/
-
-
-
-
 	//case COPY:
 	//	pAct = new CopyAction(this);
 	//	break;
@@ -202,5 +199,4 @@ ApplicationManager::~ApplicationManager()
 	for (int i = 0; i < CompCount; i++)
 		delete CompList[i];
 	delete OutputInterface;
-	delete InputInterface;
 }

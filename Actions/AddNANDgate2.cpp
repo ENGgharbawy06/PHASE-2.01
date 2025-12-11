@@ -1,4 +1,4 @@
-#include "AddNANDGate2.h"
+#include "AddNANDgate2.h"
 #include "..\ApplicationManager.h"
 
 AddNANDgate2::AddNANDgate2(ApplicationManager* pApp) :Action(pApp)  //test test test 

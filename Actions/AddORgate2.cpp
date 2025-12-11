@@ -1,4 +1,4 @@
-#include "AddORGate2.h"
+
 #include "AddORgate2.h"
 #include "..\ApplicationManager.h"
 
