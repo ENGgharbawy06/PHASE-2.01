@@ -1,9 +1,25 @@
-#include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
-#include "Actions/CopyAction.h"
-#include "Actions/PasteAction.h"
-#include "Actions/CutAction.h"
-#include "Actions/Delete.h"
+#include "Actions\AddORgate2.h"
+#include "Actions\AddNANDgate2.h"
+#include "Actions\AddNORgate2.h"
+#include "Actions\AddXORgate2.h"
+#include "Actions\AddXNORgate2.h"
+#include "Actions\AddANDgate3.h"
+#include "Actions\AddORgate3.h"
+#include "Actions\AddNANDgate3.h"
+#include "Actions\AddNORgate3.h"
+#include "Actions\AddXORgate3.h"
+#include "Actions\AddXNORgate3.h"
+#include "Actions\AddNOTgate.h"
+#include "Actions\AddBuffer.h"
+#include "Actions\AddConnection.h"
+#include "Actions\AddLabel.h"
+#include "Actions/AddXNORgate3.h"
+#include "Actions/AddNOTgate.h"
+#include "Actions/AddBuffer.h"
+#include "Actions/AddConnection.h"
+#include "Actions/AddLabel.h"
+
 
 ApplicationManager::ApplicationManager()
 {
@@ -41,7 +57,39 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddANDgate2(this);
 		break;
 
-		// The rest of the gates here
+	case ADD_OR_GATE_2:
+		pAct = new AddORgate2(this);
+		break;
+	case ADD_NAND_GATE_2:
+		pAct = new AddNANDgate2(this);
+		break;
+	case ADD_NOR_GATE_2:
+		pAct = new AddNORgate2(this);
+		break;
+	case ADD_XOR_GATE_2:
+		pAct = new AddXORgate2(this);
+		break;
+	case ADD_XNOR_GATE_2:
+		pAct = new AddXNORgate2(this);
+		break;
+	case ADD_AND_GATE_3:
+		pAct = new AddANDgate3(this);
+		break;
+	case ADD_NOR_GATE_3:
+		pAct = new AddNORgate3(this);
+		break;
+	case ADD_XOR_GATE_3:
+		pAct = new AddXORgate3(this);
+		break;
+	case ADD_INV:
+		pAct = new AddINV(this);
+		break;
+	case ADD_BUFF:
+		pAct = new AddBuffer(this);
+		break;
+
+
+
 
 	case COPY:
 		pAct = new CopyAction(this);

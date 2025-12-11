@@ -1,5 +1,5 @@
-#ifndef _ADD_NOR_GATE_H
-#define _ADD_NOR_GATE_H
+#ifndef _ADD_NOR_GATE3_H
+#define _ADD_NOR_GATE3_H
 
 #include "action.h"
 #include "..\Components\NOR3.h"
