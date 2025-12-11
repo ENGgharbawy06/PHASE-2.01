@@ -22,8 +22,11 @@ InputPin* Connection::getDestPin()
 
 void Connection::Operate()
 {
-	//Status of connection destination pin = status of connection source pin
-	DstPin->setStatus((STATUS)SrcPin->getStatus());
+	if (SrcPin && DstPin)
+	{
+		//Status of connection destination pin = status of connection source pin
+		DstPin->setStatus((STATUS)SrcPin->getStatus());
+	}
 }
 
 void Connection::Draw(Output* pOut)
