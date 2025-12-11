@@ -1,5 +1,5 @@
-#ifndef _ADD_BUFFER_H
-#define _ADD_BUFFER_H
+#ifndef _ADD_Buffer_H
+#define _ADD_Buffer_H
 
 #include "action.h"
 #include "..\Components\BUFF.h"
