@@ -31,7 +31,7 @@ void AddXORgate2::ReadActionParameters()
 
 }
 
-void AddORgate2::Execute()
+void AddXORgate2::Execute()
 {
 	//Get Center point of the Gate
 

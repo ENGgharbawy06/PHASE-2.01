@@ -31,15 +31,15 @@ void AddNORgate3::ReadActionParameters()
 
 }
 
-void AddORgate3::Execute()
+void AddNORgate3::Execute()
 {
 	//Get Center point of the Gate
 
 	ReadActionParameters();
 
 	//Calculate the rectangle CNORners
-	int Len = UI.XNOR3_Width;
-	int Wdth = UI.XNOR3_Height;
+	int Len = UI.NOR3_Width;
+	int Wdth = UI.NOR3_Height;
 
 	GraphicsInfo GInfo; //Gfx info to be used to construct the NOR3 gate
 

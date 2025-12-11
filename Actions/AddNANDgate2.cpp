@@ -31,15 +31,15 @@ void AddNANDgate2::ReadActionParameters()
 
 }
 
-void AddORgate2::Execute()
+void AddNANDgate2::Execute()
 {
 	//Get Center point of the Gate
 
 	ReadActionParameters();
 
 	//Calculate the rectangle Corners
-	int Len = UI.XNAND2_Width;
-	int Wdth = UI.XNAND2_Height;
+	int Len = UI.NAND2_Width;
+	int Wdth = UI.NAND2_Height;
 
 	GraphicsInfo GInfo; //Gfx info to be used to construct the NAND2 gate
 

@@ -31,15 +31,15 @@ void AddNORgate2::ReadActionParameters()
 
 }
 
-void AddORgate2::Execute()
+void AddNORgate2::Execute()
 {
 	//Get Center point of the Gate
 
 	ReadActionParameters();
 
 	//Calculate the rectangle CNORners
-	int Len = UI.XNOR2_Width;
-	int Wdth = UI.XNOR2_Height;
+	int Len = UI.NOR2_Width;
+	int Wdth = UI.NOR2_Height;
 
 	GraphicsInfo GInfo; //Gfx info to be used to construct the NOR2 gate
 
