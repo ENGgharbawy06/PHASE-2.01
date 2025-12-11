@@ -20,3 +20,19 @@ bool OutputPin::ConnectTo(Connection *r_Conn)
 	
 	return false;	//can't connect to any more connections
 }
+//Disconnects all connections from this output pin
+void OutputPin::DisconnectAll()
+{
+	for(int i=0; i<m_Conn; i++)
+	{
+		//Disconnect each connection from this output pin
+		if(m_Connections[i])
+		{
+			//Assuming Connection class has a function to disconnect itself from the pins
+			//m_Connections[i]->Disconnect(); 
+			m_Connections[i] = nullptr; //Remove the connection pointer
+		}
+	}
+	m_Conn = 0; //Reset the number of connections
+}
+

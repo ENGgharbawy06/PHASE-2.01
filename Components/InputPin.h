@@ -7,10 +7,14 @@ class Component; //Forward class declaration
 class InputPin: public Pin	//inherited from class Pin
 {
 	Component* pComp; //Component at which this pin is associated
+	bool isConnected; //Flag to indicate whether this pin is connected or not
 public:
 	InputPin();
 	void setComponent(Component* pCmp);	//sets the component of this input pin
 	Component* getComponent();	//returns the component of this input pin
+	bool getIsConnected() const; //Returns whether the pin is connected or not
+	bool connect(); //Sets the pin as connected
+	void disconnect(); //Sets the pin as disconnected
 };
 
 #endif

@@ -22,6 +22,7 @@ private:
 public:
 	OutputPin(int r_FanOut);	
 	bool ConnectTo(Connection *r_Conn);	//connect to a new connection
+	void DisconnectAll(); //Disconnects all connections
 };
 
 #endif
