@@ -16,13 +16,13 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -127,17 +127,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actions\AddANDgate2.cpp" />
-	<ClCompile Include="Actions\AddANDgate3.cpp" />
-	<ClCompile Include="Actions\AddORgate2.cpp" />
-	<ClCompile Include="Actions\AddNANDgate2.cpp" />
-	<ClCompile Include="Actions\AddNORgate2.cpp" />
-	<ClCompile Include="Actions\AddNORgate3.cpp" />
-	<ClCompile Include="Actions\AddXORgate2.cpp" />
-	<ClCompile Include="Actions\AddXORgate3.cpp" />
-	<ClCompile Include="Actions\AddXNORgate2.cpp" />
-	<ClCompile Include="Actions\AddBUFF.cpp" />
-	<ClCompile Include="Actions\AddINV.cpp" />
-	<ClCompile Include="Actions\Select.cpp" />
+    <ClCompile Include="Actions\AddANDgate3.cpp" />
+    <ClCompile Include="Actions\AddORgate2.cpp" />
+    <ClCompile Include="Actions\AddNANDgate2.cpp" />
+    <ClCompile Include="Actions\AddNORgate2.cpp" />
+    <ClCompile Include="Actions\AddNORgate3.cpp" />
+    <ClCompile Include="Actions\AddXORgate2.cpp" />
+    <ClCompile Include="Actions\AddXORgate3.cpp" />
+    <ClCompile Include="Actions\AddXNORgate2.cpp" />
+    <ClCompile Include="Actions\AddBUFF.cpp" />
+    <ClCompile Include="Actions\AddINV.cpp" />
+    <ClCompile Include="Actions\Select.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />

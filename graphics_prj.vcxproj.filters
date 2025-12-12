@@ -140,6 +140,27 @@
     <ClCompile Include="CMUgraphicsLib\windowinput.cpp">
       <Filter>CMUgraphics Library</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\AddANDgate3.cpp" />
+    <ClCompile Include="Actions\AddORgate2.cpp" />
+    <ClCompile Include="Actions\AddNANDgate2.cpp" />
+    <ClCompile Include="Actions\AddNORgate2.cpp" />
+    <ClCompile Include="Actions\AddNORgate3.cpp" />
+    <ClCompile Include="Actions\AddXORgate2.cpp" />
+    <ClCompile Include="Actions\AddXORgate3.cpp" />
+    <ClCompile Include="Actions\AddXNORgate2.cpp" />
+    <ClCompile Include="Actions\AddBUFF.cpp" />
+    <ClCompile Include="Actions\AddINV.cpp" />
+    <ClCompile Include="Actions\Select.cpp" />
+    <ClCompile Include="Components\AND3.cpp" />
+    <ClCompile Include="Components\OR2.cpp" />
+    <ClCompile Include="Components\NAND2.cpp" />
+    <ClCompile Include="Components\NOR2.cpp" />
+    <ClCompile Include="Components\NOR3.cpp" />
+    <ClCompile Include="Components\XOR2.cpp" />
+    <ClCompile Include="Components\XOR3.cpp" />
+    <ClCompile Include="Components\XNOR2.cpp" />
+    <ClCompile Include="Components\BUFF.cpp" />
+    <ClCompile Include="Components\INV.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
