@@ -19,7 +19,6 @@ public:
 
 	void GetLastClick(int &x, int &y) const;
 
-	bool IsCtrlPressed() const; // dy mahtota ashan el cntrl key bysa3dna fel select action 
 
 	~Input();
 };
