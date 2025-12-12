@@ -161,7 +161,6 @@
     <ClCompile Include="Components\XNOR2.cpp" />
     <ClCompile Include="Components\BUFF.cpp" />
     <ClCompile Include="Components\INV.cpp" />
-    <ClCompile Include="Actions\ActionDelete.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -264,7 +263,6 @@
     <ClInclude Include="CMUgraphicsLib\windowinput.h">
       <Filter>CMUgraphics Library</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\ActionDelete.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
