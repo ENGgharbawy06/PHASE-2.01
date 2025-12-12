@@ -213,13 +213,13 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete OutputInterface;
 }
-void ApplicationManager::SetSelectedComponent(Component* pComponent)
+void ApplicationManager::SetSelected(Component* pComponent)
 {
 
 	SelectedComponent = pComponent;
 }
 
-Component* ApplicationManager::GetSelectedComponent() const
+Component* ApplicationManager::GetSelected() const
 {
 	return SelectedComponent;
 }

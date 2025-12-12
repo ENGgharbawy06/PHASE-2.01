@@ -57,9 +57,9 @@ public:
 	void SetClipboard(Component* c);
 	Component* GetClipboard() const;
 
-	void SetSelectedComponent(Component* pComponent);
+	void SetSelected(Component* pComponent);
 
-	Component* GetSelectedComponent() const;
+	Component* GetSelected() const;
 
 	//destructor
 	~ApplicationManager();
