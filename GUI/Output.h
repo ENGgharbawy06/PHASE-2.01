@@ -23,8 +23,6 @@ public:
 	
     // Draws 2-input AND gate
 	void DrawAND2(GraphicsInfo r_GfxInfo, bool selected = false) const;
-
-	///TODO : Make similar functions for drawing all other gates, switch, and LED, .. etc
 	void DrawNAND2(GraphicsInfo r_GfxInfo, bool selected=false) const;
 	void DrawNOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
 	void DrawXOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
