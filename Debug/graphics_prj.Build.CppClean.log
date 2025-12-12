@@ -94,14 +94,124 @@ c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\jdatasrc.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\jdcoefct.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\jdcolor.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\jddctmgr.obj
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.pdb
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.command.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.read.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.write.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-cvtres.read.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-cvtres.write.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-rc.read.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-rc.write.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.command.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.read.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.write.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\vc143.pdb
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\vc143.idb
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\main.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\output.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\input.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\applicationmanager.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\pin.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\outputpin.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\inputpin.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\gate.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\connection.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\component.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\and2.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\windowinput.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\mousequeue.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\keyqueue.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\image.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\cmugraphics.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\auxil.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addandgate2.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addandgate2.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\auxil.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\cmugraphics.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\image.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\keyqueue.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\mousequeue.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\windowinput.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\and2.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\component.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\connection.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\gate.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\inputpin.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\outputpin.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\pin.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\applicationmanager.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\input.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\output.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\main.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jutils.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jquant2.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jquant1.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jmemnobs.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jmemmgr.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jidctred.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jidctint.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jidctfst.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jidctflt.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jerror.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdtrans.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdsample.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdpostct.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdphuff.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdmerge.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdmaster.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdmarker.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdmainct.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdinput.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdhuff.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdhuff.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdinput.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdmainct.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdmarker.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdmaster.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdmerge.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdphuff.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdpostct.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdsample.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdtrans.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jerror.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jidctflt.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jidctfst.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jidctint.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jidctred.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jmemmgr.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jmemnobs.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jquant1.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jquant2.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jutils.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jddctmgr.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdcolor.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdcoefct.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdatasrc.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdapistd.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdapimin.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jcparam.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jcomapi.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jpegload.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jpegload.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jcomapi.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jcparam.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdapimin.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdapistd.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdatasrc.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdcoefct.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdcolor.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jddctmgr.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addxnorgate2.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addxorgate3.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addxorgate2.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addnorgate3.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addnorgate2.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addnandgate2.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addorgate2.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addandgate3.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addorgate2.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addnandgate2.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addnorgate2.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addnorgate3.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addxorgate2.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addxnorgate2.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.pdb
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.command.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.read.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.write.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-cvtres.read.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-cvtres.write.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-rc.read.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-rc.write.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.command.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.read.1.tlog
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.write.1.tlog

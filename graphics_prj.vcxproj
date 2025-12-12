@@ -127,6 +127,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actions\AddANDgate2.cpp" />
+	<ClCompile Include="Actions\AddANDgate3.cpp" />
+	<ClCompile Include="Actions\AddORgate2.cpp" />
+	<ClCompile Include="Actions\AddNANDgate2.cpp" />
+	<ClCompile Include="Actions\AddNORgate2.cpp" />
+	<ClCompile Include="Actions\AddNORgate3.cpp" />
+	<ClCompile Include="Actions\AddXORgate2.cpp" />
+	<ClCompile Include="Actions\AddXORgate3.cpp" />
+	<ClCompile Include="Actions\AddXNORgate2.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
