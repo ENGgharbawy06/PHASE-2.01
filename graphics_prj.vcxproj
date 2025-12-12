@@ -171,6 +171,14 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="Components\AND2.cpp" />
+    <ClCompile Include="Components\AND3.cpp" />
+    <ClCompile Include="Components\OR2.cpp" />
+    <ClCompile Include="Components\NAND2.cpp" />
+    <ClCompile Include="Components\NOR2.cpp" />
+    <ClCompile Include="Components\NOR3.cpp" />
+    <ClCompile Include="Components\XOR2.cpp" />
+    <ClCompile Include="Components\XOR3.cpp" />
+    <ClCompile Include="Components\XNOR2.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\Connection.cpp" />
     <ClCompile Include="Components\Gate.cpp" />
