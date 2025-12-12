@@ -1,4 +1,4 @@
-#include "..\ApplicationManager.h"
+#include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
 #include "Actions\AddORgate2.h"
 #include "Actions\AddNANDgate2.h"
@@ -10,20 +10,20 @@
 #include "Actions\AddXORgate3.h"
 #include "Actions\AddBUFF.h"
 #include "Actions\AddINV.h"
-
-#include "Actions\CopyAction.h"
-#include "Actions\Select.h"
-#include "Actions\ActionDelete.h"
-#include "Actions\PasteAction.h"
-#include "Actions\CutAction.h"
-
-
-#include "Actions/SwitchToSim.h"
-#include "Actions/SwitchToDesign.h"
-#include "Actions/Simulate.h"
-#include "Actions/ChangeSwitch.h"
-#include "Actions/Validate.h"
-#include "Actions/CreateTruthTable.h"
+//
+//#include "Actions\CopyAction.h"
+//#include "Actions\Select.h"
+//#include "Actions\ActionDelete.h"
+//#include "Actions\PasteAction.h"
+//#include "Actions\CutAction.h"
+//
+//
+//#include "Actions/SwitchToSim.h"
+//#include "Actions/SwitchToDesign.h"
+//#include "Actions/Simulate.h"
+//#include "Actions/ChangeSwitch.h"
+//#include "Actions/Validate.h"
+//#include "Actions/CreateTruthTable.h"
 //#include "Actions\AddConnection.h"
 //#include "Actions\AddLabel.h"
 //#include "Actions\AddConnection.h"
@@ -106,10 +106,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				//	pAct = new CutAction(this);
 				//	break;
 
-	case DEL:
-		//TODO: Create Delete Action here
-		pAct = new ActionDelete(this);
-		break;
+	//case DEL:
+	//	//TODO: Create Delete Action here
+	//	pAct = new ActionDelete(this);
+	//	break;
 
 					//case ADD_CONNECTION:
 				//	//TODO: Create AddConnection Action here
