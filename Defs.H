@@ -119,7 +119,17 @@ enum SimMenuItem //The items of the simulation menu
 // Default fan out
 enum FANOUT
 {
-	AND2_FANOUT = 50 //Default fan out of 2-input AND gate
+	AND2_FANOUT = 50,    // Default fan out of 2-input AND gate
+	OR2_FANOUT = 50,     // Default fan out of 2-input OR gate
+	NAND2_FANOUT = 50,   // Default fan out of 2-input NAND gate
+	NOR2_FANOUT = 50,    // Default fan out of 2-input NOR gate
+	XOR2_FANOUT = 50,    // Default fan out of 2-input XOR gate
+	XNOR2_FANOUT = 50,   // Default fan out of 2-input XNOR gate
+	AND3_FANOUT = 50,    // Default fan out of 3-input AND gate
+	NOR3_FANOUT = 50,    // Default fan out of 3-input NOR gate
+	XOR3_FANOUT = 50     // Default fan out of 3-input XOR gate
+
+
 };
 
 // Each component occupies a rectangular area so it needs 2 points to represent that area

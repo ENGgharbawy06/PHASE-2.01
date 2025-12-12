@@ -78,7 +78,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	/*case ADD_INV:
 		pAct = new AddINV(this);
 		break;
-	//case ADD_BUFF:
+	case ADD_BUFF:
 		pAct = new AddBuffer(this);
 		break;*/
 	//case COPY:
