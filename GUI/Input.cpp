@@ -1,3 +1,4 @@
+#include <Windows.h>
 #include "Input.h"
 #include "Output.h"
 
@@ -173,6 +174,13 @@ void Input::GetLastClick(int& x, int& y) const
 	y = LastClickY;
 }
 
+
+
+bool Input::IsCtrlPressed() const    // dy mahtota ashan el cntrl key bysa3dna fel select action
+{
+	SHORT keyState = GetKeyState(VK_CONTROL);
+	return (keyState & 0x8000) != 0; // Check if the high-order bit is set
+}
 
 Input::~Input()
 {
