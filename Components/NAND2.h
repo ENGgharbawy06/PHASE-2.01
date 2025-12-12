@@ -2,7 +2,6 @@
 #define _NAND2_H
 
 
-#pragma
 #include "Gate.h"
 
 class NAND2 : public Gate
@@ -18,7 +17,7 @@ public:
 	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 	virtual Component* Clone(const GraphicsInfo& newGfx) const override; // Clone function to create a copy of the component
 
-
+	virtual ~NAND2();
 
 
 };

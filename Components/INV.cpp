@@ -1,6 +1,6 @@
 #include "INV.h"
 
-INV::INV(const GraphicsInfo& r_GfxInfo) :Gate(3, 5)
+INV::INV(const GraphicsInfo &r_GfxInfo, int r_FanOut) :Gate(1, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
@@ -21,7 +21,7 @@ void INV::Operate()
 void INV::Draw(Output* pOut)
 {
 	//Call output class and pass gate drawing info to it.
-	pOut->DrawINV3(m_GfxInfo);
+	pOut->DrawINV(m_GfxInfo);
 }
 //returns status of outputpin
 int INV::GetOutPinStatus()
@@ -43,10 +43,10 @@ void INV::setInputPinStatus(int n, STATUS s)
 
 Component* INV::Clone(const GraphicsInfo& newGfx) const
 {
-	return new INV(newGfx);
+	return new INV(newGfx, INV_FANOUT);
 }
 
 
-INV3::~INV3()
+INV::~INV()
 {
 }

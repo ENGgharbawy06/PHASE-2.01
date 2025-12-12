@@ -8,7 +8,8 @@
 #include "Actions\AddANDgate3.h"
 #include "Actions\AddNORgate3.h"
 #include "Actions\AddXORgate3.h"
-//#include "Actions\AddBUFF.h"
+#include "Actions\AddBUFF.h"
+#include "Actions\AddINV.h"
 //#include "Actions\AddConnection.h"
 //#include "Actions\AddLabel.h"
 //#include "Actions\AddConnection.h"
@@ -75,12 +76,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_XOR_GATE_3:
 		pAct = new AddXORgate3(this);
 		break;
-	/*case ADD_INV:
+	case ADD_INV:
 		pAct = new AddINV(this);
 		break;
+	
 	case ADD_BUFF:
 		pAct = new AddBuffer(this);
-		break;*/
+		break;
+
+
 	//case COPY:
 	//	pAct = new CopyAction(this);
 	//	break;

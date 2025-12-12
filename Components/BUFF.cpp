@@ -1,6 +1,6 @@
 #include "BUFF.h"
 
-BUFF::BUFF(const GraphicsInfo &r_GfxInfo) :Gate(1, r_GfxInfo)
+BUFF::BUFF(const GraphicsInfo &r_GfxInfo, int r_FanOut) :Gate(1, r_FanOut)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
@@ -10,10 +10,6 @@ BUFF::BUFF(const GraphicsInfo &r_GfxInfo) :Gate(1, r_GfxInfo)
 }
 void BUFF::Operate()	//Calculates the output according to the inputs
 {
-
-
-
-
 	int inputStatus = GetInputPinStatus(1);
 	if (inputStatus == LOW) {
 		m_OutputPin.setStatus(LOW);
@@ -47,7 +43,7 @@ void BUFF::setInputPinStatus(int n, STATUS s)
 
 Component* BUFF::Clone(const GraphicsInfo& newGfx) const
 {
-	return new BUFF(newGfx);
+	return new BUFF(newGfx,BUFF_FANOUT);
 }
 
 BUFF::~BUFF()

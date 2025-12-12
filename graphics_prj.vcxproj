@@ -135,6 +135,8 @@
 	<ClCompile Include="Actions\AddXORgate2.cpp" />
 	<ClCompile Include="Actions\AddXORgate3.cpp" />
 	<ClCompile Include="Actions\AddXNORgate2.cpp" />
+	<ClCompile Include="Actions\AddBUFF.cpp" />
+	<ClCompile Include="Actions\AddINV.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -179,6 +181,8 @@
     <ClCompile Include="Components\XOR2.cpp" />
     <ClCompile Include="Components\XOR3.cpp" />
     <ClCompile Include="Components\XNOR2.cpp" />
+    <ClCompile Include="Components\BUFF.cpp" />
+    <ClCompile Include="Components\INV.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\Connection.cpp" />
     <ClCompile Include="Components\Gate.cpp" />

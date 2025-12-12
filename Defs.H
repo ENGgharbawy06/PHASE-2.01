@@ -127,8 +127,9 @@ enum FANOUT
 	XNOR2_FANOUT = 50,   // Default fan out of 2-input XNOR gate
 	AND3_FANOUT = 50,    // Default fan out of 3-input AND gate
 	NOR3_FANOUT = 50,    // Default fan out of 3-input NOR gate
-	XOR3_FANOUT = 50     // Default fan out of 3-input XOR gate
-
+	XOR3_FANOUT = 50,     // Default fan out of 3-input XOR gate
+	BUFF_FANOUT = 50,   // Default fan out of Buffer gate
+	INV_FANOUT = 50    // Default fan out of Inverter gate
 
 };
 

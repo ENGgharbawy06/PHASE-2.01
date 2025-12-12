@@ -1,11 +1,10 @@
-#pragma
 #ifndef _BUFF_H
 #define _BUFF_H
 #include "Gate.h"
 class BUFF : public Gate 
 {
 	public:
-	BUFF(const GraphicsInfo &r_GfxInfo);
+	BUFF(const GraphicsInfo &r_GfxInfo, int r_FanOut);
 	virtual void Operate();	//Calculates the output according to the inputs
 	virtual void Draw(Output* pOut);	//for each component to Draw itself
 	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1

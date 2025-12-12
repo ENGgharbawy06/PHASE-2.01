@@ -55,3 +55,7 @@ Component* NOR2::Clone(const GraphicsInfo& newGfx) const
 {
 	return new NOR2(newGfx, NOR2_FANOUT);
 }
+
+NOR2::~NOR2() 
+{
+}

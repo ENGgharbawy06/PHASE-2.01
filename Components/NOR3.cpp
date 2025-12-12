@@ -56,3 +56,8 @@ Component* NOR3::Clone(const GraphicsInfo& newGfx) const
 {
 	return new NOR3(newGfx, NOR3_FANOUT);
 }
+
+int NOR3::GetInputPinCount() //lesa fi 4o8l
+{
+	return 0;
+}
