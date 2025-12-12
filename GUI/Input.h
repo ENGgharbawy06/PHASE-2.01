@@ -8,6 +8,7 @@ class Input
 {
 private:
 	window *pWind;	//Pointer to the Graphics Window
+	mutable int LastClickX, LastClickY; 
 
 public:
 	Input(window*);
@@ -15,6 +16,9 @@ public:
 	string GetString(Output*);		//Returns a string entered by the user
 
 	ActionType GetUserAction() const; //Reads the user click and maps it to an action
+
+	void GetLastClick(int &x, int &y) const;
+
 
 	~Input();
 };

@@ -52,7 +52,9 @@ ActionType Input::GetUserAction() const
 {	
 	int x,y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
+	
+	LastClickX = x;
+	LastClickY = y;
 
 	if(UI.AppMode == DESIGN )	//application is in design mode
 	{
@@ -163,6 +165,12 @@ ActionType Input::GetUserAction() const
 	
 	
 
+}
+
+void Input::GetLastClick(int& x, int& y) const
+{
+	x = LastClickX;
+	y = LastClickY;
 }
 
 

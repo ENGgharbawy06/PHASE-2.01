@@ -137,6 +137,7 @@
 	<ClCompile Include="Actions\AddXNORgate2.cpp" />
 	<ClCompile Include="Actions\AddBUFF.cpp" />
 	<ClCompile Include="Actions\AddINV.cpp" />
+	<ClCompile Include="Actions\Select.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />

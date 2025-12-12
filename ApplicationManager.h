@@ -22,6 +22,10 @@ private:
 
 	Component* Clipboard;  //Clipboard for copy/paste/cut operations
 
+	Component* SelectedComponent;
+
+
+
 public:
 	ApplicationManager(); //constructor
 
@@ -52,6 +56,10 @@ public:
 	// ==== Clipboard operations ====
 	void SetClipboard(Component* c);
 	Component* GetClipboard() const;
+
+	void SetSelectedComponent(Component* pComponent);
+
+	Component* GetSelectedComponent() const;
 
 	//destructor
 	~ApplicationManager();

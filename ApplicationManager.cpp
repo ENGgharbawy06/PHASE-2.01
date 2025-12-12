@@ -10,6 +10,8 @@
 #include "Actions\AddXORgate3.h"
 #include "Actions\AddBUFF.h"
 #include "Actions\AddINV.h"
+#include "Actions\CopyAction.h"
+#include "Actions\Select.h"
 //#include "Actions\AddConnection.h"
 //#include "Actions\AddLabel.h"
 //#include "Actions\AddConnection.h"
@@ -20,6 +22,7 @@ ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
 	Clipboard = nullptr;
+	SelectedComponent = nullptr;
 
 	for (int i = 0; i < MaxCompCount; i++)
 		CompList[i] = NULL;
@@ -83,11 +86,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_BUFF:
 		pAct = new AddBuffer(this);
 		break;
+		
+	case SELECT:
+		pAct = new Select(this);
+		break;
 
-
-	//case COPY:
-	//	pAct = new CopyAction(this);
-	//	break;
+	/*case COPY:
+		pAct = new CopyAction(this);
+		break;*/
 
 	//case PASTE:
 	//	pAct = new PasteAction(this);
@@ -203,4 +209,12 @@ ApplicationManager::~ApplicationManager()
 	for (int i = 0; i < CompCount; i++)
 		delete CompList[i];
 	delete OutputInterface;
+}
+void ApplicationManager::SetSelectedComponent(Component* pComponent)
+{
+}
+
+Component* ApplicationManager::GetSelectedComponent() const
+{
+	return SelectedComponent;
 }

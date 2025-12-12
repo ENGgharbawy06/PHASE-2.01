@@ -162,25 +162,22 @@ void Output::CreateSimulationToolBar() const
 }
 
 // Components of the circuit
-void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)	// use highlighted image when selected
+	if (sel)	// use highlighted image when sel
 		GateImage = "..\\Images\\Gates\\Gate_AND2_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_AND2.jpg";
 
-	
-
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
-	
 
 }
 
-void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_OR2.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_OR2.jpg";
@@ -189,10 +186,10 @@ void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
-void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_XOR2_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_XOR2.jpg";
@@ -201,10 +198,10 @@ void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XOR2_Width, UI.XOR2_Height);
 }
 
-void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_XNOR2_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_XNOR2.jpg";
@@ -213,10 +210,10 @@ void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XNOR2_Width, UI.XNOR2_Height);
 }
 
-void Output::DrawLED(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawLED(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if(selected)
+	if(sel)
 		GateImage = "..\\Images\\Gates\\Gate_LED_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_LED.jpg";
@@ -225,10 +222,10 @@ void Output::DrawLED(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.LED_Width, UI.LED_Height);
 }
 
-void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_NAND2_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_NAND2.jpg";
@@ -236,10 +233,10 @@ void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.NAND2_Width, UI.NAND2_Height);
 }
 
-void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_NOR2_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_NOR2.jpg";
@@ -248,10 +245,10 @@ void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
-void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_XOR3_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_XOR3.jpg";
@@ -260,10 +257,10 @@ void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
-void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_AND3_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_AND3.jpg";
@@ -272,10 +269,10 @@ void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
-void Output::DrawNOR3(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawNOR3(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_NOR3_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_NOR3.jpg";
@@ -284,10 +281,10 @@ void Output::DrawNOR3(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
-void Output::DrawINV(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawINV(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_INV_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_INV.jpg";
@@ -296,10 +293,10 @@ void Output::DrawINV(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
-void Output::DrawBUFF(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawBUFF(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_BUFF_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_BUFF.jpg";
@@ -308,10 +305,10 @@ void Output::DrawBUFF(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
-void Output::DrawSWITCH(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawSWITCH(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (selected)
+	if (sel)
 		GateImage = "..\\Images\\Gates\\Gate_SWITCH_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_SWITCH.jpg";
@@ -320,10 +317,10 @@ void Output::DrawSWITCH(GraphicsInfo r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
-void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	// set pen color based on selection
-	if (selected)
+	if (sel)
 		pWind->SetPen(UI.SelectColor, 3);
 	else
 		pWind->SetPen(UI.ConnColor, 3);
