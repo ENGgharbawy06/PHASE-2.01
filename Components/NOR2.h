@@ -1,4 +1,4 @@
-#pragma 
+#pragma once
 #ifndef _NOR2_H
 #define _NOR2_H
 

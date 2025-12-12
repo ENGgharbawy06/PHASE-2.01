@@ -1,4 +1,4 @@
-#include "ApplicationManager.h"
+#include "..\ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
 #include "Actions\AddORgate2.h"
 #include "Actions\AddNANDgate2.h"
@@ -10,8 +10,14 @@
 #include "Actions\AddXORgate3.h"
 #include "Actions\AddBUFF.h"
 #include "Actions\AddINV.h"
+
 #include "Actions\CopyAction.h"
 #include "Actions\Select.h"
+#include "Actions\ActionDelete.h"
+#include "Actions\PasteAction.h"
+#include "Actions\CutAction.h"
+
+
 #include "Actions/SwitchToSim.h"
 #include "Actions/SwitchToDesign.h"
 #include "Actions/Simulate.h"
@@ -99,10 +105,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				//case CUT:
 				//	pAct = new CutAction(this);
 				//	break;
-					case DEL:
-					pAct = new Delete(this);
-					break;
-				//case ADD_CONNECTION:
+
+	case DEL:
+		//TODO: Create Delete Action here
+		pAct = new ActionDelete(this);
+		break;
+
+					//case ADD_CONNECTION:
 				//	//TODO: Create AddConnection Action here
 				//	break;
 	case EXIT:
