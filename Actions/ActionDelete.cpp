@@ -1,88 +1,78 @@
 #include "ActionDelete.h"
 #include "..\ApplicationManager.h"
+
 #include "..\UI\UI.h"
 #include <iostream>
 using namespace std;
 
-ActionDelete::ActionDelete(ApplicationManager* pApp) : Action(pApp)
+ActionDelete::ActionDelete(ApplicationManager* pApp) :Action(pApp)
 {
+
 }
 
-void ActionDelete::ReadActionParameters()
-{
-    // no parameters - deletion depends on current selection
-}
-
+//Execute the action
 void ActionDelete::Execute()
 {
-    Output* pOut = pManager->GetOutput();
-
-    // get all selected components
-    std::vector<Component*> selectedList = pManager->GetAllSelected();
-
-    if (selectedList.empty())
-    {
-        pOut->PrintMsg("There is no selected component(s), please select one or more component to delete");
-        return;
-    }
-
-    // store components and their indices for undo
-    DeletedComponents.clear();
-    DeletedIndices.clear();
-
-    for (Component* c : selectedList)
-    {
-        // before deleting component, break its connections
-        pManager->BreakConnections(c);
-
-        int idx = pManager->GetComponentIndex(c);
-        if (idx != -1)
-        {
-            DeletedComponents.push_back(c);
-            DeletedIndices.push_back(idx);
-        }
-    }
-
-    // delete components (important: delete by current index lookup since array shifts)
-    // We will iterate over DeletedIndices sorted descending to delete safely by index,
-    // but here we have component pointers so we'll call DeleteComponent which finds and removes.
-    for (Component* c : selectedList)
-    {
-        pManager->DeleteComponent(c);
-    }
-
-    // clear selection
-    pManager->ClearSelection();
-
-    pOut->PrintMsg("Component(s) deleted");
+	//UI* pUI = pManager->GetUI();
+	DeleteComponent();
+	pManager->setSaved(false);
 }
 
-void ActionDelete::Undo()
+void ActionDelete::DeleteComponent()
 {
-    Output* pOut = pManager->GetOutput();
+	UI* pUI = pManager->GetUI();
+	int SelectedCount = pManager->GetSelectedCount();
+	Component** CompListptr = pManager->GetComponentList();
+	int CompCount = pManager->GetComponentsCount();
+	Component* SelectedCompGate;
+	Component* SelectedCompConnection;
 
-    // Re-insert deleted components at their original indices
-    // Insert in ascending order of indices so positions match
-    for (size_t i = 0; i < DeletedComponents.size(); ++i)
-    {
-        int idx = DeletedIndices[i];
-        Component* c = DeletedComponents[i];
-        pManager->InsertComponentAt(idx, c);
-        // ensure it's not selected after undo
-        c->SetSelected(false);
-    }
+	if (SelectedCount == 0) {
+		pUI->PrintMsg("There is no selected component(s), please select one or more component to delete");
+	}
+	else {
+		for (int i = 0; i < CompCount; i++) {
+			if (CompListptr[i]->IsSelected()) {
+				SelectedCompGate = CompListptr[i]; //selectedgate
+				for (int j = 0; j < CompCount; j++) {
+					if (CompListptr[j]->GetComponentType() == "Connection") {
+						SelectedCompConnection = CompListptr[j];
+						if ((SelectedCompConnection->getSourcePin()) == (SelectedCompGate->getComponentOutput())
+							|| SelectedCompConnection->getDestPin() == SelectedCompGate->getComponentInput(0)
+							|| SelectedCompConnection->getDestPin() == SelectedCompGate->getComponentInput(1)) {
 
-    pOut->PrintMsg("Undo Delete completed.");
-}
+							delete SelectedCompConnection;
+							SelectedCompConnection = nullptr;
+							for (int k = j + 1; k <= CompCount; k++) {
+								CompListptr[k - 1] = CompListptr[k];
+								//CompListptr[k - 1]->SetID(k);
+								//pManager->ResetIDs();
+							}
+							j--;
+							CompCount--;
+							pManager->SetComponentsCount(CompCount);
+						}
 
-void ActionDelete::Redo()
-{
-    Output* pOut = pManager->GetOutput();
-
-    for (Component* c : DeletedComponents)
-    {
-        pManager->DeleteComponent(c);
-    }
-
-    pOut->PrintMsg("Redo Delete completed.");
+					}
+				}
+				//SelectedCompGate->getComponentOutput()
+				delete CompListptr[i];
+				CompListptr[i] = nullptr;
+				for (int j = i + 1; j <= CompCount; j++)
+				{
+					CompListptr[j - 1] = CompListptr[j];
+					/// lma a3ml delete 7ot satr zizo 
+					//CompListptr[i - 1]->SetID(i);
+					//cout << "Id of comp i is  " << i << endl;
+					//pManager->ResetIDs();
+				}
+				i--;
+				SelectedCount--;
+				pManager->SetSelectedCount(SelectedCount);
+				CompCount--;
+				pManager->SetComponentsCount(CompCount);
+			}
+		}
+		pUI->PrintMsg("Component(s) deleted");
+	}
 }
