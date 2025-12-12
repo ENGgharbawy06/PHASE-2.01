@@ -91,6 +91,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new Select(this);
 		break;
 
+	/*case MOVE:
+		pAct = new Move(this);*/
+
 	/*case COPY:
 		pAct = new CopyAction(this);
 		break;*/
@@ -212,6 +215,8 @@ ApplicationManager::~ApplicationManager()
 }
 void ApplicationManager::SetSelectedComponent(Component* pComponent)
 {
+
+	SelectedComponent = pComponent;
 }
 
 Component* ApplicationManager::GetSelectedComponent() const

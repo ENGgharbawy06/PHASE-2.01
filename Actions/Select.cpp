@@ -31,7 +31,7 @@ void Select::Execute()
         {
             // If it's already selected, unselect it
             pComp->SetSelected(false);
-            pManager->SetSelected(NULL); // Clear the pointer in AppManager
+            pManager -> SetSelected(NULL); // Clear the pointer in AppManager
             pOut->PrintMsg("Component unselected.");
         }
         else

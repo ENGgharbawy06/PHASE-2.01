@@ -30,7 +30,6 @@ c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\xor2.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\xor3.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\xnor2.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\buff.obj
-c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\inv.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\component.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\connection.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\gate.obj
@@ -69,7 +68,6 @@ c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addxorgate2.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addxorgate3.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addxnorgate2.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addbuff.obj
-c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addinv.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\auxil.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\cmugraphics.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\image.obj
@@ -77,6 +75,8 @@ c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\keyqueue.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\mousequeue.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\windowinput.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\and2.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\addinv.obj
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\inv.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jutils.sbr
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jquant2.sbr
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jquant1.sbr
@@ -135,8 +135,10 @@ c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdatasrc.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdcoefct.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jdcolor.obj
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\jddctmgr.obj
-c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.ilk
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\select.sbr
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.exe
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.pdb
+c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.ilk
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\bscmake.command.1.tlog
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\bscmake.read.1.tlog
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\bscmake.write.1.tlog
@@ -144,12 +146,6 @@ c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tl
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.items.tlog
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.read.1.tlog
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.write.1.tlog
-c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.8848-cvtres.read.1.tlog
-c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.8848-cvtres.write.1.tlog
-c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.8848-rc.read.1.tlog
-c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.8848-rc.write.1.tlog
-c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.8848.read.1.tlog
-c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.8848.write.1.tlog
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.command.1.tlog
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.read.1.tlog
 c:\users\omar orashy\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.secondary.1.tlog
