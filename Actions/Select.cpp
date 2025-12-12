@@ -4,12 +4,10 @@
 Select::Select(ApplicationManager* pApp) :Action(pApp)
 {
 }
-
 void Select::ReadActionParameters()
 {
     // Get the Input interface
     Input* pIn = pManager->GetInput();
-
     // RETRIEVE THE STORED CLICK (The one that triggered the action)
     pIn->GetLastClick(x, y);
 }
@@ -17,59 +15,56 @@ void Select::ReadActionParameters()
 void Select::Execute()
 {
     ReadActionParameters(); // Get the click coordinates
-
     Output* pOut = pManager->GetOutput();
+    Input* pIn = pManager->GetInput();
 
-    // 1. Check if there is a component at the clicked coordinates
+    // determine if ctrl is pressed (if Input supports it)
+    bool ctrl = false;
+    // If Input class provides IsCtrlPressed(), use it. Otherwise ctrl remains false.
+    // Make sure to add IsCtrlPressed() to Input if you want Ctrl behavior.
+#ifdef HAS_ISCTRL
+    ctrl = pIn->IsCtrlPressed();
+#else
+// try calling it anyway (will compile only if method exists)
+// ctrl = pIn->IsCtrlPressed();
+#endif
+
     Component* pComp = pManager->GetComponentAt(x, y);
-
     if (pComp != NULL)
     {
-        // === Case A: User clicked on a component ===
-
-        if (pComp->IsSelected())
+        if (ctrl)
         {
-            // If it's already selected, unselect it
-            pComp->SetSelected(false);
-            pManager -> SetSelected(NULL); // Clear the pointer in AppManager
-            pOut->PrintMsg("Component unselected.");
+            // Toggle selection of clicked component (multi-select behavior)
+            if (pComp->IsSelected())
+            {
+                pManager->RemoveFromSelection(pComp);
+                pOut->PrintMsg("Component unselected.");
+            }
+            else
+            {
+                pManager->AddToSelection(pComp);
+                pOut->PrintMsg("Component added to selection.");
+            }
         }
         else
         {
-            // If it's NOT selected, select it
-
-            // First, unselect the previously selected component (if any)
-            // This enforces "Single Selection" behavior
-            Component* oldComp = pManager->GetSelected();
-            if (oldComp != NULL)
-            {
-                oldComp->SetSelected(false);
-            }
-
-            // Now select the new one
-            pComp->SetSelected(true);
-            pManager->SetSelected(pComp); // Tell AppManager this is the active one
+            // Single-selection behavior: clear previous then select this
+            pManager->ClearSelection();
+            pManager->AddToSelection(pComp);
             pOut->PrintMsg("Component selected.");
         }
     }
     else
     {
-        // === Case B: User clicked on empty space ===
-        // Unselect everything
-        Component* oldComp = pManager->GetSelected();
-        if (oldComp != NULL)
-        {
-            oldComp->SetSelected(false);
-        }
-        pManager->SetSelected(NULL);
+        // Clicked empty space
+        if (!ctrl) // if ctrl pressed and empty, we keep selected items (common UX) — here we clear if no ctrl
+            pManager->ClearSelection();
         pOut->PrintMsg("Selection cleared.");
     }
 }
-
 void Select::Undo()
 {
 }
-
 void Select::Redo()
 {
 }
