@@ -4,15 +4,10 @@
 
 AddORgate2::AddORgate2(ApplicationManager* pApp) :Action(pApp)  //test test test 
 {
-
 }
-
-
 AddORgate2::~AddORgate2(void)
 
 {
-
-
 }
 
 void AddORgate2::ReadActionParameters()
@@ -25,7 +20,8 @@ void AddORgate2::ReadActionParameters()
 	pOut->PrintMsg("2-Input OR Gate: Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	/*pIn->GetPointClicked(Cx, Cy);*/
+	pOut->GetValidDrawingPoint(Cx, Cy, pIn);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();

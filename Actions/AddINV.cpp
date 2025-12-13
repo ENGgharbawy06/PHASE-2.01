@@ -14,7 +14,8 @@ void AddINV::ReadActionParameters()
 	//Print Action Message
 	pOut->PrintMsg("1-Input Inverter Gate: Click to add the gate");
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	/*pIn->GetPointClicked(Cx, Cy);*/
+	pOut->GetValidDrawingPoint(Cx, Cy, pIn);
 	//Clear Status Bar
 	pOut->ClearStatusBar();
 }

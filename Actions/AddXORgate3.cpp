@@ -3,17 +3,10 @@
 
 AddXORgate3::AddXORgate3(ApplicationManager* pApp) :Action(pApp)  //test test test 
 {
-
 }
-
-
 AddXORgate3::~AddXORgate3(void)
-
 {
-
-
 }
-
 void AddXORgate3::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
@@ -24,7 +17,9 @@ void AddXORgate3::ReadActionParameters()
 	pOut->PrintMsg("3-Inputs XOR Gate: Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	//pIn->GetPointClicked(Cx, Cy);
+
+	pOut->GetValidDrawingPoint(Cx, Cy, pIn);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
