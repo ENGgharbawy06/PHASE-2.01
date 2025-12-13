@@ -67,6 +67,8 @@ public:
 
 	int GetSelectedCount() const;
 	void MoveSelected(int x, int y);
+	
+	Component* GetOneSelectedComponent();
 
 	/*void AddConnection(Connection* pConn);
 	Connection* GetConnectionAt(int x, int y);*/
