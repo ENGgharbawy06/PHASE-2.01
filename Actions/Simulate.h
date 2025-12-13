@@ -3,6 +3,7 @@ using namespace std;
 
 
 class Simulate : public Action {
+
 private:
     double timeStep;
     double totalTime;

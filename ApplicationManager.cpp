@@ -134,35 +134,43 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 //Mariaaam lw ghlt deleteee
 
 	case SIMULATE:	
-
 	{
 		Action* pAct = NULL;
 
-		// Switch case on ActType
+		// This is the ONLY switch statement you need.
 		switch (ActType)
 		{
-			// ... (Your existing cases for ADD_AND_GATE, ADD_LABEL, etc. are here) ...
+			// ------------------------------------
+			//      Existing Design Mode Cases
+			// ------------------------------------
+		case ADD_AND_GATE_2:
+			pAct = new AddANDgate2(this);
+			break;
 
-			// ==========================================================
-			//         ADD THESE NEW CASES FOR SIMULATION
-			// ==========================================================
+		case ADD_CONNECTION:
+			pAct = new AddConnection(this);
+			break;
+
+			// ... (Keep all your other existing component cases here) ...
+
+
+			// ------------------------------------
+			//      New Simulation Mode Cases
+			// ------------------------------------
 
 		case SIMULATE:
-			// This runs the file we just created (Simulate.cpp)
 			pAct = new Simulate(this);
 			break;
 
 		case CREATE_TRUTH_TABLE:
-			// pAct = new CreateTruthTable(this); // Uncomment when you create this file
+			// pAct = new CreateTruthTable(this); // Uncomment later
 			break;
 
 		case DSN_MODE:
-			// This handles clicking "Design Mode" to go back
-			// pAct = new SwitchToDesign(this);   // Uncomment when you create this file
+			// pAct = new SwitchToDesign(this);   // Uncomment later
 			break;
 
 		case EXIT:
-			// Exit action
 			break;
 		}
 
@@ -174,7 +182,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = NULL;
 		}
 	}
-	break;
 
 	case EXIT:
 		//TODO: create ExitAction here
@@ -345,5 +352,13 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete OutputInterface;
 }
+
+
+
+
+
+
+
+
 
 
