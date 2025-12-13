@@ -14,6 +14,7 @@
 #include "Components/Connection.h"
 #include "Actions\AddConnection.h"
 #include "Actions\Move.h"
+#include "Actions/Simulate.h"
 //#include "Actions\CopyAction.h"
 //#include "Actions\ActionDelete.h"
 //#include "Actions\PasteAction.h"
@@ -129,9 +130,58 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 					//case ADD_CONNECTION:
 				//	//TODO: Create AddConnection Action here
 				//	break;
+
+//Mariaaam lw ghlt deleteee
+
+	case SIMULATE:	
+
+	{
+		Action* pAct = NULL;
+
+		// Switch case on ActType
+		switch (ActType)
+		{
+			// ... (Your existing cases for ADD_AND_GATE, ADD_LABEL, etc. are here) ...
+
+			// ==========================================================
+			//         ADD THESE NEW CASES FOR SIMULATION
+			// ==========================================================
+
+		case SIMULATE:
+			// This runs the file we just created (Simulate.cpp)
+			pAct = new Simulate(this);
+			break;
+
+		case CREATE_TRUTH_TABLE:
+			// pAct = new CreateTruthTable(this); // Uncomment when you create this file
+			break;
+
+		case DSN_MODE:
+			// This handles clicking "Design Mode" to go back
+			// pAct = new SwitchToDesign(this);   // Uncomment when you create this file
+			break;
+
+		case EXIT:
+			// Exit action
+			break;
+		}
+
+		// Execute the created action
+		if (pAct != NULL)
+		{
+			pAct->Execute(); // Execute
+			delete pAct;     // Action is not needed any more
+			pAct = NULL;
+		}
+	}
+	break;
+
 	case EXIT:
 		//TODO: create ExitAction here
 		break;
+
+
+
 	}
 
 	if (pAct)
@@ -295,3 +345,5 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete OutputInterface;
 }
+
+

@@ -49,3 +49,34 @@ int main() {
     sim.run();
     return 0;
 }
+
+
+Simulate::Simulate(ApplicationManager* pApp) : Action(pApp) {
+}
+
+Simulate::~Simulate() {
+}
+
+void Simulate::ReadActionParameters()
+{
+}
+
+void Simulate::Execute()
+{
+   
+    Output* pOut = pManager->GetOutput();
+    pOut->PrintMsg("Simulation Mode: Click switches to toggle, or click Truth Table.");
+    pOut->CreateSimulationToolBar();
+
+    pManager->ExecuteCircuit();
+}
+
+void Simulate::Undo() 
+{
+    
+}
+
+void Simulate::Redo() 
+{
+    
+}
