@@ -12,7 +12,7 @@
 #include "Actions\AddINV.h"
 #include "Actions\Select.h"
 #include "Components/Connection.h"
-
+#include "Actions\AddConnection.h"
 //#include "Actions\CopyAction.h"
 //#include "Actions\ActionDelete.h"
 //#include "Actions\PasteAction.h"
@@ -25,9 +25,9 @@
 //#include "Actions/ChangeSwitch.h"
 //#include "Actions/Validate.h"
 //#include "Actions/CreateTruthTable.h"
-//#include "Actions\AddConnection.h"
+
 //#include "Actions\AddLabel.h"
-#include "Actions\AddConnection.h"
+
 
 
 

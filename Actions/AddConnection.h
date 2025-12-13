@@ -1,7 +1,7 @@
 #ifndef _ADD_CONNECTION_H
 #define _ADD_CONNECTION_H
 
-#include "Actions/Action.h"
+#include "Action.h"
 #include "..\Components\Gate.h"
 #include "..\Components\InputPin.h"
 #include "..\Components\\OutputPin.h"

@@ -1,7 +1,5 @@
 #include "AddConnection.h"
-#include "ApplicationManager.h"
-#include "Input.h"
-#include "Output.h"
+#include "..\ApplicationManager.h"
 
 AddConnection::AddConnection(ApplicationManager* pApp)
     : Action(pApp)
@@ -12,96 +10,116 @@ AddConnection::AddConnection(ApplicationManager* pApp)
     DstPin = nullptr;
 }
 
+
 void AddConnection::ReadActionParameters()
 {
-    Output* pOut = pManager->GetOutput();
-    Input* pIn = pManager->GetInput();
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
 
-    int x, y;
-
-    // ===============================
-    // Select source gate (output pin)
-    // ===============================
-    pOut->PrintMsg("Select source gate (output pin)");
-    pIn->GetPointClicked(x, y);
-
-    Component* pComp = pManager->GetComponentAt(x, y);
-    if (!pComp || !pComp->IsGate())
-    {
-        pOut->PrintMsg("Invalid source: please select a gate");
-        return;
-    }
-
-    SrcGate = static_cast<Gate*>(pComp);
-    SrcPin = SrcGate->GetOutputPin();
-
-    if (!SrcPin->CanConnect())
-    {
-        pOut->PrintMsg("Source fan-out exceeded");
-        SrcGate = nullptr;
-        SrcPin = nullptr;
-        return;
-    }
+	int x, y;
 
     // ===============================
-    // Select destination gate (input)
+	// Select source gate (output pin)
     // ===============================
-    pOut->PrintMsg("Select destination gate (input pin)");
-    pIn->GetPointClicked(x, y);
+	pOut->PrintMsg("Select source gate (output pin)");
+	pIn->GetPointClicked(x, y);
 
-    pComp = pManager->GetComponentAt(x, y);
-    if (!pComp || !pComp->IsGate())
-    {
-        pOut->PrintMsg("Invalid destination: please select a gate");
-        SrcGate = nullptr;
-        SrcPin = nullptr;
-        return;
-    }
+	Component* pComp = pManager->GetComponentAt(x, y);
+	if (!pComp || !pComp->IsGate())
+	{
+		pOut->PrintMsg("Invalid source: please select a gate");
+		return;
+	}
 
-    DstGate = static_cast<Gate*>(pComp);
+	SrcGate = static_cast<Gate*>(pComp);
+	SrcPin = SrcGate->GetOutputPin();
 
-    // pick first free input pin
-    DstPin = nullptr;
-    for (int i = 0; i < DstGate->GetInputPinCount(); i++)
-    {
-        if (!DstGate->GetInputPin(i)->isConnected())
-        {
-            DstPin = DstGate->GetInputPin(i);
-            break;
-        }
-    }
-
-    if (!DstPin)
-    {
-        pOut->PrintMsg("No free input pins on destination gate");
-        SrcGate = nullptr;
-        SrcPin = nullptr;
-        DstGate = nullptr;
-        return;
-    }
+	if (!SrcPin->CanConnect())
+	{
+		pOut->PrintMsg("Source fan-out exceeded");
+		SrcGate = nullptr;
+		SrcPin = nullptr;
+		return;
+	}
 
     // ===============================
-    // Graphics info (pin-to-pin)
+	// Select destination gate (input)
     // ===============================
-    GInfo.x1 = SrcPin->getPosition().x;
-    GInfo.y1 = SrcPin->getPosition().y;
-    GInfo.x2 = DstPin->getPosition().x;
-    GInfo.y2 = DstPin->getPosition().y;
+	pOut->PrintMsg("Select destination gate (input pin)");
+	pIn->GetPointClicked(x, y);
 
-    pOut->ClearStatusBar();
+	pComp = pManager->GetComponentAt(x, y);
+	if (!pComp || !pComp->IsGate())
+	{
+		pOut->PrintMsg("Invalid destination: please select a gate");
+		SrcGate = nullptr;
+		SrcPin = nullptr;
+		return;
+	}
+
+	DstGate = static_cast<Gate*>(pComp);
+
+	// pick first free input pin
+	DstPin = nullptr;
+	for (int i = 0; i < DstGate->GetInputPinCount(); i++)
+	{
+		if (!DstGate->GetInputPin(i)->getIsConnected())  // Changed from isConnected()
+		{
+			DstPin = DstGate->GetInputPin(i);
+			break;
+		}
+	}
+
+	if (!DstPin)
+	{
+		pOut->PrintMsg("No free input pins on destination gate");
+		SrcGate = nullptr;
+		SrcPin = nullptr;
+		DstGate = nullptr;
+		return;
+	}
+
+    // ===============================
+	// Graphics info (pin-to-pin)
+	GInfo.x1 = SrcPin->getPositionX();  // Changed from getPosition().x
+	GInfo.y1 = SrcPin->getPositionY();  // Changed from getPosition().y
+	GInfo.x2 = DstPin->getPositionX();  // Changed from getPosition().x
+	GInfo.y2 = DstPin->getPositionY();  // Changed from getPosition().y
+
+	pOut->ClearStatusBar();
+
+
+
 }
-
 void AddConnection::Execute()
 {
-    ReadActionParameters();
+	// Read action parameters
+	ReadActionParameters();
+	// If parameters are invalid, return
+	if (!SrcGate || !DstGate || !SrcPin || !DstPin)
+		return;
+	// Create the connection
+	Connection* pConn = new Connection(GInfo, SrcPin, DstPin);
 
-    if (!SrcGate || !DstGate || !SrcPin || !DstPin)
-        return;
-
-    Connection* pConn = new Connection(GInfo, SrcPin, DstPin);
-    pManager->AddComponent(pConn);
+	// Add the connection to the application manager
+	pManager->AddComponent(pConn);
+	// Connect the pins
+	SrcPin->ConnectTo(pConn);
+	DstPin->connect();  // Mark input pin as connected
 }
-
 AddConnection::~AddConnection()
 {
+}
+void AddConnection::Undo()
+{
+	// Remove the connection from the application manager
+	// Disconnect the pins
+	// Note: You need to implement these functionalities in ApplicationManager and Pin classes
+}
+
+void AddConnection::Redo()
+{
+	// Re-add the connection to the application manager
+	// Reconnect the pins
+	// Note: You need to implement these functionalities in ApplicationManager and Pin classes
 }

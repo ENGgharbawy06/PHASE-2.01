@@ -84,7 +84,7 @@ ActionType Input::GetUserAction() const
 			case ITM_LED: return ADD_LED;
 			case ITM_EXIT: return EXIT;
 			case ITM_SIM_MODE: return SIM_MODE;
-			case ITM_Move: return MOVE;
+			
 
 			
 
@@ -111,6 +111,7 @@ ActionType Input::GetUserAction() const
 			case ITM_SAVE_B: return SAVE;
 			case ITM_delete_B: return DEL;
 			case ITM_EDIT_B: return EDIT_LABEL;
+			case ITM_Move: return MOVE;
 
 			default: return BOT_TOOL;	//A click on empty place in desgin toolbar
 			}
