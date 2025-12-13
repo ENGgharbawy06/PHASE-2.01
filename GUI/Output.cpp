@@ -174,7 +174,7 @@ void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool sel) const
 
 }
 
-void Output ::GetValidDrawingPoint(int& x, int& y, Input* pIn) const //3lashn myrsmsh 3la el menu 
+void Output ::GetValidDrawingPoint(int& x, int& y, Input* pIn) const //3lshan myrsmsh 3la el menu 
 {
 	pIn->GetPointClicked(x, y);
 	while (y < UI.ToolBarHeight+35 || y > UI.height - UI.StatusBarHeight - UI.ToolBarHeight-35 || x < 0 || x > UI.width)
