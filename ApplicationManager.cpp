@@ -135,26 +135,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	}
 }
 
-////////////////////////////////////////////////////////////////////
+
 void ApplicationManager::UpdateInterface()
 {
 	for (int i = 0; i < CompCount; i++)
 		CompList[i]->Draw(OutputInterface);
 }
 
-////////////////////////////////////////////////////////////////////
 Input* ApplicationManager::GetInput()
 {
 	return InputInterface;
 }
 
-////////////////////////////////////////////////////////////////////
 Output* ApplicationManager::GetOutput()
 {
 	return OutputInterface;
 }
 
-////////////////////////////////////////////////////////////////////
 // Find component at given coordinates
 Component* ApplicationManager::GetComponentAt(int x, int y)
 {
@@ -165,8 +162,9 @@ Component* ApplicationManager::GetComponentAt(int x, int y)
 		{
 			return CompList[i];
 		}
-	}
-	return nullptr;  // No component found at this position
+	}	
+			return nullptr;  //No component found, 3a4an el deselect
+	
 }
 
 ////////////////////////////////////////////////////////////////////

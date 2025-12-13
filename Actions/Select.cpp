@@ -16,14 +16,15 @@ void Select::ReadActionParameters()
 
 void Select::Execute()
 {
-    ReadActionParameters(); // Gets the click coordinates (x,y)
+    ReadActionParameters(); // Beygib el coordiantes of point clicked
 
     Output* pOut = pManager->GetOutput();
 
     // 1. Check if user clicked a component
-    Component* pComp = pManager->GetComponentAt(x, y);
+    Component* pComp = pManager->GetComponentAt(x, y); //Only returns the pointer law howa mawgod 
+                                                       //fel component list (Note: el comp list di array of all components)
 
-    if (pComp != NULL)
+	if (pComp != NULL) //Hateb2a true law enta fe3lan 3amalt select 3ala component marsom
     {
         // TOGGLE logic:
         if (pComp->IsSelected())

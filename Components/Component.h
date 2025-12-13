@@ -41,6 +41,12 @@ public:
 
 	Component();
 
+	//3a4an el move action, lazem a3raf eh el coordinates el gdida
+	virtual void SetGraphicsInfo(GraphicsInfo NewGfx) {
+		m_GfxInfo = NewGfx;
+	} 
+
+
 	//Destructor must be virtual
 	virtual ~Component();
 };
