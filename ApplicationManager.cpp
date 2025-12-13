@@ -10,9 +10,9 @@
 #include "Actions\AddXORgate3.h"
 #include "Actions\AddBUFF.h"
 #include "Actions\AddINV.h"
-//
+#include "Actions\Select.h"
+
 //#include "Actions\CopyAction.h"
-//#include "Actions\Select.h"
 //#include "Actions\ActionDelete.h"
 //#include "Actions\PasteAction.h"
 //#include "Actions\CutAction.h"
@@ -230,4 +230,13 @@ void ApplicationManager::SetSelected(Component* pComponent)
 Component* ApplicationManager::GetSelected() const
 {
 	return SelectedComponent;
+}
+
+void ApplicationManager::UnselectAll()
+{
+	for (int i=0; i < CompCount; i++)
+	{
+		CompList[i]->SetSelected(false);
+	}
+	SelectedComponent = nullptr;
 }

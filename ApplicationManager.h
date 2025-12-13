@@ -61,6 +61,8 @@ public:
 
 	Component* GetSelected() const;
 
+	void UnselectAll();
+
 	//destructor
 	~ApplicationManager();
 };
