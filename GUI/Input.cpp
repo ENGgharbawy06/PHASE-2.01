@@ -56,7 +56,7 @@ string Input::GetString(Output *pOut)
 }
 
 //Reads where the user clicks to determine the desired action
-ActionType Input::GetUserAction() const
+ActionType Input::GetUserAction() 
 {	
 	int x,y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
