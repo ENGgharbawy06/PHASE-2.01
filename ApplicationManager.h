@@ -65,6 +65,9 @@ public:
 
 	void UnselectAll();
 
+	int GetSelectedCount() const;
+	void MoveSelected(int x, int y);
+
 	/*void AddConnection(Connection* pConn);
 	Connection* GetConnectionAt(int x, int y);*/
 

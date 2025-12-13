@@ -4,6 +4,14 @@
 Input::Input(window* pW)
 {
 	pWind = pW; //point to the passed window
+
+	IsDragging = false;
+	DragX1 = 0;
+	DragY1 = 0;
+	DragX2 = 0;
+	DragY2 = 0;
+
+
 }
 
 void Input::GetPointClicked(int &x, int &y)
@@ -48,7 +56,7 @@ string Input::GetString(Output *pOut)
 }
 
 //Reads where the user clicks to determine the desired action
-ActionType Input::GetUserAction() const
+ActionType Input::GetUserAction() 
 {	
 	int x,y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
@@ -172,6 +180,20 @@ void Input::GetLastClick(int& x, int& y) const
 {
 	x = LastClickX;
 	y = LastClickY;
+}
+
+bool Input::GetDragCoordinates(int& x1, int& y1, int& x2, int& y2)
+{
+	
+	if (IsDragging) { //El if hena safety check, law howa bey drag, a7ot el coordinates fel DragX1, DragY1, DragX2, DragY2
+		x1 = DragX1;
+		y1 = DragY1;
+		x2 = DragX2;
+		y2 = DragY2;
+		return true;
+
+	}
+	return false;
 }
 
 

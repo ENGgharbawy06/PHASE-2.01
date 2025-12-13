@@ -10,28 +10,38 @@ void Move::ReadActionParameters()
     Output* pOut = pManager->GetOutput();
     Input* pIn = pManager->GetInput();
 
-    pOut->PrintMsg("Move Action: Click on the component you want to move.");
-    pIn->GetPointClicked(x1, y1); // Store start point
+    // 1. Get Reference Point
+    pOut->PrintMsg("Move Action: Click on a reference point (start of movement).");
+    pIn->GetPointClicked(x1, y1);
 
-    pOut->PrintMsg("Click on the location destination point. ");
-	pIn->GetPointClicked(x2, y2); //Getting new location
+    // 2. Get Destination Point
+    pOut->PrintMsg("Click on the destination point.");
+    pIn->GetPointClicked(x2, y2);
 
     pOut->ClearStatusBar();
 }
 
 void Move::Execute()
 {
-    ReadActionParameters(); // Get the points from the user
+    Output* pOut = pManager->GetOutput();
 
-    //
-    int diffx = x2 - x1;
-    int diffy = y2 - y1;
+    // 1. Check if any components are selected
+    if (pManager->GetSelectedCount() == 0)
+    {
+        pOut->PrintMsg("Error: No components selected. Please select component(s) first.");
+        return; // Exit action if nothing is selected
+    }
 
-    // Call the Manager to move the selected components
-    // You must ensure MoveSelected is implemented in ApplicationManager (see Step 4)
-    pManager->MoveSelected(diffx, diffy);
 
-    pManager->GetOutput()->PrintMsg("Move completed.");
+ReadActionParameters();
+
+int diffx = x2 - x1;
+int diffy = y2 - y1;
+
+pManager->MoveSelected(diffx, diffy);
+
+pOut->PrintMsg("Move completed.");
+
 }
 
 void Move::Undo()

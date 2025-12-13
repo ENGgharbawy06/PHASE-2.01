@@ -56,3 +56,61 @@ Component* Connection::Clone(const GraphicsInfo& gfx) const
 {
 	return new Connection(gfx, nullptr, nullptr);
 }
+
+
+bool Connection::IsInside(int x, int y)
+{
+	int Tolerance = 4;
+	int midx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2;
+
+	// Helper variables to calculate distance without std::abs
+	int distY1 = y - m_GfxInfo.y1;
+	if (distY1 < 0) distY1 = -distY1; // Absolute value
+
+	int distX = x - midx;
+	if (distX < 0) distX = -distX;    // Absolute value
+
+	int distY2 = y - m_GfxInfo.y2;
+	if (distY2 < 0) distY2 = -distY2; // Absolute value
+
+	// ---------------------------------------------------
+	// 1. Check First Horizontal Segment (Source -> Mid)
+	// ---------------------------------------------------
+	if (distY1 <= Tolerance)
+	{
+		// Calculate min and max X manually
+		int smallerX = (m_GfxInfo.x1 < midx) ? m_GfxInfo.x1 : midx;
+		int largerX = (m_GfxInfo.x1 > midx) ? m_GfxInfo.x1 : midx;
+
+		if (x >= smallerX && x <= largerX)
+			return true;
+	}
+
+	// ---------------------------------------------------
+	// 2. Check Vertical Segment (at Mid)
+	// ---------------------------------------------------
+	if (distX <= Tolerance)
+	{
+		// Calculate min and max Y manually
+		int smallerY = (m_GfxInfo.y1 < m_GfxInfo.y2) ? m_GfxInfo.y1 : m_GfxInfo.y2;
+		int largerY = (m_GfxInfo.y1 > m_GfxInfo.y2) ? m_GfxInfo.y1 : m_GfxInfo.y2;
+
+		if (y >= smallerY && y <= largerY)
+			return true;
+	}
+
+	// ---------------------------------------------------
+	// 3. Check Second Horizontal Segment (Mid -> Dest)
+	// ---------------------------------------------------
+	if (distY2 <= Tolerance)
+	{
+		// Calculate min and max X manually
+		int smallerX = (midx < m_GfxInfo.x2) ? midx : m_GfxInfo.x2;
+		int largerX = (midx > m_GfxInfo.x2) ? midx : m_GfxInfo.x2;
+
+		if (x >= smallerX && x <= largerX)
+			return true;
+	}
+
+	return false;
+}

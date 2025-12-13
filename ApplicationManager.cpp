@@ -13,6 +13,7 @@
 #include "Actions\Select.h"
 #include "Components/Connection.h"
 #include "Actions\AddConnection.h"
+#include "Actions\Move.h"
 //#include "Actions\CopyAction.h"
 //#include "Actions\ActionDelete.h"
 //#include "Actions\PasteAction.h"
@@ -46,7 +47,7 @@ ApplicationManager::ApplicationManager()
 	InputInterface = OutputInterface->CreateInput();
 }
 
-////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
 	CompList[CompCount++] = pComp;
@@ -108,8 +109,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SELECT:
 		pAct = new Select(this);
 		break;
-		/*case MOVE:
-			pAct = new Move(this);*/
+	case MOVE:
+		pAct = new Move(this);
 			/*case COPY:
 				pAct = new CopyAction(this);
 				break;*/
@@ -166,14 +167,14 @@ Component* ApplicationManager::GetComponentAt(int x, int y)
 {
 	for (int i = 0; i < CompCount; i++)
 	{
-		GraphicsInfo gfx = CompList[i]->GetGraphicsInfo();
-		if (x >= gfx.x1 && x <= gfx.x2 && y >= gfx.y1 && y <= gfx.y2)
+		// Gates use the standard IsInside (Rectangle) defined in Component.h
+		// Connections use the custom IsInside (Lines) we are about to add
+		if (CompList[i]->IsInside(x, y))
 		{
 			return CompList[i];
 		}
-	}	
-			return nullptr;  //No component found, 3a4an el deselect
-	
+	}
+	return nullptr;
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -246,4 +247,38 @@ void ApplicationManager::UnselectAll()
 		CompList[i]->SetSelected(false);
 	}
 	SelectedComponent = nullptr;
+}
+int ApplicationManager::GetSelectedCount() const
+{
+	int count = 0;
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i]->IsSelected())
+			count++;
+	}
+	return count;
+}
+
+// Moves all selected components by the calculated difference
+void ApplicationManager::MoveSelected(int dx, int dy)
+{
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i]->IsSelected())
+		{
+			GraphicsInfo GInfo = CompList[i]->GetGraphicsInfo();
+
+			// Update coordinates
+			GInfo.x1 += dx;
+			GInfo.x2 += dx;
+			GInfo.y1 += dy;
+			GInfo.y2 += dy;
+
+			// Optional: Add boundary checks here to prevent moving outside window
+			if (GInfo.x1 < 0) continue; // Example check
+			if (GInfo.y1 < UI.ToolBarHeight) continue; // Don't move into toolbar
+
+			CompList[i]->SetGraphicsInfo(GInfo);
+		}
+	}
 }
