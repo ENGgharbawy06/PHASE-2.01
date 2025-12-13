@@ -11,6 +11,7 @@
 #include "Actions\AddBUFF.h"
 #include "Actions\AddINV.h"
 #include "Actions\Select.h"
+#include "Components/Connection.h"
 
 //#include "Actions\CopyAction.h"
 //#include "Actions\ActionDelete.h"
@@ -26,13 +27,14 @@
 //#include "Actions/CreateTruthTable.h"
 //#include "Actions\AddConnection.h"
 //#include "Actions\AddLabel.h"
-//#include "Actions\AddConnection.h"
+#include "Actions\AddConnection.h"
 
 
 
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
+	/*ConnCount = 0;*/
 	Clipboard = nullptr;
 	SelectedComponent = nullptr;
 
@@ -98,6 +100,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_BUFF:
 		pAct = new AddBuffer(this);
 		break;
+
+	case ADD_CONNECTION:
+		pAct = new AddConnection(this);
+		break;
 		
 	case SELECT:
 		pAct = new Select(this);
@@ -140,6 +146,9 @@ void ApplicationManager::UpdateInterface()
 {
 	for (int i = 0; i < CompCount; i++)
 		CompList[i]->Draw(OutputInterface);
+
+	/*for (int i = 0; i < ConnCount; i++)
+		ConnCount[i]->Draw(OutputInterface);*/
 }
 
 Input* ApplicationManager::GetInput()

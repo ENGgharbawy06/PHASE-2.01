@@ -24,6 +24,8 @@ private:
 
 	Component* SelectedComponent;
 
+	//int ConnCount;  // Track number of connections
+	//Connection* ConnList[MaxCompCount];  // Separate array for connections
 
 
 public:
@@ -63,8 +65,12 @@ public:
 
 	void UnselectAll();
 
+	/*void AddConnection(Connection* pConn);
+	Connection* GetConnectionAt(int x, int y);*/
+
 	//destructor
 	~ApplicationManager();
+
 };
 
 #endif
