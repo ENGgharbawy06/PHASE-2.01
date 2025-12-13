@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+#include "Action.h"
 
 
 class Simulate : public Action {

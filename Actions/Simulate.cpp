@@ -1,5 +1,8 @@
 #include <iostream>
 #include "simulate.h" 
+#include "..\GUI\Output.h"
+#include "..\ApplicationManager.h"
+
 using namespace std;
 
 class Simulate {
@@ -80,3 +83,5 @@ void Simulate::Redo()
 {
     
 }
+
+
