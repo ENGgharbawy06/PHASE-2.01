@@ -1,3 +1,4 @@
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.bsc
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\vc143.pdb
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\vc143.idb
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\main.sbr
@@ -47,8 +48,8 @@ c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\keyqueue.sbr
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\image.sbr
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\cmugraphics.sbr
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\auxil.sbr
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addconnection.sbr
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\select.sbr
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addconnection.sbr
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addinv.sbr
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addbuff.sbr
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addxnorgate2.sbr
@@ -71,8 +72,8 @@ c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addxorgate3.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addxnorgate2.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addbuff.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addinv.obj
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\select.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\addconnection.obj
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\select.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\auxil.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\cmugraphics.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\image.obj
@@ -138,14 +139,17 @@ c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\jdatasrc.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\jdcoefct.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\jdcolor.obj
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\jddctmgr.obj
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.exe
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.pdb
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.ilk
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\bscmake.command.1.tlog
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\bscmake.read.1.tlog
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\bscmake.write.1.tlog
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.command.1.tlog
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.items.tlog
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.read.1.tlog
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\cl.write.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-cvtres.read.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-cvtres.write.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-rc.read.1.tlog
-c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link-rc.write.1.tlog
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.command.1.tlog
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.read.1.tlog
+c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.secondary.1.tlog
 c:\users\moham\source\repos\enggharbawy06\phase-2.01\debug\graphics_prj.tlog\link.write.1.tlog

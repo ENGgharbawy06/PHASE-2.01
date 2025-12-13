@@ -1,4 +1,5 @@
 #include "InputPin.h"
+#include "Component.h"
 
 InputPin::InputPin()
 {
@@ -39,11 +40,11 @@ void InputPin::disconnect()
 int InputPin::getPositionX() const
 {
 	// Placeholder - returns 0 for now
-	return 0;
+	return pComp->GetGraphicsInfo().x1;
 }
 
 int InputPin::getPositionY() const
 {
 	// Placeholder - returns 0 for now
-	return 0;
+	return (pComp->GetGraphicsInfo().y1 + pComp->GetGraphicsInfo().y2) / 2;
 }
