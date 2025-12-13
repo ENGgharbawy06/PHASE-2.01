@@ -4,8 +4,6 @@
 
 #include "Action.h"
 
-class Move
-{
     class Move : public Action // Inheretance mn el Action
     {
         int x1, y1; // Reference Point (Start)
