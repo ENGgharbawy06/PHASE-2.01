@@ -4,6 +4,14 @@
 Input::Input(window* pW)
 {
 	pWind = pW; //point to the passed window
+
+	IsDragging = false;
+	DragX1 = 0;
+	DragY1 = 0;
+	DragX2 = 0;
+	DragY2 = 0;
+
+
 }
 
 void Input::GetPointClicked(int &x, int &y)
@@ -52,7 +60,9 @@ ActionType Input::GetUserAction() const
 {	
 	int x,y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
+	
+	LastClickX = x;
+	LastClickY = y;
 
 	if(UI.AppMode == DESIGN )	//application is in design mode
 	{
@@ -82,7 +92,7 @@ ActionType Input::GetUserAction() const
 			case ITM_LED: return ADD_LED;
 			case ITM_EXIT: return EXIT;
 			case ITM_SIM_MODE: return SIM_MODE;
-					
+			
 
 			
 
@@ -109,6 +119,7 @@ ActionType Input::GetUserAction() const
 			case ITM_SAVE_B: return SAVE;
 			case ITM_delete_B: return DEL;
 			case ITM_EDIT_B: return EDIT_LABEL;
+			case ITM_Move: return MOVE;
 
 			default: return BOT_TOOL;	//A click on empty place in desgin toolbar
 			}
@@ -163,6 +174,26 @@ ActionType Input::GetUserAction() const
 	
 	
 
+}
+
+void Input::GetLastClick(int& x, int& y) const
+{
+	x = LastClickX;
+	y = LastClickY;
+}
+
+bool Input::GetDragCoordinates(int& x1, int& y1, int& x2, int& y2)
+{
+	
+	if (IsDragging) { //El if hena safety check, law howa bey drag, a7ot el coordinates fel DragX1, DragY1, DragX2, DragY2
+		x1 = DragX1;
+		y1 = DragY1;
+		x2 = DragX2;
+		y2 = DragY2;
+		return true;
+
+	}
+	return false;
 }
 
 

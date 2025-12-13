@@ -22,6 +22,12 @@ private:
 
 	Component* Clipboard;  //Clipboard for copy/paste/cut operations
 
+	Component* SelectedComponent;
+
+	//int ConnCount;  // Track number of connections
+	//Connection* ConnList[MaxCompCount];  // Separate array for connections
+
+
 public:
 	ApplicationManager(); //constructor
 
@@ -53,8 +59,18 @@ public:
 	void SetClipboard(Component* c);
 	Component* GetClipboard() const;
 
+	void SetSelected(Component* pComponent);
+
+	Component* GetSelected() const;
+
+	void UnselectAll();
+
+	/*void AddConnection(Connection* pConn);
+	Connection* GetConnectionAt(int x, int y);*/
+
 	//destructor
 	~ApplicationManager();
+
 };
 
 #endif

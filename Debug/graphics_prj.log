@@ -1,12 +1,8 @@
 ﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
   ApplicationManager.cpp
-AddANDgate2.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-ApplicationManager.obj : error LNK2019: unresolved external symbol "public: __thiscall AddORgate2::AddORgate2(class ApplicationManager *)" (??0AddORgate2@@QAE@PAVApplicationManager@@@Z) referenced in function "public: void __thiscall ApplicationManager::ExecuteAction(enum ActionType)" (?ExecuteAction@ApplicationManager@@QAEXW4ActionType@@@Z)
-ApplicationManager.obj : error LNK2019: unresolved external symbol "public: __thiscall AddNANDgate2::AddNANDgate2(class ApplicationManager *)" (??0AddNANDgate2@@QAE@PAVApplicationManager@@@Z) referenced in function "public: void __thiscall ApplicationManager::ExecuteAction(enum ActionType)" (?ExecuteAction@ApplicationManager@@QAEXW4ActionType@@@Z)
-ApplicationManager.obj : error LNK2019: unresolved external symbol "public: __thiscall AddNORgate2::AddNORgate2(class ApplicationManager *)" (??0AddNORgate2@@QAE@PAVApplicationManager@@@Z) referenced in function "public: void __thiscall ApplicationManager::ExecuteAction(enum ActionType)" (?ExecuteAction@ApplicationManager@@QAEXW4ActionType@@@Z)
-ApplicationManager.obj : error LNK2019: unresolved external symbol "public: __thiscall AddXORgate2::AddXORgate2(class ApplicationManager *)" (??0AddXORgate2@@QAE@PAVApplicationManager@@@Z) referenced in function "public: void __thiscall ApplicationManager::ExecuteAction(enum ActionType)" (?ExecuteAction@ApplicationManager@@QAEXW4ActionType@@@Z)
-ApplicationManager.obj : error LNK2019: unresolved external symbol "public: __thiscall AddXNORgate2::AddXNORgate2(class ApplicationManager *)" (??0AddXNORgate2@@QAE@PAVApplicationManager@@@Z) referenced in function "public: void __thiscall ApplicationManager::ExecuteAction(enum ActionType)" (?ExecuteAction@ApplicationManager@@QAEXW4ActionType@@@Z)
-ApplicationManager.obj : error LNK2019: unresolved external symbol "public: __thiscall AddANDgate3::AddANDgate3(class ApplicationManager *)" (??0AddANDgate3@@QAE@PAVApplicationManager@@@Z) referenced in function "public: void __thiscall ApplicationManager::ExecuteAction(enum ActionType)" (?ExecuteAction@ApplicationManager@@QAEXW4ActionType@@@Z)
-ApplicationManager.obj : error LNK2019: unresolved external symbol "public: __thiscall AddNORgate3::AddNORgate3(class ApplicationManager *)" (??0AddNORgate3@@QAE@PAVApplicationManager@@@Z) referenced in function "public: void __thiscall ApplicationManager::ExecuteAction(enum ActionType)" (?ExecuteAction@ApplicationManager@@QAEXW4ActionType@@@Z)
-ApplicationManager.obj : error LNK2019: unresolved external symbol "public: __thiscall AddXORgate3::AddXORgate3(class ApplicationManager *)" (??0AddXORgate3@@QAE@PAVApplicationManager@@@Z) referenced in function "public: void __thiscall ApplicationManager::ExecuteAction(enum ActionType)" (?ExecuteAction@ApplicationManager@@QAEXW4ActionType@@@Z)
-.\Debug\graphics_prj.exe : fatal error LNK1120: 8 unresolved externals
+  ActionDelete.cpp
+  Generating Code...
+C:\Users\Omar\source\repos\PHASE-2.01\ApplicationManager.cpp(103,17): error C2061: syntax error: identifier 'Delete'
+C:\Users\Omar\source\repos\PHASE-2.01\Actions\ActionDelete.h(5,10): error C1083: Cannot open include file: '..\UI\UI.h': No such file or directory
+  (compiling source file 'Actions/ActionDelete.cpp')
+  

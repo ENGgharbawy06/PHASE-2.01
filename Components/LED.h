@@ -16,6 +16,7 @@ public:
 	virtual Component* Clone(const GraphicsInfo& newGfx) const override; // Clone function to create a copy of the component 
 private:
     InputPin m_InputPin;   // LED has ONLY 1 input
+    InputPin* GetInputPin() { return &m_InputPin; }
 };
 
 #endif

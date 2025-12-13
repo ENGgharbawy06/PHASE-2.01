@@ -10,16 +10,33 @@
 #include "Actions\AddXORgate3.h"
 #include "Actions\AddBUFF.h"
 #include "Actions\AddINV.h"
-//#include "Actions\AddConnection.h"
+#include "Actions\Select.h"
+#include "Components/Connection.h"
+#include "Actions\AddConnection.h"
+//#include "Actions\CopyAction.h"
+//#include "Actions\ActionDelete.h"
+//#include "Actions\PasteAction.h"
+//#include "Actions\CutAction.h"
+//
+//
+//#include "Actions/SwitchToSim.h"
+//#include "Actions/SwitchToDesign.h"
+//#include "Actions/Simulate.h"
+//#include "Actions/ChangeSwitch.h"
+//#include "Actions/Validate.h"
+//#include "Actions/CreateTruthTable.h"
+
 //#include "Actions\AddLabel.h"
-//#include "Actions\AddConnection.h"
+
 
 
 
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
+	/*ConnCount = 0;*/
 	Clipboard = nullptr;
+	SelectedComponent = nullptr;
 
 	for (int i = 0; i < MaxCompCount; i++)
 		CompList[i] = NULL;
@@ -29,7 +46,7 @@ ApplicationManager::ApplicationManager()
 	InputInterface = OutputInterface->CreateInput();
 }
 
-////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component* pComp)
 {
 	CompList[CompCount++] = pComp;
@@ -84,27 +101,33 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddBuffer(this);
 		break;
 
-
-	//case COPY:
-	//	pAct = new CopyAction(this);
-	//	break;
-
-	//case PASTE:
-	//	pAct = new PasteAction(this);
-	//	break;
-
-	//case CUT:
-	//	pAct = new CutAction(this);
-	//	break;
+	case ADD_CONNECTION:
+		pAct = new AddConnection(this);
+		break;
+		
+	case SELECT:
+		pAct = new Select(this);
+		break;
+		/*case MOVE:
+			pAct = new Move(this);*/
+			/*case COPY:
+				pAct = new CopyAction(this);
+				break;*/
+				//case PASTE:
+				//	pAct = new PasteAction(this);
+				//	break;
+				//case CUT:
+				//	pAct = new CutAction(this);
+				//	break;
 
 	//case DEL:
-	//	pAct = new Delete(this);
+	//	//TODO: Create Delete Action here
+	//	pAct = new ActionDelete(this);
 	//	break;
 
-	//case ADD_CONNECTION:
-	//	//TODO: Create AddConnection Action here
-	//	break;
-
+					//case ADD_CONNECTION:
+				//	//TODO: Create AddConnection Action here
+				//	break;
 	case EXIT:
 		//TODO: create ExitAction here
 		break;
@@ -118,26 +141,26 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	}
 }
 
-////////////////////////////////////////////////////////////////////
+
 void ApplicationManager::UpdateInterface()
 {
 	for (int i = 0; i < CompCount; i++)
 		CompList[i]->Draw(OutputInterface);
+
+	/*for (int i = 0; i < ConnCount; i++)
+		ConnCount[i]->Draw(OutputInterface);*/
 }
 
-////////////////////////////////////////////////////////////////////
 Input* ApplicationManager::GetInput()
 {
 	return InputInterface;
 }
 
-////////////////////////////////////////////////////////////////////
 Output* ApplicationManager::GetOutput()
 {
 	return OutputInterface;
 }
 
-////////////////////////////////////////////////////////////////////
 // Find component at given coordinates
 Component* ApplicationManager::GetComponentAt(int x, int y)
 {
@@ -148,8 +171,9 @@ Component* ApplicationManager::GetComponentAt(int x, int y)
 		{
 			return CompList[i];
 		}
-	}
-	return nullptr;  // No component found at this position
+	}	
+			return nullptr;  //No component found, 3a4an el deselect
+	
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -203,4 +227,23 @@ ApplicationManager::~ApplicationManager()
 	for (int i = 0; i < CompCount; i++)
 		delete CompList[i];
 	delete OutputInterface;
+}
+void ApplicationManager::SetSelected(Component* pComponent)
+{
+
+	SelectedComponent = pComponent;
+}
+
+Component* ApplicationManager::GetSelected() const
+{
+	return SelectedComponent;
+}
+
+void ApplicationManager::UnselectAll()
+{
+	for (int i=0; i < CompCount; i++)
+	{
+		CompList[i]->SetSelected(false);
+	}
+	SelectedComponent = nullptr;
 }

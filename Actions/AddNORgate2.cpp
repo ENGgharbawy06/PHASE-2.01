@@ -3,15 +3,12 @@
 
 AddNORgate2::AddNORgate2(ApplicationManager* pApp) :Action(pApp)  //test test test 
 {
-
 }
 
 
 AddNORgate2::~AddNORgate2(void)
 
 {
-
-
 }
 
 void AddNORgate2::ReadActionParameters()
@@ -24,7 +21,9 @@ void AddNORgate2::ReadActionParameters()
 	pOut->PrintMsg("2-Inputs NOR Gate: Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	/*pIn->GetPointClicked(Cx, Cy);*/
+
+	pOut->GetValidDrawingPoint(Cx, Cy, pIn);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();

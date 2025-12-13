@@ -1,4 +1,4 @@
-#pragma
+#pragma once
 #include "Gate.h"
 class INV : public Gate
 {
