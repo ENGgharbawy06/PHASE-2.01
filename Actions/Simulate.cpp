@@ -50,9 +50,9 @@ int main() {
     return 0;
 }
 
+Simulate::Simulate(ApplicationManager* pApp) : Action(pApp) 
+{  }
 
-Simulate::Simulate(ApplicationManager* pApp) : Action(pApp) {
-}
 
 Simulate::~Simulate() {
 }
