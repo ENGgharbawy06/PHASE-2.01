@@ -3,7 +3,7 @@
 
 #include "Action.h"
 
-class Select : public Action
+class Select : public Action // Inheretance mn el action
 {
 private:
     int x, y; // To store the coordinates of the click

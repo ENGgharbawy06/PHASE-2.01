@@ -95,8 +95,6 @@ void Output::CreateDesignToolBar() const
 	MenuItemImages[ITM_LED] = "..\\Images\\Menu\\Menu_LED.jpg"; //recheck 3a4an fi errors
 	MenuItemImages[ITM_SIM_MODE] = "..\\Images\\Menu\\Menu_changeMode.jpg";
 
-	//MenuItemImages[ITM_DSN_MODE] = "..\\Images\\Menu\\Menu_Design.jpg";*/
-
 
 	//Draw menu item one image at a time
 	for (int i = 0; i < ITM_DSN_CNT; i++) 
@@ -119,6 +117,8 @@ void Output::CreateBottomToolBar() const
 	BottomItemImages[ITM_paste_B] = "..\\Images\\Menu\\Paste.jpg";
 	BottomItemImages[ITM_copy_B] = "..\\Images\\Menu\\Copy.jpg";
 	BottomItemImages[ITM_cut_B] = "..\\Images\\Menu\\cut.jpg";
+	BottomItemImages[ITM_Move] = "..\\Images\\Menu\\Move.jpg";
+
 	
 	int y = UI.height - UI.StatusBarHeight - UI.ToolBarHeight;
 
@@ -178,7 +178,7 @@ void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
 	if (sel)
-		GateImage = "..\\Images\\Gates\\Gate_OR2.jpg";
+		GateImage = "..\\Images\\Gates\\Gate_OR2_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_OR2.jpg";
 
