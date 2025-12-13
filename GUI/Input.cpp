@@ -84,7 +84,7 @@ ActionType Input::GetUserAction() const
 			case ITM_LED: return ADD_LED;
 			case ITM_EXIT: return EXIT;
 			case ITM_SIM_MODE: return SIM_MODE;
-					
+			case ITM_Move: return MOVE;
 
 			
 
