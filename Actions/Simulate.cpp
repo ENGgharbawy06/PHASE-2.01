@@ -1,82 +1,75 @@
+﻿#include "Simulate.h"
+#include "..\ApplicationManager.h"
+#include "..\GUI\Output.h"
 #include <iostream>
-#include "simulate.h" 
+
 using namespace std;
 
-class Simulate {
-private:
-    
-    double timeStep;
-    double totalTime;
-    double currentTime;
+// --- تصحيح الـ Constructor ---
+// لازم نستدعي Action(pApp) في قائمة التهيئة
+Simulate::Simulate(ApplicationManager* pApp) : Action(pApp)
+{
+    // Initialize simulation parameters
+    cout << "Initializing Simulation Parameters" << endl;
 
-    
-public:
-    Simulate(double ts, double tt) : timeStep(ts), totalTime(tt), currentTime(0.0) 
-    {   
-    }
+    // pManager = pApp; // السطر ده ملوش لازمة لأن Action(pApp) عملته خلاص
 
-    
-    void initialize() {
-        cout << " Initializing Simulation" << endl;
-    }
+    timeStep = 0.1;
+    totalTime = 10.0;
+    currentTime = 0.0;
 
- 
-    void update() {
-        currentTime += timeStep;
-    }
-
-    void run() {
-        initialize();
-
-        while (currentTime < totalTime) {
-            update();
-            
-        }
-
-        finalize();
-    }
-
-    
-    void finalize() {
-      cout << "Simulation Complete at t=   " << currentTime << endl;
-        
-    }
-};
-
-
-int main() {
-    Simulator sim(0.1, 10.0);
-    sim.run();
-    return 0;
+    cout << "Simulation Initialized with time step: " << timeStep << " and total time: " << totalTime << endl;
 }
-
-Simulate::Simulate(ApplicationManager* pApp) : Action(pApp) 
-{  }
-
 
 Simulate::~Simulate() {
 }
 
+// --- دوال المحاكاة (زي ما إنت كاتبها) ---
+void Simulate::initialize() {
+    cout << " Initializing Simulation" << endl;
+}
+
+void Simulate::update() {
+    currentTime += timeStep;
+}
+
+void Simulate::run() {
+    initialize();
+    while (currentTime < totalTime) {
+        update();
+    }
+    finalize();
+}
+
+void Simulate::finalize() {
+    cout << "Simulation Complete at t=   " << currentTime << endl;
+}
+
 void Simulate::ReadActionParameters()
 {
+   
 }
 
 void Simulate::Execute()
 {
-   
     Output* pOut = pManager->GetOutput();
+
+    // 2. طباعة الرسالة
     pOut->PrintMsg("Simulation Mode: Click switches to toggle, or click Truth Table.");
+
     pOut->CreateSimulationToolBar();
 
-    pManager->ExecuteCircuit();
+    // 4. (خطوة مهمة جداً ناقصة) حساب قيم الدائرة عشان اللمبات تنور
+    //pManager->ExecuteCircuit();
+
+    // 5. تحديث الواجهة (اختياري لو ExecuteCircuit بتعملها)
+    // pManager->UpdateInterface(); 
 }
 
-void Simulate::Undo() 
+void Simulate::Undo()
 {
-    
 }
 
-void Simulate::Redo() 
+void Simulate::Redo()
 {
-    
 }
