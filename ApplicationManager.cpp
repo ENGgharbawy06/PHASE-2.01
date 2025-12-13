@@ -145,11 +145,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
+
+	OutputInterface->ClearDrawingArea();
 	for (int i = 0; i < CompCount; i++)
 		CompList[i]->Draw(OutputInterface);
 
 	/*for (int i = 0; i < ConnCount; i++)
 		ConnCount[i]->Draw(OutputInterface);*/
+}
+
+Component* ApplicationManager::GetOneSelectedComponent()
+{
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i]->IsSelected())
+			return CompList[i];
+	}
+	return nullptr;
 }
 
 Input* ApplicationManager::GetInput()
@@ -223,12 +235,7 @@ Component* ApplicationManager::GetClipboard() const
 }
 
 //////////////////////////////////////////////////////////////////
-ApplicationManager::~ApplicationManager()
-{
-	for (int i = 0; i < CompCount; i++)
-		delete CompList[i];
-	delete OutputInterface;
-}
+
 void ApplicationManager::SetSelected(Component* pComponent)
 {
 
@@ -281,4 +288,10 @@ void ApplicationManager::MoveSelected(int dx, int dy)
 			CompList[i]->SetGraphicsInfo(GInfo);
 		}
 	}
+}
+ApplicationManager::~ApplicationManager()
+{
+	for (int i = 0; i < CompCount; i++)
+		delete CompList[i];
+	delete OutputInterface;
 }
