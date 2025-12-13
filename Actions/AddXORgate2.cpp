@@ -3,15 +3,9 @@
 
 AddXORgate2::AddXORgate2(ApplicationManager* pApp) :Action(pApp)  //test test test 
 {
-
 }
-
-
 AddXORgate2::~AddXORgate2(void)
-
 {
-
-
 }
 
 void AddXORgate2::ReadActionParameters()
@@ -24,7 +18,8 @@ void AddXORgate2::ReadActionParameters()
 	pOut->PrintMsg("2-Inputs XOR Gate: Click to add the gate");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	/*pIn->GetPointClicked(Cx, Cy);*/
+	pOut->GetValidDrawingPoint(Cx, Cy, pIn);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
