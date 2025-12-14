@@ -3,6 +3,7 @@
 
 AddXNORgate2::AddXNORgate2(ApplicationManager* pApp) :Action(pApp)  //test test test 
 {
+	pComp = nullptr;
 }
 
 
@@ -51,10 +52,18 @@ void AddXNORgate2::Execute()
 
 void AddXNORgate2::Undo()
 {
-
+	if (pComp != nullptr)
+	{
+		pManager->DeleteComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Undo: Removed the component.");
+	}
 }
 
 void AddXNORgate2::Redo()
 {
+	if (pComp != nullptr)
+	{
+		pManager->AddComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Redo: Restored the component.");
+	}
 }
-
