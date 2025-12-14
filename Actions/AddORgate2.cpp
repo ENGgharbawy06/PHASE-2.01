@@ -4,6 +4,7 @@
 
 AddORgate2::AddORgate2(ApplicationManager* pApp) :Action(pApp)  //test test test 
 {
+	pComp = nullptr;
 }
 AddORgate2::~AddORgate2(void)
 
@@ -43,17 +44,29 @@ void AddORgate2::Execute()
 	GInfo.x2 = Cx + Len / 2;
 	GInfo.y1 = Cy - Wdth / 2;
 	GInfo.y2 = Cy + Wdth / 2;
-	OR2* pA = new OR2(GInfo, OR2_FANOUT);
-	pManager->AddComponent(pA);
+	OR2* pOR2 = new OR2(GInfo, OR2_FANOUT);
+	pComp = pOR2; // Store it for Undo/Redo
+	pManager->AddComponent(pComp);
 }
 
 void AddORgate2::Undo()
 {
-
+	if (pComp != nullptr)
+	{
+		pManager->DeleteComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Undo: Removed the OR Gate.");
+	}
 }
 
 void AddORgate2::Redo()
 {
+
+	if (pComp != NULL)
+	{
+		pManager->AddComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Redo: Restored the OR Gate.");
+	}
+
 }
 
 //test from mari
