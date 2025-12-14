@@ -16,6 +16,9 @@ public:
 	virtual void ReadActionParameters()=0;
 	
 	//Execute action (code depends on action type)
+
+	virtual bool isUndoable() const { return true; } //El default true w law el action kan save aw load fa hayeb2a false
+
 	virtual void Execute()=0;
 
 	//To undo this action (code depends on action type)

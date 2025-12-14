@@ -140,8 +140,8 @@
 	<ClCompile Include="Actions\AddConnection.cpp" />
 	<ClCompile Include="Actions\Select.cpp" />
 	<ClCompile Include="Actions\Move.cpp" />
-	<ClCompile Include="Actions\Undo.cpp" />
-	<ClCompile Include="Actions\Redo.cpp" />
+	<ClCompile Include="Actions\UndoAction.cpp" />
+	<ClCompile Include="Actions\RedoAction.cpp" />
 	<ClCompile Include="Actions\Simulate.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />

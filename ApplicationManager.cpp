@@ -15,6 +15,8 @@
 #include "Actions\AddConnection.h"
 #include "Actions\Move.h"
 #include "Actions\Simulate.h"
+#include "Actions\UndoAction.h"
+#include "Actions\RedoAction.h"
 //#include "Actions\CopyAction.h"
 //#include "Actions\ActionDelete.h"
 //#include "Actions\PasteAction.h"
@@ -46,6 +48,11 @@ ApplicationManager::ApplicationManager()
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
+
+	UndoCount = 0; //Initialize el stack lel undo/redo
+	UndoPos = -1; // -1 means no actions performed yet
+	for (int i = 0; i < MaxUndoCount; i++)
+		UndoStack[i] = NULL;
 }
 
 //////////////////////////////////////////////////////////////////
@@ -170,9 +177,20 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			// pAct = new SwitchToDesign(this);   // Uncomment later
 			break;
 
+		case UNDO:
+			pAct = new UndoAction(this);
+			break;
+
+		case REDO:
+			pAct = new RedoAction(this);
+			break;
+
+
 		case EXIT:
 			break;
 		}
+
+	
 
 		// Execute the created action
 		if (pAct != NULL)
@@ -182,6 +200,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = NULL;
 		}
 	}
+
+	
 
 	case EXIT:
 		//TODO: create ExitAction here
@@ -194,9 +214,19 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct)
 	{
 		pAct->Execute();
-		delete pAct;
-		pAct = NULL;
+		if (pAct->isUndoable()) //For undo redo
+		{
+			RecordAction(pAct);
+		}
+		else
+		{
+			delete pAct; // Delete non-undoable actions (like Save/Exit)
+			pAct = NULL;
+		}
 	}
+
+
+
 }
 
 
@@ -256,7 +286,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 	{
 		if (CompList[i] == pComp)
 		{
-			delete CompList[i];
+			//delete CompList[i]; Commented for undo/redo purposes
 
 			// Shift remaining components
 			for (int j = i; j < CompCount - 1; j++)
@@ -346,18 +376,72 @@ void ApplicationManager::MoveSelected(int dx, int dy)
 		}
 	}
 }
+void ApplicationManager::RecordAction(Action* pAct)
+{
+	if (!pAct->isUndoable()) return;
+
+	// 1. If we are somewhere in the middle (because we undid some actions), 
+	//    we must delete the "future" actions before adding a new one.
+	while (UndoCount > UndoPos + 1)
+	{
+		UndoCount--;
+		if (UndoStack[UndoCount])
+			delete UndoStack[UndoCount];
+		UndoStack[UndoCount] = NULL;
+	}
+
+	// 2. If stack is full, shift everything left to make room at the end
+	if (UndoCount == MaxUndoCount)
+	{
+		if (UndoStack[0]) delete UndoStack[0]; // Delete oldest action
+
+		// Shift
+		for (int i = 0; i < MaxUndoCount - 1; i++)
+			UndoStack[i] = UndoStack[i + 1];
+
+		UndoCount--; // We removed one
+		UndoPos--;   // Position moves back one
+	}
+
+	// 3. Add the new action
+	UndoPos++;
+	UndoStack[UndoPos] = pAct;
+	UndoCount++;
+}
+
+void ApplicationManager::ExecuteUndo()
+{
+	if (UndoPos > -1)
+	{
+		UndoStack[UndoPos]->Undo();
+		UndoPos--;
+	}
+	else
+	{
+		OutputInterface->PrintMsg("Nothing to Undo!");
+	}
+}
+
+void ApplicationManager::ExecuteRedo()
+{
+	if (UndoPos < UndoCount - 1)
+	{
+		UndoPos++;
+		UndoStack[UndoPos]->Redo();
+	}
+	else
+	{
+		OutputInterface->PrintMsg("Nothing to Redo!");
+	}
+}
+
+
 ApplicationManager::~ApplicationManager()
 {
 	for (int i = 0; i < CompCount; i++)
 		delete CompList[i];
 	delete OutputInterface;
 }
-
-
-
-
-
-
 
 
 
