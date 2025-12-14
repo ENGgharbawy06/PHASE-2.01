@@ -23,12 +23,12 @@
 //#include "Actions\CutAction.h"
 //
 //
-//#include "Actions/SwitchToSim.h"
-//#include "Actions/SwitchToDesign.h"
-//#include "Actions/Simulate.h"
-//#include "Actions/ChangeSwitch.h"
+#include "Actions/SwitchToSim.h"
+#include "Actions/SwitchToDesign.h"
+#include "Actions/Simulate.h"
+#include "Actions/ChangeSwitch.h"
 //#include "Actions/Validate.h"
-//#include "Actions/CreateTruthTable.h"
+#include "Actions/CreateTruthTable.h"
 
 //#include "Actions\AddLabel.h"
 
