@@ -148,86 +148,57 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 				//	//TODO: Create AddConnection Action here
 				//	break;
 
+
 //Mariaaam lw ghlt deleteee
 
-	case SIMULATE:	
-	{
-		Action* pAct = NULL;
+	// ====================================================
+	//                  MODE SWITCHING
+	// ====================================================
 
-		// This is the ONLY switch statement you need.
-		switch (ActType)
-		{
-			// ------------------------------------
-			//      Existing Design Mode Cases
-			// ------------------------------------
-		case ADD_AND_GATE_2:
-			pAct = new AddANDgate2(this);
-			break;
-
-		case ADD_CONNECTION:
-			pAct = new AddConnection(this);
-			break;
-
-			// ... (Keep all your other existing component cases here) ...
-
-
-			// ------------------------------------
-			//      New Simulation Mode Cases
-			// ------------------------------------
-
-		case SIMULATE:
-			pAct = new Simulate(this);
-			break;
-
-		case CREATE_TRUTH_TABLE:
-			// pAct = new CreateTruthTable(this); // Uncomment later
-			break;
-
-		case DSN_MODE:
-			// pAct = new SwitchToDesign(this);   // Uncomment later
-			break;
-
-		case EXIT:
-			break;
-		}
-
-	
-
-		// Execute the created action
-		if (pAct != NULL)
-		{
-			pAct->Execute(); // Execute
-			delete pAct;     // Action is not needed any more
-			pAct = NULL;
-		}
-	}
-
-	
-
-	case EXIT:
-		//TODO: create ExitAction here
+	case SIM_MODE:   // User clicked "Simulation Mode" button
+		pAct = new Simulate(this);
 		break;
 
+	case DSN_MODE:   // User clicked "Design Mode" button
+		pAct = new SwitchToDesign(this);
+		break;
 
+		// ====================================================
+		//                  SIMULATION ACTIONS
+		// ====================================================
 
+	case SIMULATE:   // The "Run" button inside Simulation toolbar
+		// pAct = new RunSimulation(this); // Uncomment if you have this action
+		break;
+
+	case CREATE_TRUTH_TABLE:
+		// pAct = new CreateTruthTable(this); // Uncomment if you have this action
+		break;
+
+	case EXIT:
+		break;
 	}
 
+	// ====================================================
+	//                  EXECUTION LOGIC
+	// ====================================================
+
+	// Execute the created action
 	if (pAct)
 	{
-		pAct->Execute();
-		if (pAct->isUndoable()) //For undo redo
+		pAct->Execute(); // Execute
+
+		// Handle Undo/Redo recording
+		if (pAct->isUndoable())
 		{
 			RecordAction(pAct);
 		}
 		else
 		{
-			delete pAct; // Delete non-undoable actions (like Save/Exit)
+			delete pAct; // Delete non-undoable actions
 			pAct = NULL;
 		}
 	}
-
-
-
 }
 
 
