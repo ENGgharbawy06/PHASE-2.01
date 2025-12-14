@@ -120,6 +120,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case MOVE:
 		pAct = new Move(this);
 		break;
+
+	case UNDO:
+		pAct = new UndoAction(this);
+		break;
+
+	case REDO:
+		pAct = new RedoAction(this);
+		break;
+
 			/*case COPY:
 				pAct = new CopyAction(this);
 				break;*/
@@ -177,15 +186,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DSN_MODE:
 			// pAct = new SwitchToDesign(this);   // Uncomment later
 			break;
-
-		case UNDO:
-			pAct = new UndoAction(this);
-			break;
-
-		case REDO:
-			pAct = new RedoAction(this);
-			break;
-
 
 		case EXIT:
 			break;
@@ -295,9 +295,12 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 
 			CompList[CompCount - 1] = nullptr;
 			CompCount--;
+			OutputInterface->PrintMsg("Debug: Component found and removed from list.");
+			return;
 			break;
 		}
 	}
+	OutputInterface->PrintMsg("Debug: Component NOT found in list!");
 }
 
 ////////////////////////////////////////////////////////////////////
