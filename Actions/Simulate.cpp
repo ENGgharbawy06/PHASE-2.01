@@ -66,6 +66,7 @@ void Simulate::Execute()
     // pManager->UpdateInterface(); 
 }
 
+
 void Simulate::Undo()
 {
 }
@@ -73,3 +74,4 @@ void Simulate::Undo()
 void Simulate::Redo()
 {
 }
+
