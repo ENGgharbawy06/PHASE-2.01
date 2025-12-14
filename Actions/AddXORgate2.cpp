@@ -45,6 +45,7 @@ void AddXORgate2::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	XOR2* pA = new XOR2(GInfo, XOR2_FANOUT);
 	pManager->AddComponent(pA);
+	pComp = pA;
 }
 
 void AddXORgate2::Undo()

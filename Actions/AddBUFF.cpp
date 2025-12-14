@@ -34,6 +34,7 @@ void AddBuffer::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	BUFF* pA = new BUFF(GInfo, BUFF_FANOUT);
 	pManager->AddComponent(pA);
+	pComp = pA;
 }
 void AddBuffer::Undo()
 {
