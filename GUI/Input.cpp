@@ -172,8 +172,7 @@ ActionType Input::GetUserAction()
 	
 	}
 	
-	
-
+	return STATUS_BAR;
 }
 
 void Input::GetLastClick(int& x, int& y) const

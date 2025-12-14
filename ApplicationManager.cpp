@@ -119,6 +119,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case MOVE:
 		pAct = new Move(this);
+		break;
 			/*case COPY:
 				pAct = new CopyAction(this);
 				break;*/

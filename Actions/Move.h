@@ -15,9 +15,9 @@
         virtual void Execute();
         
         
-        virtual void UndoAction();
+        virtual void Undo();
        
-        virtual void RedoAction();
+        virtual void Redo();
     };
 
 #endif

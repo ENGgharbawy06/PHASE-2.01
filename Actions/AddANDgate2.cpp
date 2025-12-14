@@ -55,7 +55,7 @@ void AddANDgate2::Execute()
 
 }
 
-void AddANDgate2::UndoAction()
+void AddANDgate2::Undo()
 {
 	if (pComp != NULL)
 	{
@@ -65,7 +65,7 @@ void AddANDgate2::UndoAction()
 	}
 }
 
-void AddANDgate2::RedoAction()
+void AddANDgate2::Redo()
 {
 	if (pComp != NULL)
 	{
