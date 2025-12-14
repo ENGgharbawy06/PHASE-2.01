@@ -39,12 +39,18 @@ void InputPin::disconnect()
 
 int InputPin::getPositionX() const
 {
-	// Placeholder - returns 0 for now
-	return pComp->GetGraphicsInfo().x1;
+	
+	return m_X;
 }
 
 int InputPin::getPositionY() const
 {
-	// Placeholder - returns 0 for now
-	return (pComp->GetGraphicsInfo().y1 + pComp->GetGraphicsInfo().y2) / 2;
+	
+	return m_Y;
+}
+
+void InputPin::setPosition(int x, int y)
+{
+	m_X = x;
+	m_Y = y;
 }

@@ -84,13 +84,13 @@ void Move::Execute()
 	diffy = dy; 
 }
 
-void Move::UndoAction()
+void Move::Undo()
 {
 	pManager->MoveSelected(-diffx, -diffy);
 
 }
 
-void Move::RedoAction()
+void Move::Redo()
 {
 	pManager->MoveSelected(diffx, diffy);
 }
