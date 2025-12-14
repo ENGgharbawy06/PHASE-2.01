@@ -3,6 +3,9 @@
 
 AddANDgate2::AddANDgate2(ApplicationManager *pApp):Action(pApp)  //test test test 
 {
+
+	pComp = NULL;
+
 }
 
 AddANDgate2::~AddANDgate2(void)
@@ -46,12 +49,28 @@ void AddANDgate2::Execute()
 	GInfo.x2 = Cx + Len/2;
 	GInfo.y1 = Cy - Wdth/2;
 	GInfo.y2 = Cy + Wdth/2;
-	AND2 *pA=new AND2(GInfo, AND2_FANOUT); 
-	pManager->AddComponent(pA);
+	AND2 *pAND2=new AND2(GInfo, AND2_FANOUT); 
+	pManager->AddComponent(pAND2);
+	pComp = pAND2;
+
 }
 
 void AddANDgate2::Undo()
-{}
+{
+	if (pComp != NULL)
+	{
+		// Remove it from the screen bas lesa mawoda fel memory
+		pManager->DeleteComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Undo: Removed the AND Gate.");
+	}
+}
 
 void AddANDgate2::Redo()
-{}
+{
+	if (pComp != NULL)
+	{
+		// Draw tani (Law redo is clicked)
+		pManager->AddComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Redo: Restored the AND Gate.");
+	}
+}

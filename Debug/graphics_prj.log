@@ -1,8 +1,0 @@
-﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  ApplicationManager.cpp
-  ActionDelete.cpp
-  Generating Code...
-C:\Users\Omar\source\repos\PHASE-2.01\ApplicationManager.cpp(103,17): error C2061: syntax error: identifier 'Delete'
-C:\Users\Omar\source\repos\PHASE-2.01\Actions\ActionDelete.h(5,10): error C1083: Cannot open include file: '..\UI\UI.h': No such file or directory
-  (compiling source file 'Actions/ActionDelete.cpp')
-  

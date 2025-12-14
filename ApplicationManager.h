@@ -27,6 +27,10 @@ private:
 	//int ConnCount;  // Track number of connections
 	//Connection* ConnList[MaxCompCount];  // Separate array for connections
 
+	Action* UndoStack[MaxUndoCount]; // Array of pointers to actions
+	int UndoCount;                   // Total number of actions currently in the stack
+	int UndoPos;                     // Current position in the history (for Undo/Redo)
+
 
 public:
 	ApplicationManager(); //constructor
@@ -69,6 +73,10 @@ public:
 	void MoveSelected(int x, int y);
 	
 	Component* GetOneSelectedComponent();
+
+	void RecordAction(Action* pAct); // Beyzawed el action lel stack (LIFO concept)
+	void ExecuteUndo();
+	void ExecuteRedo();
 
 	/*void AddConnection(Connection* pConn);
 	Connection* GetConnectionAt(int x, int y);*/

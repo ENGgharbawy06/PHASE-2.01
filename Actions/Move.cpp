@@ -80,12 +80,17 @@ void Move::Execute()
 	// 4. Apply the Move
 	pManager->MoveSelected(dx, dy);
 	pOut->PrintMsg("Move completed.");
+	diffx = dx; 
+	diffy = dy; 
 }
 
-void Move::Undo()
+void Move::UndoAction()
 {
+	pManager->MoveSelected(-diffx, -diffy);
+
 }
 
-void Move::Redo()
+void Move::RedoAction()
 {
+	pManager->MoveSelected(diffx, diffy);
 }

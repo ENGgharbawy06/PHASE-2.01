@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\graphics_prj.exe</FullPath>
+=======
+      <FullPath>C:\Users\Omar Orashy\source\repos\ENGgharbawy06\PHASE-2.01\Debug\graphics_prj.exe</FullPath>
+>>>>>>> bad46c10fca6f3685252604dbd8db91b33464e97
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

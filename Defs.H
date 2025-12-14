@@ -117,6 +117,7 @@ enum SimMenuItem //The items of the simulation menu
 
 // Maximum number of input pins that can be connected to any output pin
 #define MAX_CONNS 20
+#define MaxUndoCount 50
 
 // Default fan out
 enum FANOUT
