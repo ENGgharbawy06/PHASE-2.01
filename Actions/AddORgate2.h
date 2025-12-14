@@ -10,7 +10,7 @@ private:
 	//Parameters for rectangular area to be occupied by the gate
 	int Cx, Cy;       //Center point of the gate
 	int x1, y1, x2, y2;  //Two corners of the rectangular area
-
+	Component* pComp;
 public:
 	AddORgate2(ApplicationManager* pApp);
 	virtual ~AddORgate2();
