@@ -3,6 +3,7 @@
 
 AddANDgate3::AddANDgate3(ApplicationManager* pApp) :Action(pApp)  //test test test 
 {
+	pComp = nullptr;
 }
 
 AddANDgate3::~AddANDgate3(void)
@@ -47,12 +48,22 @@ void AddANDgate3::Execute()
 	pManager->AddComponent(pA);
 }
 
-void AddANDgate3::Undo()
+void AddANDgate3::Undo()  
 {
+	if (pComp != nullptr)
+	{
+		pManager->DeleteComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Undo: Removed the component.");
+	}
 }
 
-void AddANDgate3::Redo()
+void AddANDgate3::Redo()  
 {
+	if (pComp != nullptr)
+	{
+		pManager->AddComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Redo: Restored the component.");
+	}
 }
 
 //test from mari

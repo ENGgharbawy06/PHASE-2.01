@@ -2,6 +2,7 @@
 #include "..\ApplicationManager.h"
 AddBuffer::AddBuffer(ApplicationManager* pApp) : Action(pApp)
 {
+	pComp = NULL;
 }
 AddBuffer::~AddBuffer()
 {
@@ -36,7 +37,18 @@ void AddBuffer::Execute()
 }
 void AddBuffer::Undo()
 {
+	if (pComp != nullptr)
+	{
+		pManager->DeleteComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Undo: Removed the component.");
+	}
 }
+
 void AddBuffer::Redo()
 {
+	if (pComp != nullptr)
+	{
+		pManager->AddComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Redo: Restored the component.");
+	}
 }

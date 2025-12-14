@@ -9,6 +9,7 @@ class AddINV : public Action
 private:
     int Cx, Cy;
     int x1, y1, x2, y2;
+    Component* pComp;
 
 public:
     AddINV(ApplicationManager* pApp);

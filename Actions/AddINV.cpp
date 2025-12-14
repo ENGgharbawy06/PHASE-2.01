@@ -2,6 +2,7 @@
 #include "..\ApplicationManager.h"
 AddINV::AddINV(ApplicationManager* pApp) : Action(pApp)
 {
+	pComp = nullptr;
 }
 AddINV::~AddINV()
 {
@@ -36,7 +37,18 @@ void AddINV::Execute()
 }
 void AddINV::Undo()
 {
+	if (pComp != nullptr)
+	{
+		pManager->DeleteComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Undo: Removed the component.");
+	}
 }
+
 void AddINV::Redo()
 {
+	if (pComp != nullptr)
+	{
+		pManager->AddComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Redo: Restored the component.");
+	}
 }

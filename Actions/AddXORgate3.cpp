@@ -3,6 +3,7 @@
 
 AddXORgate3::AddXORgate3(ApplicationManager* pApp) :Action(pApp)  //test test test 
 {
+	pComp = nullptr;
 }
 AddXORgate3::~AddXORgate3(void)
 {
@@ -48,9 +49,19 @@ void AddXORgate3::Execute()
 
 void AddXORgate3::Undo()
 {
-
+	if (pComp != nullptr)
+	{
+		pManager->DeleteComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Undo: Removed the component.");
+	}
 }
 
 void AddXORgate3::Redo()
 {
+	if (pComp != nullptr)
+	{
+		pManager->AddComponent(pComp);
+		pManager->GetOutput()->PrintMsg("Redo: Restored the component.");
+	}
 }
+
