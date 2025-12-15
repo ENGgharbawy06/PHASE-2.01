@@ -80,30 +80,15 @@ Component* XOR3::Clone(const GraphicsInfo& newGfx) const
 }
 
 
-void XOR3::Draw(Output* pOut)
-{
-	pOut->DrawXOR3(m_GfxInfo, selected);
-}
 
-int XOR3::GetOutPinStatus()
-{
-	return m_OutputPin.getStatus();
-}
 
-int XOR3::GetInputPinStatus(int n)
-{
-	return m_InputPins[n - 1].getStatus();
-}
 
-void XOR3::setInputPinStatus(int n, STATUS s)
-{
-	m_InputPins[n - 1].setStatus(s);
-}
 
-Component* XOR3::Clone(const GraphicsInfo& newGfx) const
-{
-	return new XOR3(newGfx, XOR3_FANOUT);
-}
+
+
+
+
+
 
 void XOR3::Save(ofstream& out)
 {
