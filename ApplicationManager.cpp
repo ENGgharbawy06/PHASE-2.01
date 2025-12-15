@@ -27,8 +27,9 @@
 #include "Actions/SwitchToDesign.h"
 #include "Actions/Simulate.h"
 #include "Actions/ChangeSwitch.h"
-//#include "Actions/Validate.h"
+#include "Actions/Validate.h"
 #include "Actions/CreateTruthTable.h"
+#include "Actions/Probing.h"
 
 //#include "Actions\AddLabel.h"
 
@@ -52,7 +53,7 @@ ApplicationManager::ApplicationManager()
 	UndoCount = 0; //Initialize el stack lel undo/redo
 	UndoPos = -1; // -1 means no actions performed yet
 	for (int i = 0; i < MaxUndoCount; i++)
-		UndoStack[i] = NULL;
+		UndoStack[i] = nullptr;
 }
 
 //////////////////////////////////////////////////////////////////
@@ -175,6 +176,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// pAct = new CreateTruthTable(this); // Uncomment if you have this action
 		break;
 
+	case VALIDATE: // or ITM_VALIDATE depending on your enum
+
+		pAct = new Validate(this);
+
+		break;
+
 	case EXIT:
 		break;
 	}
@@ -199,6 +206,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = NULL;
 		}
 	}
+
+
+
+
+
 }
 
 
@@ -410,6 +422,18 @@ void ApplicationManager::ExecuteRedo()
 	}
 }
 
+
+Component* ApplicationManager::GetComponent(int index) const
+{
+	if (index >= 0 && index < CompCount)
+		return CompList[index];
+	return nullptr;
+}
+
+int ApplicationManager::GetCompCount() const
+{
+	return CompCount;
+}
 
 ApplicationManager::~ApplicationManager()
 {

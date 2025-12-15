@@ -1,4 +1,3 @@
-
 #ifndef APPLICATION_MANAGER_H
 #define APPLICATION_MANAGER_H
 
@@ -33,6 +32,10 @@ private:
 
 
 public:
+	
+	Component* GetComponent(int index) const;
+	int GetCompCount() const;
+
 	ApplicationManager(); //constructor
 
 	//Reads the required action from the user and returns the corresponding action type
