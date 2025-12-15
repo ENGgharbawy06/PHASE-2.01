@@ -1,4 +1,4 @@
-#include "ApplicationManager.h"
+﻿#include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
 #include "Actions\AddORgate2.h"
 #include "Actions\AddNANDgate2.h"
@@ -441,6 +441,40 @@ int ApplicationManager::GetCompCount() const
 {
 	return CompCount;
 }
+
+
+
+
+void ApplicationManager::ClearAll()
+{
+	for (int i = 0; i < CompCount; ++i)
+	{
+		delete CompList[i];
+		CompList[i] = nullptr;
+	}
+
+	CompCount = 0;
+	Clipboard = nullptr;
+	SelectedComponent = nullptr;
+	// لو عندك NextID ضيف السطر دا
+	// NextID = 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ApplicationManager::~ApplicationManager()
 {
