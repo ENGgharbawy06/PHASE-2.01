@@ -13,6 +13,7 @@
 #include "Actions\Select.h"
 #include "Components\Connection.h"
 #include "Actions\AddConnection.h"
+#include "Actions\AddSwitch.h"
 #include "Actions\Move.h"
 #include "Actions\Simulate.h"
 #include "Actions\UndoAction.h"
@@ -115,6 +116,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case ADD_CONNECTION:
 		pAct = new AddConnection(this);
+		break;
+
+	case ADD_SWITCH:
+		pAct = new AddSwitch(this);
 		break;
 		
 	case SELECT:

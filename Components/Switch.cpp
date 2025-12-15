@@ -12,8 +12,8 @@ Switch::Switch(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(0, r_FanOut)
 
 void Switch::Operate()
 {
-	// Logic: If the switch is selected (toggled), it acts as ON (HIGH).
-	// Otherwise, it is OFF (LOW).
+	//Law el switch kan ON/OFF, el output hayeb2a HIGH (1) / LOW(0)
+	//El output pin di heya one of the input pins lel gates
 	if (selected)
 		m_OutputPin.setStatus(HIGH);
 	else
@@ -22,7 +22,6 @@ void Switch::Operate()
 
 void Switch::Draw(Output* pOut)
 {
-	// Call output class and pass switch drawing info and selection state
 	pOut->DrawSWITCH(m_GfxInfo, selected);
 }
 

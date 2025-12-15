@@ -44,7 +44,6 @@ void AddSwitch::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 
 	//Create the Switch
-	//Note: SWITCH_FANOUT must be defined in Defs.H 
 	Switch* pSwitch = new Switch(GInfo, SWITCH_FANOUT);
 
 	//Add the component to the list of components
