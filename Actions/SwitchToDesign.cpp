@@ -25,10 +25,13 @@ void SwitchToDesign::Execute()
 	// 2. Clear the status bar
 	pOut->ClearStatusBar();
 
-	// 3. Redraw the interface to remove any simulation artifacts (optional but recommended)
+	//3. create bottom tool bar
+	pOut->CreateBottomToolBar();
+
+	// 4. Redraw the interface to remove any simulation artifacts (optional but recommended)
 	pManager->UpdateInterface();
 
-	// 4. Notify the user
+	// 5. Notify the user
 	pOut->PrintMsg("Switched to Design Mode.");
 }
 
