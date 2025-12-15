@@ -1,4 +1,4 @@
-#include "Connection.h"
+﻿#include "Connection.h"
 
 Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin):Component(r_GfxInfo)	
 	
@@ -31,6 +31,17 @@ void Connection::Operate()
 
 void Connection::Draw(Output* pOut)
 {
+	if (SrcPin) {
+		m_GfxInfo.x1 = SrcPin->getPositionX();
+		m_GfxInfo.y1 = SrcPin->getPositionY();
+	}
+
+	if (DstPin) {
+		m_GfxInfo.x2 = DstPin->getPositionX();
+		m_GfxInfo.y2 = DstPin->getPositionY();
+	}
+
+	// 2. رسم السلك بالإحداثيات الجديدة
 	pOut->DrawConnection(m_GfxInfo, selected);
 }
 

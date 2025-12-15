@@ -1,4 +1,4 @@
-#include "AND2.h"
+﻿#include "AND2.h"
 
 AND2::AND2(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(2, r_FanOut)
 {
@@ -8,6 +8,7 @@ AND2::AND2(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(2, r_FanOut)
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 
 	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+
 	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 	
 }
@@ -59,4 +60,19 @@ Component* AND2::Clone(const GraphicsInfo& newGfx) const
 {
 	return new AND2(newGfx, AND2_FANOUT);
 
+}
+
+void AND2::SetGraphicsInfo(GraphicsInfo NewGfx)
+{
+	Component::SetGraphicsInfo(NewGfx); // تحديث مكان البوابة الأساسي
+
+	// تحديث مكان الـ Pins عشان تمشي مع البوابة
+	m_GfxInfo.x1 = NewGfx.x1;
+	m_GfxInfo.y1 = NewGfx.y1;
+	m_GfxInfo.x2 = NewGfx.x2;
+	m_GfxInfo.y2 = NewGfx.y2;
+
+	// نفس الكود اللي في الـ Constructor
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }

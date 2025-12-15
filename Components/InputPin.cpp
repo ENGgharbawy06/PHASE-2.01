@@ -5,6 +5,9 @@ InputPin::InputPin()
 {
 	isConnected = false;
 	pComp = nullptr;  // Initialize to nullptr
+
+	m_X = 0;
+	m_Y = 0;
 }
 
 void InputPin::setComponent(Component* pCmp)
