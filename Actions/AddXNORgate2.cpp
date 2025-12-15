@@ -48,6 +48,7 @@ void AddXNORgate2::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	XNOR2* pA = new XNOR2(GInfo, XNOR2_FANOUT);
 	pManager->AddComponent(pA);
+	pComp = pA;
 }
 
 void AddXNORgate2::Undo()

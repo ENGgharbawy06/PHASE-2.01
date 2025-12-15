@@ -46,6 +46,7 @@ void AddANDgate3::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	AND3* pA = new AND3(GInfo, AND3_FANOUT);
 	pManager->AddComponent(pA);
+	pComp = pA;
 }
 
 void AddANDgate3::Undo()  

@@ -34,6 +34,7 @@ void AddINV::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	INV* pA = new INV(GInfo, INV_FANOUT);
 	pManager->AddComponent(pA);
+	pComp = pA;
 }
 void AddINV::Undo()
 {

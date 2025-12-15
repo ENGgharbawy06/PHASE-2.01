@@ -45,6 +45,7 @@ void AddXORgate3::Execute()
 	GInfo.y2 = Cy + Wdth / 2;
 	XOR3* pA = new XOR3(GInfo, XOR3_FANOUT);
 	pManager->AddComponent(pA);
+	pComp = pA;
 }
 
 void AddXORgate3::Undo()

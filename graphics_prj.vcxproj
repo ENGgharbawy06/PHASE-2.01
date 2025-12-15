@@ -141,6 +141,10 @@
 	<ClCompile Include="Actions\Select.cpp" />
 	<ClCompile Include="Actions\Move.cpp" />
 	<ClCompile Include="Actions\UndoAction.cpp" />
+	<ClCompile Include="Actions\SwitchToDesign.cpp" />
+	<ClCompile Include="Actions\SwitchToSim.cpp" />
+	<ClCompile Include="Actions\ChangeSwitch.cpp" />
+	<ClCompile Include="Actions\CreateTruthTable.cpp" />
 	<ClCompile Include="Actions\RedoAction.cpp" />
 	<ClCompile Include="Actions\Simulate.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
