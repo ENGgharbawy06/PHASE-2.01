@@ -54,6 +54,8 @@ ApplicationManager::ApplicationManager()
 	UndoPos = -1; // -1 means no actions performed yet
 	for (int i = 0; i < MaxUndoCount; i++)
 		UndoStack[i] = nullptr;
+
+
 }
 
 //////////////////////////////////////////////////////////////////
