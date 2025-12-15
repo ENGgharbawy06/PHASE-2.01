@@ -148,6 +148,8 @@
 	<ClCompile Include="Actions\Validate.cpp" />
 	<ClCompile Include="Actions\RedoAction.cpp" />
 	<ClCompile Include="Actions\Simulate.cpp" />
+	<ClCompile Include="Actions\AddLabel.cpp" />
+	<ClCompile Include="Components\Label.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -237,6 +239,8 @@
     <ClInclude Include="Components\OutputPin.h" />
     <ClInclude Include="Components\Pin.h" />
     <ClInclude Include="Actions\Simulate.h" />
+    <ClInclude Include="Actions\AddLabel.h" />
+    <ClInclude Include="Components\Label.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Defs.H" />
     <ClInclude Include="Actions\AddConnection.h" />
