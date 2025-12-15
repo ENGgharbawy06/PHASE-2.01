@@ -52,7 +52,7 @@ ApplicationManager::ApplicationManager()
 	UndoCount = 0; //Initialize el stack lel undo/redo
 	UndoPos = -1; // -1 means no actions performed yet
 	for (int i = 0; i < MaxUndoCount; i++)
-		UndoStack[i] = NULL;
+		UndoStack[i] = nullptr;
 }
 
 //////////////////////////////////////////////////////////////////
