@@ -27,7 +27,7 @@
 #include "Actions/SwitchToDesign.h"
 #include "Actions/Simulate.h"
 #include "Actions/ChangeSwitch.h"
-//#include "Actions/Validate.h"
+#include "Actions/Validate.h"
 #include "Actions/CreateTruthTable.h"
 
 //#include "Actions\AddLabel.h"
@@ -175,6 +175,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// pAct = new CreateTruthTable(this); // Uncomment if you have this action
 		break;
 
+	case VALIDATE: // or ITM_VALIDATE depending on your enum
+
+		pAct = new Validate(this);
+
+		break;
+
 	case EXIT:
 		break;
 	}
@@ -199,6 +205,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = NULL;
 		}
 	}
+
+
+
+
+
 }
 
 
