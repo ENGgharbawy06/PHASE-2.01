@@ -1,6 +1,6 @@
 #include "LED.h"
 
-LED::LED(const GraphicsInfo& r_GfxInfo) : Component(r_GfxInfo)
+LED::LED(const GraphicsInfo& r_GfxInfo, int r_FanOut) : Component(r_GfxInfo)
 {
 	// Must associate this Pin with the component so the Connection class can link to it
 	m_InputPin.setComponent(this);
@@ -8,22 +8,20 @@ LED::LED(const GraphicsInfo& r_GfxInfo) : Component(r_GfxInfo)
 
 void LED::Operate()
 {
-	//empty function: LED operation is done in Draw
+	// Empty function: LED operation is purely visual (handled in Draw)
 }
 
 void LED::Draw(Output* pOut)
 {
-	// Check the Pin status: if High, draw lit up; if Low, draw unlit.
-
+	// Logic: If input pin is HIGH, draw the Highlighted image (Lit up)
+	// Otherwise, draw the normal image (Dark)
 	if (m_InputPin.getStatus() == HIGH)
 	{
-		// true means lit up (Active)
-		pOut->DrawLED(m_GfxInfo, true);
+		pOut->DrawLED(m_GfxInfo, true); // true = draw highlighted
 	}
 	else
 	{
-		// false means unlit
-		pOut->DrawLED(m_GfxInfo, false);
+		pOut->DrawLED(m_GfxInfo, false); // false = draw normal
 	}
 }
 
@@ -42,11 +40,15 @@ int LED::GetInputPinStatus(int n)
 void LED::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPin.setStatus(s);
-
 }
 
 Component* LED::Clone(const GraphicsInfo& gfx) const
 {
+	return new LED(gfx, 1); // Pass dummy fanout
+}
 
-	return new LED(gfx);
+// IMPLEMENTATION of the function declared in .h
+InputPin* LED::GetInputPin()
+{
+	return &m_InputPin;
 }
