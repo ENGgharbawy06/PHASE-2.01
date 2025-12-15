@@ -78,3 +78,65 @@ Component* XOR3::Clone(const GraphicsInfo& newGfx) const
 {
 	return new XOR3(newGfx, XOR3_FANOUT);
 }
+
+
+void XOR3::Draw(Output* pOut)
+{
+	pOut->DrawXOR3(m_GfxInfo, selected);
+}
+
+int XOR3::GetOutPinStatus()
+{
+	return m_OutputPin.getStatus();
+}
+
+int XOR3::GetInputPinStatus(int n)
+{
+	return m_InputPins[n - 1].getStatus();
+}
+
+void XOR3::setInputPinStatus(int n, STATUS s)
+{
+	m_InputPins[n - 1].setStatus(s);
+}
+
+Component* XOR3::Clone(const GraphicsInfo& newGfx) const
+{
+	return new XOR3(newGfx, XOR3_FANOUT);
+}
+
+void XOR3::Save(ofstream& out)
+{
+	out << "XOR3 "
+		<< GetID() << " "
+		<< (GetLabel() == "" ? "$" : GetLabel()) << " "
+		<< m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+void XOR3::Load(ifstream& in)
+{
+	int id, x, y;
+	string lbl;
+
+	in >> id >> lbl >> x >> y;
+
+	SetID(id);
+	if (lbl != "$")
+		SetLabel(lbl);
+
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+
+	// size based on UI
+	m_GfxInfo.x2 = x + UI.XOR3_Width;
+	m_GfxInfo.y2 = y + UI.XOR3_Height;
+
+	// Reset pin positions
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
+	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+}
+
+XOR3::~XOR3()
+{
+}

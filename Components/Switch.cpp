@@ -51,3 +51,35 @@ void Switch::SetGraphicsInfo(GraphicsInfo NewGfx)
 	m_GfxInfo = NewGfx;
 
 }
+
+void Switch::Save(ofstream& out)
+{
+	out << "SWTCH "
+		<< GetID() << " "
+		<< (GetLabel() == "" ? "$" : GetLabel()) << " "
+		<< m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+void Switch::Load(ifstream& in)
+{
+	int id, x, y;
+	string lbl;
+
+	in >> id >> lbl >> x >> y;
+
+	SetID(id);
+	if (lbl != "$")
+		SetLabel(lbl);
+
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+
+	m_GfxInfo.x2 = x + UI.SWITCH_Width;
+	m_GfxInfo.y2 = y + UI.SWITCH_Height;
+
+	// switch has only output
+}
+
+Switch::~Switch()
+{
+}

@@ -70,3 +70,37 @@ Component* XOR2::Clone(const GraphicsInfo& newGfx) const
 {
 	return new XOR2(newGfx, XOR2_FANOUT);
 }
+
+
+void XOR2::Save(ofstream& out)
+{
+	out << "XOR2 "
+		<< GetID() << " "
+		<< (GetLabel() == "" ? "$" : GetLabel()) << " "
+		<< m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+void XOR2::Load(ifstream& in)
+{
+	int id, x, y;
+	string lbl;
+
+	in >> id >> lbl >> x >> y;
+
+	SetID(id);
+	if (lbl != "$")
+		SetLabel(lbl);
+
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+
+	m_GfxInfo.x2 = x + UI.XOR2_Width;
+	m_GfxInfo.y2 = y + UI.XOR2_Height;
+
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+}
+
+XOR2::~XOR2()
+{
+}

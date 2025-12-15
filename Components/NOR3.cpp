@@ -1,80 +1,101 @@
 #include "NOR3.h"
 
-NOR3::NOR3(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(3, r_FanOut)
+NOR3::NOR3(const GraphicsInfo& r_GfxInfo, int r_FanOut) : Gate(3, r_FanOut)
 {
-	m_GfxInfo.x1 = r_GfxInfo.x1;
-	m_GfxInfo.y1 = r_GfxInfo.y1;
-	m_GfxInfo.x2 = r_GfxInfo.x2;
-	m_GfxInfo.y2 = r_GfxInfo.y2;
+    m_GfxInfo = r_GfxInfo;
 
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
-	m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
-	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+    // Pin 1 (Top)
+    m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+
+    // Pin 2 (Middle)
+    m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
+
+    // Pin 3 (Bottom)
+    m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
 }
 
 void NOR3::SetGraphicsInfo(GraphicsInfo NewGfx)
 {
-	Component::SetGraphicsInfo(NewGfx);
+    Component::SetGraphicsInfo(NewGfx);
 
-	// Pin 1 (Top)
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+    // Pin 1
+    m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
 
-	// Pin 2 (Middle)
-	m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
+    // Pin 2
+    m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
 
-	// Pin 3 (Bottom)
-	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+    // Pin 3
+    m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
 }
 
 void NOR3::Operate()
 {
-	STATUS in1 = m_InputPins[0].getStatus();
-	STATUS in2 = m_InputPins[1].getStatus();
-	STATUS in3 = m_InputPins[2].getStatus();
+    STATUS in1 = m_InputPins[0].getStatus();
+    STATUS in2 = m_InputPins[1].getStatus();
+    STATUS in3 = m_InputPins[2].getStatus();
 
-	if (in1 == HIGH || in2 == HIGH || in3 == HIGH) {
-		m_OutputPin.setStatus(LOW);
-	}
-	else {
-		m_OutputPin.setStatus(HIGH);
-	}
+    // NOR3 = 1 only if ALL inputs = LOW
+    if (in1 == LOW && in2 == LOW && in3 == LOW)
+        m_OutputPin.setStatus(HIGH);
+    else
+        m_OutputPin.setStatus(LOW);
 }
 
-
-// Function Draw
-// Draws 3-input NOR gate
 void NOR3::Draw(Output* pOut)
 {
-	//Call output class and pass gate drawing info to it.
-	pOut->DrawNOR3(m_GfxInfo, selected);
+    pOut->DrawNOR3(m_GfxInfo, selected);
 }
 
-//returns status of outputpin
 int NOR3::GetOutPinStatus()
 {
-	return m_OutputPin.getStatus();
+    return m_OutputPin.getStatus();
 }
 
-
-//returns status of Inputpin #n
 int NOR3::GetInputPinStatus(int n)
 {
-	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
+    return m_InputPins[n - 1].getStatus();
 }
 
-//Set status of an input pin to HIGH or LOW
-void NOR3::setInputPinStatus(int n, STATUS s)  // Updated function to match the NOR3 class
+void NOR3::setInputPinStatus(int n, STATUS s)
 {
-	m_InputPins[n - 1].setStatus(s);
+    m_InputPins[n - 1].setStatus(s);
 }
-
 
 Component* NOR3::Clone(const GraphicsInfo& newGfx) const
 {
-	return new NOR3(newGfx, NOR3_FANOUT);
+    return new NOR3(newGfx, NOR3_FANOUT);
 }
 
-int NOR3::GetInputPinCount() //lesa fi 4o8l
+void NOR3::Save(ofstream& out)
 {
-	return 0;
+    out << "NOR3 "
+        << GetID() << " "
+        << (GetLabel() == "" ? "$" : GetLabel()) << " "
+        << m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+void NOR3::Load(ifstream& in)
+{
+    int id, x, y;
+    string lbl;
+
+    in >> id >> lbl >> x >> y;
+
+    SetID(id);
+    if (lbl != "$")
+        SetLabel(lbl);
+
+    m_GfxInfo.x1 = x;
+    m_GfxInfo.y1 = y;
+
+    m_GfxInfo.x2 = x + UI.NOR3_Width;
+    m_GfxInfo.y2 = y + UI.NOR3_Height;
+
+    m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+    m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
+    m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+}
+
+NOR3::~NOR3()
+{
 }

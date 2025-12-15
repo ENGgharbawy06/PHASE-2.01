@@ -20,9 +20,8 @@ public:
 
     virtual void SetGraphicsInfo(GraphicsInfo NewGfx);
 
-    virtual void Save(ofstream& out) override;
-    virtual void Load(ifstream& in) override;
-
+    virtual void Save(ofstream& out);
+    virtual void Load(ifstream& in);
     virtual ~NOR2();
 };
 

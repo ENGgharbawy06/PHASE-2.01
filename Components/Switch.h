@@ -15,4 +15,9 @@ public:
 
 	virtual Component* Clone(const GraphicsInfo& newGfx) const;
 	virtual void SetGraphicsInfo(GraphicsInfo NewGfx);
+
+	~Switch();
+	virtual void Save(ofstream& out);
+	virtual void Load(ifstream& in);
+
 };

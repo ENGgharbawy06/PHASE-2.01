@@ -79,15 +79,12 @@ void NOR2::Load(ifstream& in)
     m_GfxInfo.x1 = x;
     m_GfxInfo.y1 = y;
 
-    // الحجم الحقيقي للـ NOR2 حسب UI
     m_GfxInfo.x2 = x + UI.NOR2_Width;
     m_GfxInfo.y2 = y + UI.NOR2_Height;
 
-    // Pins
     m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
     m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }
-
 NOR2::~NOR2()
 {
 }
