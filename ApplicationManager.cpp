@@ -22,6 +22,10 @@
 //#include "Actions\ActionDelete.h"
 //#include "Actions\PasteAction.h"
 //#include "Actions\CutAction.h"
+
+#include "Actions/SaveAction.h"
+#include "Actions/LoadAction.h"
+
 #include "Actions/SwitchToSim.h"
 #include "Actions/SwitchToDesign.h"
 #include "Actions/Simulate.h"
@@ -31,7 +35,9 @@
 #include "Actions/Probing.h"
 
 #include "Actions\AddLabel.h"
-
+#include <vector>
+using std::vector;
+using std::string;
 
 
 
@@ -140,6 +146,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case ADD_LABEL:
 		pAct = new AddLabel(this);
+		break;
+
+	case SAVE:
+		pAct = new SaveAction(this);
+		break;
+
+	case LOAD:
+		pAct = new LoadAction(this);
 		break;
 
 			/*case COPY:
@@ -518,7 +532,7 @@ void ApplicationManager::Load(ifstream& in)
 	int count;
 	in >> count;
 
-	vector<Component*> idMap;
+	vector<Component*> idMap;   
 	idMap.resize(count + 20, nullptr);
 
 	for (int i = 0; i < count; i++)

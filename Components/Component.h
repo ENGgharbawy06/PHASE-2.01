@@ -8,64 +8,55 @@ using std::ofstream;
 using std::ifstream;
 using std::string;
 
-
-//Base class for classes Gate, Switch, and LED.
 class Component
 {
 private:
-	string m_Label;
-	int m_ID;
+    string m_Label;
+    int m_ID;
 protected:
-	GraphicsInfo m_GfxInfo;	//The parameters required to draw a component
-	bool selected;
+    GraphicsInfo m_GfxInfo;
+    bool selected;
 public:
-	Component(const GraphicsInfo& r_GfxInfo);
-	virtual void Operate() = 0;	//Calculates the output according to the inputs
-	virtual void Draw(Output* pOut) = 0;	//for each component to Draw itself
-public:
-	virtual bool IsGate() const { return false; } //????  ?? ????????? ?? ??? ??? ?? ????? ?? connections
-	virtual int GetOutPinStatus() = 0;	//returns status of outputpin if LED, return -1
-	virtual int GetInputPinStatus(int n) = 0;	//returns status of Inputpin # n if SWITCH, return -1
+    Component(const GraphicsInfo& r_GfxInfo);
+    Component();
 
-	virtual void setInputPinStatus(int n, STATUS s) = 0;	//set status of Inputpin # n, to be used by connection class.
-	virtual Component* Clone(const GraphicsInfo& newGfx) const = 0; // Clone function to create a copy of the component
-	
-	virtual void SetSelected(bool select) { selected = select; }
-	virtual bool IsSelected() const { return selected; }
+    virtual void Operate() = 0;
+    virtual void Draw(Output* pOut) = 0;
 
+    virtual bool IsGate() const { return false; }
+    virtual int GetOutPinStatus() = 0;
+    virtual int GetInputPinStatus(int n) = 0;
+    virtual void setInputPinStatus(int n, STATUS s) = 0;
+    virtual Component* Clone(const GraphicsInfo& newGfx) const = 0;
 
-	void SetLabel(const string& lbl) { m_Label = lbl; }
-	string GetLabel() const { return m_Label; }
+    virtual void SetSelected(bool select) { selected = select; }
+    virtual bool IsSelected() const { return selected; }
 
-	void SetID(int id) { m_ID = id; }
-	int GetID() const { return m_ID; }
-	virtual void Save(ofstream& out) = 0;
-	virtual void Load(ifstream& in) = 0;
+    void SetLabel(const string& lbl) { m_Label = lbl; }
+    string GetLabel() const { return m_Label; }
 
+    void SetID(int id) { m_ID = id; }
+    int GetID() const { return m_ID; }
 
+    virtual void Save(ofstream& out);
+    virtual void Load(ifstream& in);
 
-	virtual bool IsInside(int x, int y) {
+    virtual bool IsInside(int x, int y)
+    {
+        if (x >= m_GfxInfo.x1 && x <= m_GfxInfo.x2 &&
+            y >= m_GfxInfo.y1 && y <= m_GfxInfo.y2)
+            return true;
+        return false;
+    }
 
-		if (x >= m_GfxInfo.x1 && x <= m_GfxInfo.x2 && y >= m_GfxInfo.y1 && y <= m_GfxInfo.y2) // Law akbar mn el minimum w a2al mn el maximum hai return true
-			return true;
-		else
-			return false;
+    GraphicsInfo GetGraphicsInfo() const { return m_GfxInfo; }
 
-	}
+    virtual void SetGraphicsInfo(GraphicsInfo NewGfx)
+    {
+        m_GfxInfo = NewGfx;
+    }
 
-	// Get the graphics info of the component
-	GraphicsInfo GetGraphicsInfo() const { return m_GfxInfo; }
-
-	Component();
-
-	//3a4an el move action, lazem a3raf eh el coordinates el gdida
-	virtual void SetGraphicsInfo(GraphicsInfo NewGfx) {
-		m_GfxInfo = NewGfx;
-	} 
-
-
-	//Destructor must be virtual
-	virtual ~Component();
+    virtual ~Component();
 };
 
 #endif

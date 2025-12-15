@@ -6,6 +6,11 @@
 #include "GUI\Input.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
+#include <fstream>
+#include <string>
+using std::string;
+using std::ofstream;
+using std::ifstream;
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -83,6 +88,16 @@ public:
 
 	/*void AddConnection(Connection* pConn);
 	Connection* GetConnectionAt(int x, int y);*/
+
+
+	void ClearAll();
+	Component* CreateComponentByType(const string& type, const GraphicsInfo& gfx);
+	void Save(ofstream& out);
+	void Load(ifstream& in);
+
+
+
+
 
 	//destructor
 	~ApplicationManager();

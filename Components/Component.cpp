@@ -16,6 +16,14 @@ Component::Component()
     m_Label = "";
 }
 
+void Component::Save(ofstream& out)
+{
+}
+
+void Component::Load(ifstream& in)
+{
+}
+
 Component::~Component()
 {
 }
