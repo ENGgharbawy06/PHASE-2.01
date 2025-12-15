@@ -486,7 +486,7 @@ Component* ApplicationManager::CreateComponentByType(const string& type, const G
 		return new Switch(gfx, SWITCH_FANOUT);
 
 	if (type == "LED")
-		return new LED(gfx, 1);   // لازم fanout
+		return new LED(gfx, 1);
 
 	if (type == "AND2")
 		return new AND2(gfx, AND2_FANOUT);
@@ -496,6 +496,9 @@ Component* ApplicationManager::CreateComponentByType(const string& type, const G
 
 	if (type == "NAND2")
 		return new NAND2(gfx, NAND2_FANOUT);
+
+	if (type == "NOR2")                  // ← 
+		return new NOR2(gfx, NOR2_FANOUT);
 
 	if (type == "NOR3")
 		return new NOR3(gfx, NOR3_FANOUT);
