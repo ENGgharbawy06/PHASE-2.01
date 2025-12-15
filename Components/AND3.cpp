@@ -69,7 +69,7 @@ void AND3::setInputPinStatus(int n, STATUS s)
 
 Component* AND3::Clone(const GraphicsInfo& newGfx) const
 {
-	return new AND3(newGfx, AND2_FANOUT);
+	return new AND3(newGfx, AND3_FANOUT);
 
 }
 
