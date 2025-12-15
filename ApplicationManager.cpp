@@ -516,7 +516,7 @@ Component* ApplicationManager::CreateComponentByType(const string& type, const G
 		return new INV(gfx, INV_FANOUT);
 
 	if (type == "BUFF")
-		return new Buffer(gfx, BUFF_FANOUT);
+		return new BUFF(gfx, BUFF_FANOUT);
 
 	return nullptr;
 }
