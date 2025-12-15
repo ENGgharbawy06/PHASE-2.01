@@ -105,9 +105,11 @@ void Output::CreateDesignToolBar() const
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 }
 
+
 void Output::CreateBottomToolBar() const
 {
 	// Images in the bottom menu
+	
 	string BottomItemImages[ITM_BTM_CNT];
 	BottomItemImages[ITM_UNDO_B] = "..\\Images\\Menu\\Undo.jpg";
 	BottomItemImages[ITM_REDO_B] ="..\\Images\\Menu\\Redo.jpg";
