@@ -423,6 +423,18 @@ void ApplicationManager::ExecuteRedo()
 }
 
 
+Component* ApplicationManager::GetComponent(int index) const
+{
+	if (index >= 0 && index < CompCount)
+		return CompList[index];
+	return nullptr;
+}
+
+int ApplicationManager::GetCompCount() const
+{
+	return CompCount;
+}
+
 ApplicationManager::~ApplicationManager()
 {
 	for (int i = 0; i < CompCount; i++)
