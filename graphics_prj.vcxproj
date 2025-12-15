@@ -139,6 +139,7 @@
 	<ClCompile Include="Actions\AddINV.cpp" />
 	<ClCompile Include="Actions\AddSwitch.cpp" />
 	<ClCompile Include="Actions\AddConnection.cpp" />
+	<ClCompile Include="Actions\AddLED.cpp" />
 	<ClCompile Include="Actions\Select.cpp" />
 	<ClCompile Include="Actions\Move.cpp" />
 	<ClCompile Include="Actions\UndoAction.cpp" />
