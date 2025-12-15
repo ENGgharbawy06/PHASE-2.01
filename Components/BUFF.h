@@ -14,5 +14,8 @@ class BUFF : public Gate
 	virtual ~BUFF();
 	void  SetGraphicsInfo(GraphicsInfo NewGfx);
 
+	virtual void Save(ofstream& out);
+	virtual void Load(ifstream& in);
+
 };
 #endif
