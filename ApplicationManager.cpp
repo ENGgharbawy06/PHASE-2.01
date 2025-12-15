@@ -11,6 +11,7 @@
 #include "Actions\AddBUFF.h"
 #include "Actions\AddINV.h"
 #include "Actions\Select.h"
+#include "Actions\AddLED.h"
 #include "Components\Connection.h"
 #include "Actions\AddConnection.h"
 #include "Actions\AddSwitch.h"
@@ -122,6 +123,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddSwitch(this);
 		break;
 		
+	case ADD_LED:
+		pAct = new AddLED(this);
+		break;
+
 	case SELECT:
 		pAct = new Select(this);
 		break;
