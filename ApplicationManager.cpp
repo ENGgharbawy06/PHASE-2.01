@@ -35,8 +35,7 @@
 #include "Actions/Probing.h"
 
 #include "Actions\AddLabel.h"
-#include <vector>
-using std::vector;
+#include <string>
 using std::string;
 
 
