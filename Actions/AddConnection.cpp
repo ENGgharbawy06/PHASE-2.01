@@ -2,6 +2,7 @@
 #include "..\ApplicationManager.h"
 #include "..\Components\Gate.h"
 #include "..\Components\Connection.h"
+#include "..\Components\LED.h"
 
 AddConnection::AddConnection(ApplicationManager* pApp)
     : Action(pApp)
@@ -45,23 +46,23 @@ void AddConnection::ReadActionParameters()
 	}
 
     // ===============================
-	// Select destination gate (input)
+	// Select destination gate or LED (input)
     // ===============================
 	pOut->PrintMsg("Select destination gate (input pin)");
 	pIn->GetPointClicked(x, y);
 
 	pComp = pManager->GetComponentAt(x, y);
-	if (!pComp || !pComp->IsGate())
+	if (!pComp || (!pComp->IsGate() && !pComp->IsLED()))
 	{
-		pOut->PrintMsg("Invalid destination: please select a gate");
+		pOut->PrintMsg("Invalid destination: please select a gate or LED ");
 		SrcGate = nullptr;
 		SrcPin = nullptr;
 		return;
 	}
 
-	DstGate = static_cast<Gate*>(pComp);
+	
 
-	if (SrcGate == DstGate)
+	if (pComp == SrcGate )
 	{
 		pOut->PrintMsg("Error: Cannot connect a gate to itself (Feedback Loop).");
 		SrcGate = nullptr;
@@ -70,7 +71,7 @@ void AddConnection::ReadActionParameters()
 		return;
 	}
 
-	if (DstGate->GetGraphicsInfo().x1 < SrcGate->GetGraphicsInfo().x1)
+	if (pComp->GetGraphicsInfo().x1 < SrcGate->GetGraphicsInfo().x1)
 	{
 		pOut->PrintMsg("Error: Destination is behind Source. Please move it forward to connect.");
 
@@ -81,18 +82,33 @@ void AddConnection::ReadActionParameters()
 	}
 	// pick first free input pin
 	DstPin = nullptr;
-	for (int i = 0; i < DstGate->GetInputPinCount(); i++)
+	if (pComp->IsGate())
 	{
-		if (!DstGate->GetInputPin(i)->getIsConnected())  // Changed from isConnected()
+		DstGate = static_cast<Gate*>(pComp); // Safe cast now
+		for (int i = 0; i < DstGate->GetInputPinCount(); i++)
 		{
-			DstPin = DstGate->GetInputPin(i);
-			break;
+			if (!DstGate->GetInputPin(i)->getIsConnected())
+			{
+				DstPin = DstGate->GetInputPin(i);
+				break;
+			}
 		}
 	}
+	else if (pComp->IsLED())
+	{
+		DstGate = nullptr; // Explicitly set to null for LEDs
 
+		LED* pled = static_cast<LED*>(pComp);
+
+		// FIX: Used 'pled' instead of 'led'
+		if (!pled->GetInputPin()->getIsConnected())
+		{
+			DstPin = pled->GetInputPin();
+		}
+	}
 	if (!DstPin)
 	{
-		pOut->PrintMsg("No free input pins on destination gate");
+		pOut->PrintMsg("Destination input pins are all connected");
 		SrcGate = nullptr;
 		SrcPin = nullptr;
 		DstGate = nullptr;
@@ -116,7 +132,7 @@ void AddConnection::Execute()
 	// Read action parameters
 	ReadActionParameters();
 	// If parameters are invalid, return
-	if (!SrcGate || !DstGate || !SrcPin || !DstPin)
+	 if (!SrcPin || !DstPin)
 		return;
 	// Create the connection
 	Connection* pConn = new Connection(GInfo, SrcPin, DstPin);

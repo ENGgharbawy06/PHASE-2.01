@@ -23,6 +23,7 @@ public:
 	virtual Component* Clone(const GraphicsInfo& newGfx) const override;
     virtual void Save(ofstream& out) override;
     virtual void Load(ifstream& in) override;
+	
 
 };
 

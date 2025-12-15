@@ -17,10 +17,11 @@ public:
     virtual int GetOutPinStatus();
     virtual int GetInputPinStatus(int n);
     virtual void setInputPinStatus(int n, STATUS s);
-
+    virtual bool IsLED() const override { return true; }
     virtual Component* Clone(const GraphicsInfo& newGfx) const;
     virtual void Save(ofstream& out) override;
     virtual void Load(ifstream& in) override;
+    void SetGraphicsInfo(GraphicsInfo NewGfx);
 
     // Helper function to get the input pin pointer
     InputPin* GetInputPin();

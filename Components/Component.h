@@ -28,7 +28,7 @@ public:
     virtual int GetInputPinStatus(int n) = 0;
     virtual void setInputPinStatus(int n, STATUS s) = 0;
     virtual Component* Clone(const GraphicsInfo& newGfx) const = 0;
-
+    virtual bool IsLED() const { return false; }
     virtual void SetSelected(bool select) { selected = select; }
     virtual bool IsSelected() const { return selected; }
 

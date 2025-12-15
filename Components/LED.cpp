@@ -1,10 +1,25 @@
-#include "LED.h"
+﻿#include "LED.h"
 
 LED::LED(const GraphicsInfo& r_GfxInfo, int r_FanOut) : Component(r_GfxInfo)
 {
 	// Associate the input pin with this component
 	m_InputPin.setComponent(this);
+	int pinX = r_GfxInfo.x1 + (r_GfxInfo.x2 - r_GfxInfo.x1) / 2;
+
+	// Calculate the Bottom Y of the LED (Common for LED inputs)
+	int pinY = r_GfxInfo.y2;
+
+	m_InputPin.setPosition(pinX, pinY);
 }
+void LED::SetGraphicsInfo(GraphicsInfo NewGfx)
+{
+	Component::SetGraphicsInfo(NewGfx);
+	// Update Input Pin position
+	int pinX = m_GfxInfo.x1 + (m_GfxInfo.x2 - m_GfxInfo.x1) / 2;
+	int pinY = m_GfxInfo.y2; // Bottom Y of the LED
+	m_InputPin.setPosition(pinX, pinY);
+}
+
 
 void LED::Operate()
 {

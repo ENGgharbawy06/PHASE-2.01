@@ -16,7 +16,7 @@ void OR2::SetGraphicsInfo(GraphicsInfo NewGfx)
 	// 1. تحديث إحداثيات البوابة نفسها باستخدام دالة الأب
 	Component::SetGraphicsInfo(NewGfx);
 
-	// 2. تحديث إحداثيات الـ Pins بناءً على المكان الجديد
+
 	// Pin 1 (Top)
 	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 18);
 
