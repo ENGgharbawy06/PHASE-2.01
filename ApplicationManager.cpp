@@ -486,12 +486,37 @@ Component* ApplicationManager::CreateComponentByType(const string& type, const G
 		return new Switch(gfx, SWITCH_FANOUT);
 
 	if (type == "LED")
-		return new LED(gfx);
+		return new LED(gfx, 1);   // لازم fanout
 
 	if (type == "AND2")
 		return new AND2(gfx, AND2_FANOUT);
 
-	// TODO: لما تبعتلي باقي الجيتات هضيفها لك هنا
+	if (type == "OR2")
+		return new OR2(gfx, OR2_FANOUT);
+
+	if (type == "NAND2")
+		return new NAND2(gfx, NAND2_FANOUT);
+
+	if (type == "NOR3")
+		return new NOR3(gfx, NOR3_FANOUT);
+
+	if (type == "XOR2")
+		return new XOR2(gfx, XOR2_FANOUT);
+
+	if (type == "XNOR2")
+		return new XNOR2(gfx, XNOR2_FANOUT);
+
+	if (type == "AND3")
+		return new AND3(gfx, AND3_FANOUT);
+
+	if (type == "XOR3")
+		return new XOR3(gfx, XOR3_FANOUT);
+
+	if (type == "INV")
+		return new INV(gfx, INV_FANOUT);
+
+	if (type == "BUFF")
+		return new Buffer(gfx, BUFF_FANOUT);
 
 	return nullptr;
 }
@@ -531,9 +556,14 @@ void ApplicationManager::Load(ifstream& in)
 	int count;
 	in >> count;
 
-	vector<Component*> idMap;   
-	idMap.resize(count + 20, nullptr);
+	// مصفوفة ثابتة بدل vector
+	const int MAXMAP = 500;
+	Component* idMap[MAXMAP];
 
+	for (int i = 0; i < MAXMAP; i++)
+		idMap[i] = nullptr;
+
+	// --- تحميل الكمبوننتس ---
 	for (int i = 0; i < count; i++)
 	{
 		string type;
@@ -543,50 +573,68 @@ void ApplicationManager::Load(ifstream& in)
 		gfx.x1 = gfx.y1 = gfx.x2 = gfx.y2 = 0;
 
 		Component* comp = CreateComponentByType(type, gfx);
-		if (!comp) continue;
+		if (!comp)
+		{
+			// لو النوع مش معروف نعدي السطر
+			int dummyID, x1, y1, x2, y2;
+			string dummyLabel;
+			in >> dummyID >> dummyLabel >> x1 >> y1 >> x2 >> y2;
+			continue;
+		}
 
-		comp->Load(in);
-		int id = comp->GetID();
+		comp->Load(in);  // يضبط: ID + label + gfx
 
-		idMap[id] = comp;
+		int ID = comp->GetID();
+		if (ID >= 0 && ID < MAXMAP)
+			idMap[ID] = comp;
 
 		CompList[CompCount++] = comp;
 	}
 
-	string c;
-	in >> c; // should be "Connections"
+	// --- قراءة connections ---
+	string word;
+	in >> word; // المفروض "Connections"
 
 	while (true)
 	{
 		int srcID;
 		in >> srcID;
-		if (srcID == -1)
+
+		if (!in || srcID == -1)
 			break;
 
 		int dstID, pinNo;
 		in >> dstID >> pinNo;
 
+		if (srcID < 0 || srcID >= MAXMAP ||
+			dstID < 0 || dstID >= MAXMAP)
+			continue;
+
 		Component* src = idMap[srcID];
 		Component* dst = idMap[dstID];
 
-		if (!src || !dst) continue;
+		if (!src || !dst)
+			continue;
 
 		OutputPin* srcPin = nullptr;
 		InputPin* dstPin = nullptr;
 
+		// مصدر السلك لازم Gate أو Switch (كله Gate عندك)
 		if (Gate* g = dynamic_cast<Gate*>(src))
 			srcPin = g->GetOutputPin();
 
+		// الطرف المستقبل
 		if (Gate* g = dynamic_cast<Gate*>(dst))
 			dstPin = g->GetInputPin(pinNo - 1);
 		else if (LED* L = dynamic_cast<LED*>(dst))
 			dstPin = L->GetInputPin();
 
+		if (!srcPin || !dstPin) continue;
+
 		GraphicsInfo gfx;
 		gfx.x1 = gfx.y1 = gfx.x2 = gfx.y2 = 0;
 
 		Connection* conn = new Connection(gfx, srcPin, dstPin);
-
 		CompList[CompCount++] = conn;
 	}
 }
