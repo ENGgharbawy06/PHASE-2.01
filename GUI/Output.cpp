@@ -356,6 +356,11 @@ void Output::DrawString(int x, int y, string msg) const
 	pWind->DrawString(x, y, msg);
 }
 
+void Output::DrawLabel(const GraphicsInfo& GfxInfo, const std::string& txt)
+{
+	pWind->DrawString(GfxInfo.x1, GfxInfo.y1, txt);
+}
+
 Output::~Output()
 {
 	delete pWind;
