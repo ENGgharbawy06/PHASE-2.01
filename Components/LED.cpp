@@ -2,18 +2,18 @@
 
 LED::LED(const GraphicsInfo& r_GfxInfo, int r_FanOut) : Component(r_GfxInfo)
 {
-	// Must associate this Pin with the component so the Connection class can link to it
+	// Associate the input pin with this component
 	m_InputPin.setComponent(this);
 }
 
 void LED::Operate()
 {
-	// Empty function: LED operation is purely visual (handled in Draw)
+	// LED has no logical operation affecting outputs, it's visual.
 }
 
 void LED::Draw(Output* pOut)
 {
-	// Logic: If input pin is HIGH, draw the Highlighted image (Lit up)
+	// If input pin is HIGH, draw the Highlighted image (Lit up)
 	// Otherwise, draw the normal image (Dark)
 	if (m_InputPin.getStatus() == HIGH)
 	{
@@ -25,10 +25,9 @@ void LED::Draw(Output* pOut)
 	}
 }
 
-// Since the LED is an output component, it has no output pin.
 int LED::GetOutPinStatus()
 {
-	return -1;
+	return -1; // LED has no output pin
 }
 
 int LED::GetInputPinStatus(int n)
@@ -36,7 +35,6 @@ int LED::GetInputPinStatus(int n)
 	return m_InputPin.getStatus();
 }
 
-// Set status of the input pin (used by the Connection class)
 void LED::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPin.setStatus(s);
@@ -44,10 +42,9 @@ void LED::setInputPinStatus(int n, STATUS s)
 
 Component* LED::Clone(const GraphicsInfo& gfx) const
 {
-	return new LED(gfx, 1); // Pass dummy fanout
+	return new LED(gfx, 1);
 }
 
-// IMPLEMENTATION of the function declared in .h
 InputPin* LED::GetInputPin()
 {
 	return &m_InputPin;
