@@ -18,5 +18,10 @@ class AND3 :public Gate
 	virtual ~AND3();
 	void SetGraphicsInfo(GraphicsInfo NewGfx);
 
+
+	// ====== REQUIRED FOR SAVE/LOAD (NO LOGIC CHANGE) ======
+	virtual void Save(ofstream& out) override;
+	virtual void Load(ifstream& in) override;
+	// =======================================================
 };
 #endif

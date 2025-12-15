@@ -73,6 +73,41 @@ Component* AND3::Clone(const GraphicsInfo& newGfx) const
 
 }
 
+void AND3::Save(ofstream& out)
+{
+	out << "AND3 "
+		<< GetID() << " "
+		<< (GetLabel() == "" ? "$" : GetLabel()) << " "
+		<< m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+
+
+void AND3::Load(ifstream& in)
+{
+	int id, x, y;
+	string lbl;
+
+	in >> id >> lbl >> x >> y;
+
+	SetID(id);
+	if (lbl != "$")
+		SetLabel(lbl);
+
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+
+	m_GfxInfo.x2 = x + UI.AND3_Width;
+	m_GfxInfo.y2 = y + UI.AND3_Height;
+
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
+	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+}
+
+
+
+
 AND3::~AND3()
 {
 }

@@ -76,3 +76,34 @@ void AND2::SetGraphicsInfo(GraphicsInfo NewGfx)
 	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
 	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }
+
+void AND2::Save(ofstream& out)
+{
+	out << "AND2 "
+		<< GetID() << " "
+		<< (GetLabel() == "" ? "$" : GetLabel()) << " "
+		<< m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+void AND2::Load(ifstream& in)
+{
+	int id, x, y;
+	string lbl;
+
+	in >> id >> lbl >> x >> y;
+
+	SetID(id);
+	if (lbl != "$")
+		SetLabel(lbl);
+
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+
+	// حجم ال AND2 حسب UI عندك
+	m_GfxInfo.x2 = x + UI.AND2_Width;
+	m_GfxInfo.y2 = y + UI.AND2_Height;
+
+	// إعادة ضبط أماكن Pins
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+}
