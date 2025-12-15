@@ -140,6 +140,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case ADD_LABEL:
 		pAct = new AddLabel(this);
+		break;
 
 			/*case COPY:
 				pAct = new CopyAction(this);
