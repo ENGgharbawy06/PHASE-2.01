@@ -229,9 +229,9 @@ void Output::DrawLED(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
 	if(sel)
-		GateImage = "..\\Images\\Gates\\Gate_LED_Hi.jpg";
+		GateImage = "..\\Images\\Gates\\LED_Hi.jpg";
 	else
-		GateImage = "..\\Images\\Gates\\Gate_LED.jpg";
+		GateImage = "..\\Images\\Gates\\LED.jpg";
 
 
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.LED_Width, UI.LED_Height);
