@@ -17,6 +17,7 @@ C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\SwitchToDesign.cpp;C
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\SwitchToSim.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\SwitchToSim.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\ChangeSwitch.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\ChangeSwitch.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\CreateTruthTable.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\CreateTruthTable.obj
+C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\Validate.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Validate.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\RedoAction.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\RedoAction.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\Simulate.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Simulate.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\CMUgraphicsLib\auxil.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\auxil.obj
@@ -65,6 +66,7 @@ C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Components\XOR3.cpp;C:\Users
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Components\XNOR2.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\XNOR2.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Components\BUFF.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\BUFF.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Components\INV.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\INV.obj
+C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Components\Switch.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Switch.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Components\Component.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Component.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Components\Connection.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Connection.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Components\Gate.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Gate.obj
