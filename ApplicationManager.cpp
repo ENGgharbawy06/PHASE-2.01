@@ -22,8 +22,6 @@
 //#include "Actions\ActionDelete.h"
 //#include "Actions\PasteAction.h"
 //#include "Actions\CutAction.h"
-//
-//
 #include "Actions/SwitchToSim.h"
 #include "Actions/SwitchToDesign.h"
 #include "Actions/Simulate.h"
@@ -32,7 +30,7 @@
 #include "Actions/CreateTruthTable.h"
 #include "Actions/Probing.h"
 
-//#include "Actions\AddLabel.h"
+#include "Actions\AddLabel.h"
 
 
 
@@ -139,6 +137,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case REDO:
 		pAct = new RedoAction(this);
+		break;
+	case ADD_LABEL:
+		pAct = new AddLabel(this);
 		break;
 
 			/*case COPY:

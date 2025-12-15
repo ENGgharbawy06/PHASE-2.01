@@ -101,7 +101,9 @@ enum BottomMenuItem
 	ITM_paste_B,
 	ITM_cut_B,
 	ITM_Move,
+	ITM_Label,
 	ITM_BTM_CNT
+	
 	
 	
 };

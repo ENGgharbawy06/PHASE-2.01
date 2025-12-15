@@ -36,7 +36,7 @@ public:
 	void DrawINV(GraphicsInfo r_GfxInfo, bool selected = false) const;
 	void DrawBUFF(GraphicsInfo r_GfxInfo, bool selected = false) const;
 	void DrawSWITCH(GraphicsInfo r_GfxInfo, bool selected=false) const;
-	void DrawLabel(const GraphicsInfo& GfxInfo, const std::string& txt);
+	void DrawLabel(const GraphicsInfo& GfxInfo, const std::string& txt)const;
 
 	// Draws Connection
 	void DrawConnection(GraphicsInfo r_GfxInfo, bool selected = false) const;
