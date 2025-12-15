@@ -1,80 +1,93 @@
 ﻿#include "NOR2.h"
 
-
-NOR2::NOR2(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(2, r_FanOut)
+NOR2::NOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) : Gate(2, r_FanOut)
 {
-	m_GfxInfo.x1 = r_GfxInfo.x1;
-	m_GfxInfo.y1 = r_GfxInfo.y1;
-	m_GfxInfo.x2 = r_GfxInfo.x2;
-	m_GfxInfo.y2 = r_GfxInfo.y2;	
+    m_GfxInfo.x1 = r_GfxInfo.x1;
+    m_GfxInfo.y1 = r_GfxInfo.y1;
+    m_GfxInfo.x2 = r_GfxInfo.x2;
+    m_GfxInfo.y2 = r_GfxInfo.y2;
 
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
-	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+    m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+    m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }
 
 void NOR2::SetGraphicsInfo(GraphicsInfo NewGfx)
 {
-	Component::SetGraphicsInfo(NewGfx);
+    Component::SetGraphicsInfo(NewGfx);
 
-	m_GfxInfo.x1 = NewGfx.x1;
-	m_GfxInfo.y1 = NewGfx.y1;
-	m_GfxInfo.x2 = NewGfx.x2;
-	m_GfxInfo.y2 = NewGfx.y2;
-
-	// Pin 1 (Top)
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
-	// Pin 2 (Bottom)
-	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
-	
+    // Pin 1 (Top)
+    m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+    // Pin 2 (Bottom)
+    m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }
 
 void NOR2::Operate()
 {
-	STATUS in1 = m_InputPins[0].getStatus();
-	STATUS in2 = m_InputPins[1].getStatus();
+    STATUS in1 = m_InputPins[0].getStatus();
+    STATUS in2 = m_InputPins[1].getStatus();
 
-	if (in1 == LOW && in2 == LOW) {
-		m_OutputPin.setStatus(HIGH);
-	} else {
-		m_OutputPin.setStatus(LOW);
-	}
+    if (in1 == LOW && in2 == LOW)
+        m_OutputPin.setStatus(HIGH);
+    else
+        m_OutputPin.setStatus(LOW);
 }
 
-
-// Function Draw
-// Draws 2-input NOR gate
 void NOR2::Draw(Output* pOut)
 {
-	//Call output class and pass gate drawing info to it.
-	pOut->DrawNOR2(m_GfxInfo, selected);
+    pOut->DrawNOR2(m_GfxInfo, selected);
 }
 
-//returns status of outputpin
 int NOR2::GetOutPinStatus()
 {
-	return m_OutputPin.getStatus();
+    return m_OutputPin.getStatus();
 }
 
-
-//returns status of Inputpin #n
 int NOR2::GetInputPinStatus(int n)
 {
-	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
+    return m_InputPins[n - 1].getStatus();
 }
 
-//Set status of an input pin ot HIGH or LOW
 void NOR2::setInputPinStatus(int n, STATUS s)
 {
-	m_InputPins[n - 1].setStatus(s);
+    m_InputPins[n - 1].setStatus(s);
 }
-
-
 
 Component* NOR2::Clone(const GraphicsInfo& newGfx) const
 {
-	return new NOR2(newGfx, NOR2_FANOUT);
+    return new NOR2(newGfx, NOR2_FANOUT);
 }
 
-NOR2::~NOR2() 
+void NOR2::Save(ofstream& out)
+{
+    out << "NOR2 "
+        << GetID() << " "
+        << (GetLabel() == "" ? "$" : GetLabel()) << " "
+        << m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+void NOR2::Load(ifstream& in)
+{
+    int id, x, y;
+    string lbl;
+
+    in >> id >> lbl >> x >> y;
+
+    SetID(id);
+    if (lbl != "$")
+        SetLabel(lbl);
+
+    m_GfxInfo.x1 = x;
+    m_GfxInfo.y1 = y;
+
+    // الحجم الحقيقي للـ NOR2 حسب UI
+    m_GfxInfo.x2 = x + UI.NOR2_Width;
+    m_GfxInfo.y2 = y + UI.NOR2_Height;
+
+    // Pins
+    m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+    m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+}
+
+NOR2::~NOR2()
 {
 }

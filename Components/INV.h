@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Gate.h"
 class INV : public Gate
 {
@@ -12,4 +12,8 @@ class INV : public Gate
 	virtual Component* Clone(const GraphicsInfo& newGfx) const override; // Clone function to create a copy of the component
 	virtual ~INV();
 	void SetGraphicsInfo(GraphicsInfo NewGfx);
+	
+	// ⭐⭐⭐
+	virtual void Save(ofstream& out);
+	virtual void Load(ifstream& in); 
 };

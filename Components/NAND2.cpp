@@ -64,6 +64,41 @@ Component* NAND2::Clone(const GraphicsInfo& newGfx) const
 }
 
 
+void NAND2::Save(ofstream& out)
+{
+	out << "NAND2 "
+		<< GetID() << " "
+		<< (GetLabel() == "" ? "$" : GetLabel()) << " "
+		<< m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+void NAND2::Load(ifstream& in)
+{
+	int id, x, y;
+	string lbl;
+
+	in >> id >> lbl >> x >> y;
+
+	SetID(id);
+
+	if (lbl != "$")
+		SetLabel(lbl);
+
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+
+	// الحجم الحقيقي للـ NAND2 حسب UI
+	m_GfxInfo.x2 = x + UI.NAND2_Width;
+	m_GfxInfo.y2 = y + UI.NAND2_Height;
+
+	// ضبط أماكن الـ Pins
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+}
+
+
+
+
 NAND2::~NAND2()
 {
 }

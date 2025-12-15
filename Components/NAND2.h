@@ -19,6 +19,9 @@ public:
 	void SetGraphicsInfo(GraphicsInfo NewGfx);
 	virtual ~NAND2();
 
+	virtual void Save(ofstream& out);
+	virtual void Load(ifstream& in);
+
 
 };
 

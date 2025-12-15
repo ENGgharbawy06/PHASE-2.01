@@ -1,4 +1,4 @@
-#include "INV.h"
+﻿#include "INV.h"
 
 INV::INV(const GraphicsInfo &r_GfxInfo, int r_FanOut) :Gate(1, r_FanOut)
 {
@@ -55,6 +55,43 @@ Component* INV::Clone(const GraphicsInfo& newGfx) const
 {
 	return new INV(newGfx, INV_FANOUT);
 }
+
+
+void INV::Save(ofstream& out)
+{
+	out << "INV "
+		<< GetID() << " "
+		<< (GetLabel() == "" ? "$" : GetLabel()) << " "
+		<< m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+
+
+void INV::Load(ifstream& in)
+{
+	int id, x, y;
+	string lbl;
+
+	in >> id >> lbl >> x >> y;
+
+	SetID(id);
+	if (lbl != "$")
+		SetLabel(lbl);
+
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+
+	// حجم الـ INV حسب UI
+	m_GfxInfo.x2 = x + UI.INV_Width;
+	m_GfxInfo.y2 = y + UI.INV_Height;
+
+	// pin الوحيد
+	m_InputPins[0].setPosition(
+		m_GfxInfo.x1,
+		(m_GfxInfo.y1 + m_GfxInfo.y2) / 2
+	);
+}
+
 
 
 INV::~INV()
