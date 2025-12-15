@@ -21,6 +21,7 @@
 		virtual Component* Clone(const GraphicsInfo& newGfx) const override; // Clone function to create a copy of the component
 		virtual int GetInputPinCount(); //returns the count of input pins for the NOR gate
 
+		void SetGraphicsInfo(GraphicsInfo NewGfx);
 	};
 
 #endif

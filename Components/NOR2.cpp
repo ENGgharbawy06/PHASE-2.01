@@ -1,4 +1,4 @@
-#include "NOR2.h"
+﻿#include "NOR2.h"
 
 
 NOR2::NOR2(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(2, r_FanOut)
@@ -6,7 +6,26 @@ NOR2::NOR2(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(2, r_FanOut)
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
-	m_GfxInfo.y2 = r_GfxInfo.y2;
+	m_GfxInfo.y2 = r_GfxInfo.y2;	
+
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+}
+
+void NOR2::SetGraphicsInfo(GraphicsInfo NewGfx)
+{
+	Component::SetGraphicsInfo(NewGfx);
+
+	m_GfxInfo.x1 = NewGfx.x1;
+	m_GfxInfo.y1 = NewGfx.y1;
+	m_GfxInfo.x2 = NewGfx.x2;
+	m_GfxInfo.y2 = NewGfx.y2;
+
+	// Pin 1 (Top)
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+	// Pin 2 (Bottom)
+	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+	
 }
 
 void NOR2::Operate()

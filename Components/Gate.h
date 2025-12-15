@@ -25,6 +25,7 @@ public:
 	bool IsGate() const { return true; } // is this a gate ?
 	OutputPin* GetOutputPin() { return &m_OutputPin; }
 	int GetInputPinCount() const { return m_Inputs; }
+	
 
 };
 
