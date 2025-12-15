@@ -1,4 +1,4 @@
-#include "AddConnection.h"
+﻿#include "AddConnection.h"
 #include "..\ApplicationManager.h"
 
 AddConnection::AddConnection(ApplicationManager* pApp)
@@ -59,6 +59,25 @@ void AddConnection::ReadActionParameters()
 
 	DstGate = static_cast<Gate*>(pComp);
 
+	if (SrcGate == DstGate)
+	{
+		pOut->PrintMsg("Error: Cannot connect a gate to itself (Feedback Loop).");
+		SrcGate = nullptr;
+		SrcPin = nullptr;
+		DstGate = nullptr; 
+		return;
+	}
+
+	if (DstGate->GetGraphicsInfo().x1 < SrcGate->GetGraphicsInfo().x1)
+	{
+		pOut->PrintMsg("Error: Destination is behind Source. Please move it forward to connect.");
+
+		// تصفير المؤشرات لإلغاء العملية
+		SrcGate = nullptr;
+		SrcPin = nullptr;
+		DstGate = nullptr;
+		return;
+	}
 	// pick first free input pin
 	DstPin = nullptr;
 	for (int i = 0; i < DstGate->GetInputPinCount(); i++)

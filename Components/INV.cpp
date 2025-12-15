@@ -6,6 +6,16 @@ INV::INV(const GraphicsInfo &r_GfxInfo, int r_FanOut) :Gate(1, r_FanOut)
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
 	m_GfxInfo.y2 = r_GfxInfo.y2;
+
+	m_InputPins[0].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
+}
+
+void INV::SetGraphicsInfo(GraphicsInfo NewGfx)
+{
+	Component::SetGraphicsInfo(NewGfx);
+
+	// Pin is in the middle
+	m_InputPins[0].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
 }
 
 void INV::Operate()
