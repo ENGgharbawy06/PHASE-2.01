@@ -16,7 +16,6 @@
 #include "Actions\AddConnection.h"
 #include "Actions\AddSwitch.h"
 #include "Actions\Move.h"
-#include "Actions\Simulate.h"
 #include "Actions\UndoAction.h"
 #include "Actions\RedoAction.h"
 //#include "Actions\CopyAction.h"
