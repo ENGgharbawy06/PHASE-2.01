@@ -1,5 +1,7 @@
 ﻿#include "AddConnection.h"
 #include "..\ApplicationManager.h"
+#include "..\Components\Gate.h"
+#include "..\Components\Connection.h"
 
 AddConnection::AddConnection(ApplicationManager* pApp)
     : Action(pApp)
@@ -72,7 +74,6 @@ void AddConnection::ReadActionParameters()
 	{
 		pOut->PrintMsg("Error: Destination is behind Source. Please move it forward to connect.");
 
-		// تصفير المؤشرات لإلغاء العملية
 		SrcGate = nullptr;
 		SrcPin = nullptr;
 		DstGate = nullptr;
@@ -125,6 +126,8 @@ void AddConnection::Execute()
 	// Connect the pins
 	SrcPin->ConnectTo(pConn);
 	DstPin->connect();  // Mark input pin as connected
+
+	DstPin->setConnection(pConn);
 }
 AddConnection::~AddConnection()
 {

@@ -5,7 +5,7 @@ InputPin::InputPin()
 {
 	isConnected = false;
 	pComp = nullptr;  // Initialize to nullptr
-
+	m_Connection = nullptr;
 	m_X = 0;
 	m_Y = 0;
 }
@@ -38,7 +38,19 @@ bool InputPin::connect()
 void InputPin::disconnect()
 {
 	isConnected = false;
+	m_Connection = nullptr;
 }
+
+void InputPin::setConnection(Connection* pConn)
+{
+	m_Connection = pConn;
+}
+
+Connection* InputPin::getConnection() const
+{
+	return m_Connection;
+}
+
 
 int InputPin::getPositionX() const
 {
