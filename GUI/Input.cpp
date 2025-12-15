@@ -14,10 +14,25 @@ Input::Input(window* pW)
 
 }
 
-void Input::GetPointClicked(int &x, int &y)
+void Input::GetPointClicked(int& x, int& y)
 {
-	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+	char key;
+
+	// Detect ENTER key instead of mouse click
+	if (pWind->GetKeyPress(key))
+	{
+		if (key == 13) // ENTER
+		{
+			x = -1;
+			y = -1;
+			return;
+		}
+	}
+
+	// Otherwise normal mouse click
+	pWind->WaitMouseClick(x, y);
 }
+
 
 string Input::GetString(Output *pOut)
 {

@@ -1,0 +1,87 @@
+#include "Delete.h"
+#include "../ApplicationManager.h"
+#include "../GUI/Input.h"
+#include "../GUI/Output.h"
+
+Delete::Delete(ApplicationManager* pApp)
+    : Action(pApp)
+{
+    DeletedCount = 0;
+}
+
+void Delete::ReadActionParameters()
+{
+    Output* pOut = pManager->GetOutput();
+    Input* pIn = pManager->GetInput();
+
+    pOut->PrintMsg("Delete Mode: Click components to select, then press ENTER...");
+
+    // clear old selection
+    pManager->UnselectAll();
+
+    int x, y;
+
+    while (true)
+    {
+        pIn->GetPointClicked(x, y);
+
+        // ENTER key = x = y = -1 from modified GetPointClicked
+        if (x == -1 && y == -1)
+            break;
+
+        Component* c = pManager->GetComponentAt(x, y);
+        if (c)
+        {
+            c->SetSelected(!c->IsSelected());
+            pManager->UpdateInterface();
+        }
+    }
+
+    pOut->ClearStatusBar();
+}
+
+void Delete::Execute()
+{
+    ReadActionParameters();
+
+    DeletedCount = 0;
+
+    int count = pManager->GetCompCount();
+
+    for (int i = 0; i < count; i++)
+    {
+        Component* c = pManager->GetComponent(i);
+
+        if (c && c->IsSelected())
+        {
+            DeletedArray[DeletedCount++] = c;  // save for undo
+
+            pManager->DeleteComponent(c);
+
+            i--;      // because array shifted left
+            count--;
+        }
+    }
+
+    pManager->UpdateInterface();
+}
+
+void Delete::Undo()
+{
+    for (int i = 0; i < DeletedCount; i++)
+    {
+        pManager->AddComponent(DeletedArray[i]);
+    }
+
+    pManager->UpdateInterface();
+}
+
+void Delete::Redo()
+{
+    for (int i = 0; i < DeletedCount; i++)
+    {
+        pManager->DeleteComponent(DeletedArray[i]);
+    }
+
+    pManager->UpdateInterface();
+}

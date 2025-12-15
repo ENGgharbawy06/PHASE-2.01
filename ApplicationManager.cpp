@@ -21,7 +21,7 @@
 #include "Actions\UndoAction.h"
 #include "Actions\RedoAction.h"
 //#include "Actions\CopyAction.h"
-//#include "Actions\ActionDelete.h"
+#include "Actions\Delete.h"
 //#include "Actions\PasteAction.h"
 //#include "Actions\CutAction.h"
 
@@ -156,6 +156,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case LOAD:
 		pAct = new LoadAction(this);
 		break;
+	case DEL:
+		pAct = new Delete(this);
+		break;
+
 
 			/*case COPY:
 				pAct = new CopyAction(this);
