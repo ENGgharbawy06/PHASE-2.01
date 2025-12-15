@@ -145,6 +145,7 @@
 	<ClCompile Include="Actions\SwitchToSim.cpp" />
 	<ClCompile Include="Actions\ChangeSwitch.cpp" />
 	<ClCompile Include="Actions\CreateTruthTable.cpp" />
+	<ClCompile Include="Actions\Switch.cpp" />
 	<ClCompile Include="Actions\RedoAction.cpp" />
 	<ClCompile Include="Actions\Simulate.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
