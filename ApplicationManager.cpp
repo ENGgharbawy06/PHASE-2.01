@@ -467,16 +467,116 @@ void ApplicationManager::ClearAll()
 
 
 
+Component* ApplicationManager::CreateComponentByType(const string& type, const GraphicsInfo& gfx)
+{
+	if (type == "SWTCH")
+		return new Switch(gfx, SWITCH_FANOUT);
+
+	if (type == "LED")
+		return new LED(gfx);
+
+	if (type == "AND2")
+		return new AND2(gfx, AND2_FANOUT);
+
+	// TODO: لما تبعتلي باقي الجيتات هضيفها لك هنا
+
+	return nullptr;
+}
+
+
+void ApplicationManager::Save(ofstream& out)
+{
+	int realCount = 0;
+
+	for (int i = 0; i < CompCount; i++)
+		if (dynamic_cast<Connection*>(CompList[i]) == nullptr)
+			realCount++;
+
+	out << realCount << "\n";
+
+	// Save components
+	for (int i = 0; i < CompCount; ++i)
+		if (!dynamic_cast<Connection*>(CompList[i]))
+			CompList[i]->Save(out);
+
+	out << "Connections\n";
+
+	// Save connections ONLY
+	for (int i = 0; i < CompCount; ++i)
+		if (auto* C = dynamic_cast<Connection*>(CompList[i]))
+			C->Save(out);
+
+	out << "-1\n";
+}
 
 
 
+void ApplicationManager::Load(ifstream& in)
+{
+	ClearAll();
 
+	int count;
+	in >> count;
 
+	vector<Component*> idMap;
+	idMap.resize(count + 20, nullptr);
 
+	for (int i = 0; i < count; i++)
+	{
+		string type;
+		in >> type;
 
+		GraphicsInfo gfx;
+		gfx.x1 = gfx.y1 = gfx.x2 = gfx.y2 = 0;
 
+		Component* comp = CreateComponentByType(type, gfx);
+		if (!comp) continue;
 
+		comp->Load(in);
+		int id = comp->GetID();
 
+		idMap[id] = comp;
+
+		CompList[CompCount++] = comp;
+	}
+
+	string c;
+	in >> c; // should be "Connections"
+
+	while (true)
+	{
+		int srcID;
+		in >> srcID;
+		if (srcID == -1)
+			break;
+
+		int dstID, pinNo;
+		in >> dstID >> pinNo;
+
+		Component* src = idMap[srcID];
+		Component* dst = idMap[dstID];
+
+		if (!src || !dst) continue;
+
+		OutputPin* srcPin = nullptr;
+		InputPin* dstPin = nullptr;
+
+		if (Gate* g = dynamic_cast<Gate*>(src))
+			srcPin = g->GetOutputPin();
+
+		if (Gate* g = dynamic_cast<Gate*>(dst))
+			dstPin = g->GetInputPin(pinNo - 1);
+		else if (LED* L = dynamic_cast<LED*>(dst))
+			dstPin = L->GetInputPin();
+
+		GraphicsInfo gfx;
+		gfx.x1 = gfx.y1 = gfx.x2 = gfx.y2 = 0;
+
+		Connection* conn = new Connection(gfx, srcPin, dstPin);
+
+		CompList[CompCount++] = conn;
+	}
+}
 
 
 
