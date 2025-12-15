@@ -1,5 +1,5 @@
 #include "Label.h"
-#include "Output.h"
+#include "..\GUI\Output.h"
 
 Label::Label(const GraphicsInfo& r_GfxInfo, const std::string& txt)
 {
@@ -21,4 +21,13 @@ std::string Label::GetText() const
 {
     return m_Text;
 }
+
+int Label::GetOutPinStatus() { return -1; }
+int Label::GetInputPinStatus(int n) { return -1; }
+void Label::setInputPinStatus(int n, STATUS s) {}
+Component* Label::Clone(const GraphicsInfo& newGfx) const
+{
+    return new Label(newGfx, m_Text);
+}
+
 

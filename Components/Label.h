@@ -13,10 +13,15 @@ public:
     Label(const GraphicsInfo& r_GfxInfo, const std::string& txt);
 
     virtual void Draw(Output* pOut) override;
-    virtual void Operate() override {}   // Label لا تعمل operate
+    virtual void Operate() override {}   
 
     void SetText(const std::string& txt);
     std::string GetText() const;
+    virtual int GetOutPinStatus() override;
+    virtual int GetInputPinStatus(int n) override;
+    virtual void setInputPinStatus(int n, STATUS s) override;
+	virtual Component* Clone(const GraphicsInfo& newGfx) const override;
+
 };
 
 #endif

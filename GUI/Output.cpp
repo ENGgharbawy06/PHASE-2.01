@@ -118,6 +118,7 @@ void Output::CreateBottomToolBar() const
 	BottomItemImages[ITM_copy_B] = "..\\Images\\Menu\\Copy.jpg";
 	BottomItemImages[ITM_cut_B] = "..\\Images\\Menu\\cut.jpg";
 	BottomItemImages[ITM_Move] = "..\\Images\\Menu\\Move.jpg";
+	BottomItemImages[ITM_Label] = "..\\Images\\Menu\\Label.jpg";
 
 	
 	int y = UI.height - UI.StatusBarHeight - UI.ToolBarHeight;
@@ -356,10 +357,17 @@ void Output::DrawString(int x, int y, string msg) const
 	pWind->DrawString(x, y, msg);
 }
 
-void Output::DrawLabel(const GraphicsInfo& GfxInfo, const std::string& txt)
+void Output::DrawLabel(const GraphicsInfo& GfxInfo, const std::string& txt) const
 {
-	pWind->DrawString(GfxInfo.x1, GfxInfo.y1, txt);
+	int x = GfxInfo.x1;
+	int y = GfxInfo.y1 - 20; // Position label above the component
+	pWind->SetPen(UI.MsgColor);
+	pWind->SetFont(15, BOLD, BY_NAME, "Arial");
+	pWind->DrawString(x, y, txt);
+
 }
+
+
 
 Output::~Output()
 {
