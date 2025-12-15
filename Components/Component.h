@@ -3,12 +3,18 @@
 
 #include "..\Defs.h"
 #include "..\GUI\Output.h"
+#include <fstream>
+using std::ofstream;
+using std::ifstream;
+using std::string;
+
 
 //Base class for classes Gate, Switch, and LED.
 class Component
 {
 private:
 	string m_Label;
+	int m_ID;
 protected:
 	GraphicsInfo m_GfxInfo;	//The parameters required to draw a component
 	bool selected;
@@ -26,6 +32,17 @@ public:
 	
 	virtual void SetSelected(bool select) { selected = select; }
 	virtual bool IsSelected() const { return selected; }
+
+
+	void SetLabel(const string& lbl) { m_Label = lbl; }
+	string GetLabel() const { return m_Label; }
+
+	void SetID(int id) { m_ID = id; }
+	int GetID() const { return m_ID; }
+	virtual void Save(ofstream& out) = 0;
+	virtual void Load(ifstream& in) = 0;
+
+
 
 	virtual bool IsInside(int x, int y) {
 

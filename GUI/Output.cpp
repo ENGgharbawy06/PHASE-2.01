@@ -105,13 +105,16 @@ void Output::CreateDesignToolBar() const
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 }
 
+
 void Output::CreateBottomToolBar() const
 {
 	// Images in the bottom menu
+	
 	string BottomItemImages[ITM_BTM_CNT];
 	BottomItemImages[ITM_UNDO_B] = "..\\Images\\Menu\\Undo.jpg";
 	BottomItemImages[ITM_REDO_B] ="..\\Images\\Menu\\Redo.jpg";
 	BottomItemImages[ITM_SAVE_B] = "..\\Images\\Menu\\Save.jpg";
+	BottomItemImages[ITM_LOAD_B] = "..\\Images\\Menu\\Load.jpg";
 	BottomItemImages[ITM_EDIT_B] = "..\\Images\\Menu\\Edit.jpg";
 	BottomItemImages[ITM_delete_B] ="..\\Images\\Menu\\delete.jpg";
 	BottomItemImages[ITM_paste_B] = "..\\Images\\Menu\\Paste.jpg";
@@ -175,7 +178,7 @@ void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool sel) const
 
 }
 
-void Output ::GetValidDrawingPoint(int& x, int& y, Input* pIn) const //3lshan myrsmsh 3la el menu 
+void Output ::GetValidDrawingPoint(int& x, int& y, Input* pIn) const //3lshan myrsmsh 3la el menuu
 {
 	pIn->GetPointClicked(x, y);
 	while (y < UI.ToolBarHeight+35 || y > UI.height - UI.StatusBarHeight - UI.ToolBarHeight-35 || x < 0 || x > UI.width)

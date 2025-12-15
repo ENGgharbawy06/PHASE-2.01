@@ -1,23 +1,53 @@
-#ifndef _LED_H
-#define _LED_H
+#include "LED.h"
 
-#include "Component.h"
-#include "InputPin.h"
+LED::LED(const GraphicsInfo& r_GfxInfo, int r_FanOut) : Component(r_GfxInfo)
+{
+	// Must associate this Pin with the component so the Connection class can link to it
+	m_InputPin.setComponent(this);
+}
 
-class LED : public Component {
-private:
+void LED::Operate()
+{
+}
 
-    InputPin m_InputPin; // Keep variables private
+void LED::Draw(Output* pOut)
+{
+	// Logic: If input pin is HIGH, draw the Highlighted image (Lit up)
+	// Otherwise, draw the normal image (Dark)
+	if (m_InputPin.getStatus() == HIGH)
+	{
+		pOut->DrawLED(m_GfxInfo, true); // true = draw highlighted
+	}
+	else
+	{
+		pOut->DrawLED(m_GfxInfo, false); // false = draw normal
+	}
+}
 
-public:
+// Since the LED is an output component, it has no output pin.
+int LED::GetOutPinStatus()
+{
+	return -1;
+}
 
-    LED(const GraphicsInfo& r_GfxInfo, int r_FanOut);
-    virtual void Draw(Output* pOut);
-    virtual void Operate();
+int LED::GetInputPinStatus(int n)
+{
+	return m_InputPin.getStatus();
+}
 
-    // SOLUTION: Move the function here!
-    virtual InputPin* GetInputPin();
-};
+// Set status of the input pin (used by the Connection class)
+void LED::setInputPinStatus(int n, STATUS s)
+{
+	m_InputPin.setStatus(s);
+}
 
-#endif
+Component* LED::Clone(const GraphicsInfo& gfx) const
+{
+	return new LED(gfx, 1); // Pass dummy fanout
+}
 
+// IMPLEMENTATION of the function declared in .h
+InputPin* LED::GetInputPin()
+{
+	return &m_InputPin;
+}

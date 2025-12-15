@@ -117,7 +117,8 @@ ActionType Input::GetUserAction()
 			case ITM_paste_B: return PASTE;
 			case ITM_cut_B: return CUT;
 			case ITM_REDO_B: return REDO;
-			case ITM_SAVE_B: return SAVE;
+			case ITM_SAVE_B: return SAVE;                // save and load actions
+			case ITM_LOAD_B: return LOAD;
 			case ITM_delete_B: return DEL;
 			case ITM_EDIT_B: return EDIT_LABEL;
 			case ITM_Move: return MOVE;
