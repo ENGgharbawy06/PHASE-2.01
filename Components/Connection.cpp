@@ -1,4 +1,5 @@
 ﻿#include "Connection.h"
+#include "Gate.h"
 
 Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin):Component(r_GfxInfo)	
 	

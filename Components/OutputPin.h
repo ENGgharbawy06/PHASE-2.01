@@ -22,6 +22,7 @@ public:
 
 	// الدالة المسؤولة عن ربط الـ Pin بالـ Component
 	void setComponent(Component* pCmp);
+	Component* getComponent() const { return pComp; }
 
 	// دوال تحديد المكان
 	bool CanConnect() const { return m_Conn < m_FanOut; }
