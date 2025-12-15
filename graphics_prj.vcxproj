@@ -145,6 +145,7 @@
 	<ClCompile Include="Actions\SwitchToSim.cpp" />
 	<ClCompile Include="Actions\ChangeSwitch.cpp" />
 	<ClCompile Include="Actions\CreateTruthTable.cpp" />
+	<ClCompile Include="Actions\Validate.cpp" />
 	<ClCompile Include="Actions\RedoAction.cpp" />
 	<ClCompile Include="Actions\Simulate.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -193,7 +194,7 @@
     <ClCompile Include="Components\XNOR2.cpp" />
     <ClCompile Include="Components\BUFF.cpp" />
     <ClCompile Include="Components\INV.cpp" />
-<ClCompile Include="Actions\Switch.cpp" />
+	<ClCompile Include="Components\Switch.cpp" />
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\Connection.cpp" />
     <ClCompile Include="Components\Gate.cpp" />
