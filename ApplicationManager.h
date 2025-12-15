@@ -96,7 +96,7 @@ public:
 	void Load(ifstream& in);
 
 
-
+	bool CheckCollision(int newX, int newY, int newWidth, int newHeight, Component* skipComp = nullptr);
 
 
 	//destructor

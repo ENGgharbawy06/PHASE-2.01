@@ -291,6 +291,50 @@ Component* ApplicationManager::GetComponentAt(int x, int y)
 	return nullptr;
 }
 
+// ====================================================
+//            COLLISION DETECTION HELPER
+// ====================================================
+bool ApplicationManager::CheckCollision(int newX, int newY, int newWidth, int newHeight, Component* skipComp)
+{
+	// 1. Calculate the rectangle of the component we are trying to PLACE/MOVE
+	int newLeft = newX;
+	int newRight = newX + newWidth;
+	int newTop = newY;
+	int newBottom = newY + newHeight;
+
+	for (int i = 0; i < CompCount; i++)
+	{
+		Component* c = CompList[i];
+
+		// Skip invalid components or the one we are currently moving (to avoid self-collision)
+		// Also skip Connections (wires don't block placement)
+		if (c == nullptr || c == skipComp || dynamic_cast<Connection*>(c))
+			continue;
+
+		// 2. Get the rectangle of the EXISTING component in the list
+		GraphicsInfo gfx = c->GetGraphicsInfo(); // Ensure your Component class has GetGraphicsInfo()
+
+		int existingLeft = gfx.x1;
+		int existingRight = gfx.x2;
+		int existingTop = gfx.y1;
+		int existingBottom = gfx.y2;
+
+		// 3. AABB Intersection Check (The "No-Touchy" Logic)
+		// Two rectangles overlap if:
+		// (Left1 < Right2) AND (Right1 > Left2) AND (Top1 < Bottom2) AND (Bottom1 > Top2)
+
+		bool overlapX = (newLeft < existingRight) && (newRight > existingLeft);
+		bool overlapY = (newTop < existingBottom) && (newBottom > existingTop);
+
+		if (overlapX && overlapY)
+		{
+			return true; // Collision found!
+		}
+	}
+
+	return false; // Safe to place
+}
+
 ////////////////////////////////////////////////////////////////////
 // Delete a component from the list
 void ApplicationManager::DeleteComponent(Component* pComp)

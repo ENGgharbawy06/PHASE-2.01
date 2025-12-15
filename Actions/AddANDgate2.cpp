@@ -49,6 +49,14 @@ void AddANDgate2::Execute()
 	GInfo.x2 = Cx + Len/2;
 	GInfo.y1 = Cy - Wdth/2;
 	GInfo.y2 = Cy + Wdth/2;
+
+	if (pManager->CheckCollision(GInfo.x1, GInfo.y1, Len, Wdth, nullptr))
+	{
+		pManager->GetOutput()->PrintMsg("Error: Space is occupied! Cannot place component here.");
+		return; // <--- STOP here if there is a collision
+	}
+
+
 	AND2 *pAND2=new AND2(GInfo, AND2_FANOUT); 
 	pManager->AddComponent(pAND2);
 	pComp = pAND2;

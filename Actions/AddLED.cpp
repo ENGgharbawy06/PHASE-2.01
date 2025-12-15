@@ -42,6 +42,12 @@ void AddLED::Execute()
 	GInfo.y1 = Cy - Wdth / 2;
 	GInfo.y2 = Cy + Wdth / 2;
 
+	if (pManager->CheckCollision(GInfo.x1, GInfo.y1, Len, Wdth, nullptr))
+	{
+		pManager->GetOutput()->PrintMsg("Error: Space is occupied! Cannot place component here.");
+		return; // <--- STOP here if there is a collision
+	}
+
 	// Create the LED
 	// LED has 0 output fanout, but the constructor might require an integer.
 	// We pass 1 or 0 as it doesn't really matter for an Output component.

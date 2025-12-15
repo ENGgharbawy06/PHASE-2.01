@@ -43,6 +43,13 @@ void AddXORgate3::Execute()
 	GInfo.x2 = Cx + Len / 2;
 	GInfo.y1 = Cy - Wdth / 2;
 	GInfo.y2 = Cy + Wdth / 2;
+
+	if (pManager->CheckCollision(GInfo.x1, GInfo.y1, Len, Wdth, nullptr))
+	{
+		pManager->GetOutput()->PrintMsg("Error: Space is occupied! Cannot place component here.");
+		return; // <--- STOP here if there is a collision
+	}
+
 	XOR3* pA = new XOR3(GInfo, XOR3_FANOUT);
 	pManager->AddComponent(pA);
 	pComp = pA;

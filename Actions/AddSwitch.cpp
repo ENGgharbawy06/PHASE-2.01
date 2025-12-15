@@ -43,6 +43,12 @@ void AddSwitch::Execute()
 	GInfo.y1 = Cy - Wdth / 2;
 	GInfo.y2 = Cy + Wdth / 2;
 
+	if (pManager->CheckCollision(GInfo.x1, GInfo.y1, Len, Wdth, nullptr))
+	{
+		pManager->GetOutput()->PrintMsg("Error: Space is occupied! Cannot place component here.");
+		return; // <--- STOP here if there is a collision
+	}
+
 	//Create the Switch
 	Switch* pSwitch = new Switch(GInfo, SWITCH_FANOUT);
 
