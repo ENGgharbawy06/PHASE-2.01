@@ -21,6 +21,8 @@ public:
     virtual int GetInputPinStatus(int n) override;
     virtual void setInputPinStatus(int n, STATUS s) override;
 	virtual Component* Clone(const GraphicsInfo& newGfx) const override;
+    virtual void Save(ofstream& out) override;
+    virtual void Load(ifstream& in) override;
 
 };
 

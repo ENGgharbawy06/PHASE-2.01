@@ -125,3 +125,35 @@ bool Connection::IsInside(int x, int y)
 
 	return false;
 }
+
+void Connection::Save(ofstream& out)
+{
+	Component* srcComp = SrcPin->getComponent();
+	Component* dstComp = DstPin->getComponent();
+
+	if (!srcComp || !dstComp) return;
+
+	// Find which input pin number this is (1-based)
+	int pinNum = 1;
+	if (Gate* g = dynamic_cast<Gate*>(dstComp))
+	{
+		for (int i = 0; i < g->GetInputPinCount(); i++)
+		{
+			if (g->GetInputPin(i) == DstPin)
+			{
+				pinNum = i + 1;
+				break;
+			}
+		}
+	}
+
+	out << srcComp->GetID() << " "
+		<< dstComp->GetID() << " "
+		<< pinNum << "\n";
+}
+
+void Connection::Load(ifstream& in)
+{
+	// Connections are loaded in ApplicationManager::Load()
+	// This function is not used directly
+}

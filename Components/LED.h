@@ -19,6 +19,8 @@ public:
     virtual void setInputPinStatus(int n, STATUS s);
 
     virtual Component* Clone(const GraphicsInfo& newGfx) const;
+    virtual void Save(ofstream& out) override;
+    virtual void Load(ifstream& in) override;
 
     // Helper function to get the input pin pointer
     InputPin* GetInputPin();

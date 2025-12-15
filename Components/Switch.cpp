@@ -74,12 +74,6 @@ void Switch::Load(ifstream& in)
 	m_GfxInfo.x1 = x;
 	m_GfxInfo.y1 = y;
 
-	m_GfxInfo.x2 = x + UI.SWITCH_Width;
-	m_GfxInfo.y2 = y + UI.SWITCH_Height;
-
-	// switch has only output
-}
-
-Switch::~Switch()
-{
+	m_GfxInfo.x2 = x + UI.AND2_Width;  // Using AND2 dimensions as fallback
+	m_GfxInfo.y2 = y + UI.AND2_Height;
 }

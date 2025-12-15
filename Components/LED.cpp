@@ -49,3 +49,27 @@ InputPin* LED::GetInputPin()
 {
 	return &m_InputPin;
 }
+void LED::Save(ofstream& out)
+{
+	out << "LED "
+		<< GetID() << " "
+		<< (GetLabel() == "" ? "$" : GetLabel()) << " "
+		<< m_GfxInfo.x1 << " " << m_GfxInfo.y1 << "\n";
+}
+
+void LED::Load(ifstream& in)
+{
+	int id, x, y;
+	string lbl;
+
+	in >> id >> lbl >> x >> y;
+
+	SetID(id);
+	if (lbl != "$")
+		SetLabel(lbl);
+
+	m_GfxInfo.x1 = x;
+	m_GfxInfo.y1 = y;
+	m_GfxInfo.x2 = x + UI.LED_Width;
+	m_GfxInfo.y2 = y + UI.LED_Height;
+}

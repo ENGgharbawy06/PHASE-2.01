@@ -15,6 +15,8 @@
 #include "Components\Connection.h"
 #include "Actions\AddConnection.h"
 #include "Actions\AddSwitch.h"
+#include "Components\LED.h"
+#include "Components\Label.h"
 #include "Actions\Move.h"
 #include "Actions\UndoAction.h"
 #include "Actions\RedoAction.h"
@@ -497,7 +499,7 @@ Component* ApplicationManager::CreateComponentByType(const string& type, const G
 	if (type == "NAND2")
 		return new NAND2(gfx, NAND2_FANOUT);
 
-	if (type == "NOR2")                  // ← 
+	if (type == "NOR2")
 		return new NOR2(gfx, NOR2_FANOUT);
 
 	if (type == "NOR3")
@@ -520,6 +522,9 @@ Component* ApplicationManager::CreateComponentByType(const string& type, const G
 
 	if (type == "BUFF")
 		return new BUFF(gfx, BUFF_FANOUT);
+
+	if (type == "LABEL")
+		return new Label(gfx, "");
 
 	return nullptr;
 }
