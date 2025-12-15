@@ -118,7 +118,7 @@ void Output::CreateBottomToolBar() const
 	BottomItemImages[ITM_copy_B] = "..\\Images\\Menu\\Copy.jpg";
 	BottomItemImages[ITM_cut_B] = "..\\Images\\Menu\\cut.jpg";
 	BottomItemImages[ITM_Move] = "..\\Images\\Menu\\Move.jpg";
-
+	BottomItemImages[ITM_LOAD_B] = "..\\Images\\Menu\\Load.jpg";
 	
 	int y = UI.height - UI.StatusBarHeight - UI.ToolBarHeight;
 
