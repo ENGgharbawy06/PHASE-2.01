@@ -19,6 +19,7 @@ public:
 	OutputPin(int r_FanOut);
 	bool ConnectTo(Connection* r_Conn);	//connect to a new connection
 	void DisconnectAll(); //Disconnects all connections
+	bool Disconnect(Connection* r_Conn); //Disconnects a specific connection
 
 	// الدالة المسؤولة عن ربط الـ Pin بالـ Component
 	void setComponent(Component* pCmp);

@@ -2,6 +2,7 @@
 #include "../ApplicationManager.h"
 #include "../GUI/Input.h"
 #include "../GUI/Output.h"
+#include "../Components/Connection.h"
 
 Delete::Delete(ApplicationManager* pApp)
     : Action(pApp)
@@ -54,7 +55,15 @@ void Delete::Execute()
 
         if (c && c->IsSelected())
         {
+            if (c->IsConnection())
+            {
+                Connection* pConn = (Connection*)c;
+                pConn->Disconnect();
+            }
+
             DeletedArray[DeletedCount++] = c;  // save for undo
+
+            pManager->BreakConnections(c);
 
             pManager->DeleteComponent(c);
 

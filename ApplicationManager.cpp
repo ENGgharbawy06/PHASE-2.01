@@ -354,12 +354,59 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 
 ////////////////////////////////////////////////////////////////////
 // Break all connections to/from a component
-void ApplicationManager::BreakConnections(Component* comp)
+void ApplicationManager::BreakConnections(Component* pComp)
 {
 	// TODO: Implement this to disconnect all wires connected to the component
 	// For now, this is a placeholder
 	// You'll need to iterate through all connections and remove ones
 	// that are connected to this component
+	if (!pComp) return;
+
+	// 1. Get the Pins of the component we are deleting
+	OutputPin* pCompOut = pComp->GetOutputPin();
+
+	// Check up to 3 inputs (covers most gates). 
+	InputPin* pCompIn0 = pComp->GetInputPin(0);
+	InputPin* pCompIn1 = pComp->GetInputPin(1);
+	InputPin* pCompIn2 = pComp->GetInputPin(2);
+
+	// 2. Loop through all components to find WIRES
+	for (int i = 0; i < CompCount; i++)
+	{
+		Component* c = CompList[i];
+
+		// Check if this component says "I am a connection"
+		if (c->IsConnection())
+		{
+			Connection* pConn = (Connection*)c;
+
+			bool shouldDelete = false;
+
+			// --- CHECK A: Is the wire starting FROM the deleted component? ---
+			if (pCompOut != nullptr && pConn->getSourcePin() == pCompOut)
+			{
+				shouldDelete = true;
+			}
+
+			// --- CHECK B: Is the wire going TO the deleted component? ---
+			InputPin* wireDest = pConn->getDestPin();
+
+			if (wireDest != nullptr)
+			{
+				if (wireDest == pCompIn0 || wireDest == pCompIn1 || wireDest == pCompIn2)
+				{
+					shouldDelete = true;
+				}
+			}
+
+			// 3. DELETE THE WIRE IF MATCHED
+			if (shouldDelete)
+			{
+				DeleteComponent(pConn);
+				i--; // Step back index since list shifted
+			}
+		}
+	}
 }
 
 ////////////////////////////////////////////////////////////////////

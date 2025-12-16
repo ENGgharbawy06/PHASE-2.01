@@ -68,6 +68,7 @@ void AddANDgate2::Undo()
 	if (pComp != NULL)
 	{
 		// Remove it from the screen bas lesa mawoda fel memory
+		pManager->BreakConnections(pComp);
 		pManager->DeleteComponent(pComp);
 		pManager->GetOutput()->PrintMsg("Undo: Removed the AND Gate.");
 	}

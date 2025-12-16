@@ -1,4 +1,4 @@
-#include "InputPin.h"
+﻿#include "InputPin.h"
 #include "Component.h"
 
 InputPin::InputPin()
@@ -44,6 +44,14 @@ void InputPin::disconnect()
 void InputPin::setConnection(Connection* pConn)
 {
 	m_Connection = pConn;
+	if (pConn == nullptr)
+	{
+		isConnected = false; // <--- لازم تقول له خلاص مفيش توصيل
+	}
+	else
+	{
+		isConnected = true;
+	}
 }
 
 Connection* InputPin::getConnection() const

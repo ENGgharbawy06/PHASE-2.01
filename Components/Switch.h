@@ -12,9 +12,12 @@ public:
 	virtual int GetOutPinStatus();	// returns status of outputpin
 	virtual int GetInputPinStatus(int n);	// returns -1 as switch has no inputs
 	virtual void setInputPinStatus(int n, STATUS s); // does nothing
+	virtual OutputPin* GetOutputPin();
 
 	virtual Component* Clone(const GraphicsInfo& newGfx) const;
 	virtual void SetGraphicsInfo(GraphicsInfo NewGfx);
+
+
 
 	~Switch();
 	virtual void Save(ofstream& out);

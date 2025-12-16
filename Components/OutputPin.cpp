@@ -20,6 +20,23 @@ bool OutputPin::ConnectTo(Connection* r_Conn)
 	return false;
 }
 
+bool OutputPin::Disconnect(Connection* r_Conn)
+{
+	for (int i = 0; i < m_Conn; i++)
+	{
+		if (m_Connections[i] == r_Conn)
+		{
+			// لقد وجدنا السلك! لنحذفه.
+			// الطريقة: نضع آخر سلك في القائمة مكان السلك المحذوف (للملء الفراغ)
+			m_Connections[i] = m_Connections[m_Conn - 1];
+			m_Connections[m_Conn - 1] = nullptr; // تصفير المكان الأخير
+			m_Conn--; // تقليل العدد الفعلي
+			return true;
+		}
+	}
+	return false;
+}
+
 void OutputPin::DisconnectAll()
 {
 	for (int i = 0; i < m_Conn; i++)

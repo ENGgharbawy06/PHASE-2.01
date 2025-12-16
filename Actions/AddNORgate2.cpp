@@ -63,6 +63,7 @@ void AddNORgate2::Undo()
 {
 	if (pComp != nullptr)
 	{
+		pManager->BreakConnections(pComp);
 		pManager->DeleteComponent(pComp);
 		pManager->GetOutput()->PrintMsg("Undo: Removed the component.");
 	}
