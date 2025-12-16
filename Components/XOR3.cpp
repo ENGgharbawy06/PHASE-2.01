@@ -6,9 +6,10 @@ XOR3::XOR3(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(3, r_FanOut)
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
 	m_GfxInfo.y2 = r_GfxInfo.y2;
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 17);
 	m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
-	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 17);
 }
 
 void XOR3::SetGraphicsInfo(GraphicsInfo NewGfx)
@@ -16,13 +17,13 @@ void XOR3::SetGraphicsInfo(GraphicsInfo NewGfx)
 	Component::SetGraphicsInfo(NewGfx);
 
 	// Pin 1 (Top)
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 17);
 
 	// Pin 2 (Middle)
 	m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
 
 	// Pin 3 (Bottom)
-	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 17);
 }
 
 

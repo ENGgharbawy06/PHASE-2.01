@@ -7,8 +7,8 @@ XOR2::XOR2(const GraphicsInfo& r_GfxInfo, int r_FanOut) :Gate(2, r_FanOut)
 	m_GfxInfo.x2 = r_GfxInfo.x2;
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
-	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 16);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 17);
 }
 
 
@@ -19,10 +19,10 @@ void XOR2::SetGraphicsInfo(GraphicsInfo NewGfx)
 
 	// 2. تحديث إحداثيات الـ Pins بناءً على المكان الجديد
 	// Pin 1 (Top)
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 16);
 
 	// Pin 2 (Bottom)
-	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 17);
 }
 
 
