@@ -49,7 +49,7 @@ ApplicationManager::ApplicationManager()
 	SelectedComponent = nullptr;
 
 	for (int i = 0; i < MaxCompCount; i++)
-		CompList[i] = NULL;
+		CompList[i] = nullptr;
 
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
@@ -176,18 +176,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new EditLabel(this);
 		break;
 
-	//case DEL:
-	//	//TODO: Create Delete Action here
-	//	pAct = new ActionDelete(this);
-	//	break;
-
-					//case ADD_CONNECTION:
-				//	//TODO: Create AddConnection Action here
-				//	break;
-
-
-//Mariaaam lw ghlt deleteee
-
+	
 	// ====================================================
 	//                  MODE SWITCHING
 	// ====================================================
@@ -565,8 +554,7 @@ void ApplicationManager::ClearAll()
 	CompCount = 0;
 	Clipboard = nullptr;
 	SelectedComponent = nullptr;
-	// لو عندك NextID ضيف السطر دا
-	// NextID = 1;
+	
 }
 
 
@@ -653,14 +641,14 @@ void ApplicationManager::Load(ifstream& in)
 	int count;
 	in >> count;
 
-	// مصفوفة ثابتة بدل vector
+	// badal el vector
 	const int MAXMAP = 500;
 	Component* idMap[MAXMAP];
 
 	for (int i = 0; i < MAXMAP; i++)
 		idMap[i] = nullptr;
 
-	// --- تحميل الكمبوننتس ---
+	// components
 	for (int i = 0; i < count; i++)
 	{
 		string type;
@@ -672,14 +660,14 @@ void ApplicationManager::Load(ifstream& in)
 		Component* comp = CreateComponentByType(type, gfx);
 		if (!comp)
 		{
-			// لو النوع مش معروف نعدي السطر
+			// if unknown ignore 
 			int dummyID, x1, y1, x2, y2;
 			string dummyLabel;
 			in >> dummyID >> dummyLabel >> x1 >> y1 >> x2 >> y2;
 			continue;
 		}
 
-		comp->Load(in);  // يضبط: ID + label + gfx
+		comp->Load(in);  
 
 		int ID = comp->GetID();
 		if (ID >= 0 && ID < MAXMAP)
@@ -688,9 +676,9 @@ void ApplicationManager::Load(ifstream& in)
 		CompList[CompCount++] = comp;
 	}
 
-	// --- قراءة connections ---
+	// read connections 
 	string word;
-	in >> word; // المفروض "Connections"
+	in >> word; 
 
 	while (true)
 	{
@@ -716,7 +704,7 @@ void ApplicationManager::Load(ifstream& in)
 		OutputPin* srcPin = nullptr;
 		InputPin* dstPin = nullptr;
 
-		// مصدر السلك لازم Gate أو Switch (كله Gate عندك)
+		
 		if (Gate* g = dynamic_cast<Gate*>(src))
 			srcPin = g->GetOutputPin();
 
@@ -773,6 +761,7 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete OutputInterface;
 }
+
 
 
 
