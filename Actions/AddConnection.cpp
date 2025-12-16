@@ -145,6 +145,21 @@ void AddConnection::Execute()
 
 	DstPin->setConnection(pConn);
 }
+
+//Mariam//
+//void Connection::Operate()
+//{
+//	// Safety Check: Ensure pins exist to avoid crashes
+//	if (SrcPin && DstPin)
+//	{
+//		// 1. Get the status from the source (The output of the previous gate)
+//		STATUS s = (STATUS)SrcPin->getStatus();
+//
+//		// 2. Pass it to the destination (The input of the next gate)
+//		DstPin->setStatus(s);
+//	}
+//}
+
 AddConnection::~AddConnection()
 {
 }
