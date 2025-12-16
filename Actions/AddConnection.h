@@ -15,7 +15,7 @@ private:
     OutputPin* SrcPin;    // source output pin
     InputPin* DstPin;    // destination input pin
     GraphicsInfo GInfo;    // graphics info for drawing the wire
-
+    Connection* m_pConnection;
 public:
     AddConnection(ApplicationManager* pApp);
 

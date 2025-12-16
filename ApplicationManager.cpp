@@ -38,7 +38,6 @@
 #include "Actions\EditLabel.h"
 #include "Actions\AddLabel.h"
 #include <string>
-using std::string;
 
 
 
@@ -194,7 +193,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	// ====================================================
 
 	case SIM_MODE:   // User clicked "Simulation Mode" button
-		pAct = new Simulate(this);
+		pAct = new SwitchToSim(this);
 		break;
 
 	case DSN_MODE:   // User clicked "Design Mode" button
@@ -210,7 +209,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case CREATE_TRUTH_TABLE:
-		// pAct = new CreateTruthTable(this); // Uncomment if you have this action
+		 pAct = new CreateTruthTable(this); // Uncomment if you have this action
 		break;
 
 	case VALIDATE: // or ITM_VALIDATE depending on your enum
