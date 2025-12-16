@@ -49,7 +49,7 @@ ApplicationManager::ApplicationManager()
 	SelectedComponent = nullptr;
 
 	for (int i = 0; i < MaxCompCount; i++)
-		CompList[i] = NULL;
+		CompList[i] = nullptr;
 
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
