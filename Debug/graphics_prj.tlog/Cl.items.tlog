@@ -16,6 +16,9 @@ C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\AddConnection.cpp;C:
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\AddLED.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\AddLED.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\Select.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Select.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\Move.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Move.obj
+C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\CopyAction.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\CopyAction.obj
+C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\PasteAction.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\PasteAction.obj
+C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\CutAction.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\CutAction.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\UndoAction.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\UndoAction.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\SwitchToDesign.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\SwitchToDesign.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\SwitchToSim.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\SwitchToSim.obj
