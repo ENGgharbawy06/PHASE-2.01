@@ -71,6 +71,8 @@ public:
 	void SetClipboard(Component* c);
 	Component* GetClipboard() const;
 
+	void RemoveComponent(Component* pComp);
+
 	void SetSelected(Component* pComponent);
 
 	Component* GetSelected() const;
@@ -80,7 +82,6 @@ public:
 	int GetSelectedCount() const;
 	void MoveSelected(int x, int y);
 	
-	Component* GetOneSelectedComponent();
 
 	void RecordAction(Action* pAct); // Beyzawed el action lel stack (LIFO concept)
 	void ExecuteUndo();
@@ -97,7 +98,10 @@ public:
 
 
 	bool CheckCollision(int newX, int newY, int newWidth, int newHeight, Component* skipComp = nullptr);
+	Component* GetOneSelectedComponent();
 
+
+	
 
 	//destructor
 	~ApplicationManager();

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "component.h"
 #include "InputPin.h"
 #include "OutputPin.h"
@@ -22,6 +22,7 @@ public:
 	void setDestPin(InputPin *pDstPin);
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
+	virtual bool IsConnection() const;
 
 
 	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1
@@ -34,5 +35,8 @@ public:
 	virtual void Load(ifstream& in) override;
 
 	virtual bool IsInside(int x, int y) override;
+	~Connection();
+	void Disconnect(); // تفصل السلك عن الـ Pins
+	//void Reconnect();  // تعيد توصيل السلك بالـ Pins
 
 };

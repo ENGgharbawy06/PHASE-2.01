@@ -144,6 +144,9 @@
 	<ClCompile Include="Actions\AddLED.cpp" />
 	<ClCompile Include="Actions\Select.cpp" />
 	<ClCompile Include="Actions\Move.cpp" />
+	<ClCompile Include="Actions\CopyAction.cpp" />
+	<ClCompile Include="Actions\PasteAction.cpp" />
+	<ClCompile Include="Actions\CutAction.cpp" />
 	<ClCompile Include="Actions\UndoAction.cpp" />
 	<ClCompile Include="Actions\SwitchToDesign.cpp" />
 	<ClCompile Include="Actions\SwitchToSim.cpp" />

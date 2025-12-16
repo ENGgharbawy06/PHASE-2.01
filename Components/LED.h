@@ -11,6 +11,8 @@ private:
 public:
     LED(const GraphicsInfo& r_GfxInfo, int r_FanOut);
 
+    virtual InputPin* GetInputPin(int index);
+
     virtual void Operate();
     virtual void Draw(Output* pOut);
 

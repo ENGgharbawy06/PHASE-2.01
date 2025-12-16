@@ -20,10 +20,10 @@
 #include "Actions\Move.h"
 #include "Actions\UndoAction.h"
 #include "Actions\RedoAction.h"
-//#include "Actions\CopyAction.h"
+#include "Actions\CopyAction.h"
 #include "Actions\Delete.h"
-//#include "Actions\PasteAction.h"
-//#include "Actions\CutAction.h"
+#include "Actions\PasteAction.h"
+#include "Actions\CutAction.h"
 
 #include "Actions/SaveAction.h"
 #include "Actions/LoadAction.h"
@@ -161,15 +161,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 
-			/*case COPY:
-				pAct = new CopyAction(this);
-				break;*/
-				//case PASTE:
-				//	pAct = new PasteAction(this);
-				//	break;
-				//case CUT:
-				//	pAct = new CutAction(this);
-				//	break;
+	case COPY:
+		pAct = new CopyAction(this);
+		break;
+
+	case PASTE:
+		pAct = new PasteAction(this);
+		break;
+		
+	case CUT:
+		pAct = new CutAction(this);
+					break;
 
 	//case DEL:
 	//	//TODO: Create Delete Action here
@@ -255,17 +257,6 @@ void ApplicationManager::UpdateInterface()
 	/*for (int i = 0; i < ConnCount; i++)
 		ConnCount[i]->Draw(OutputInterface);*/
 }
-
-Component* ApplicationManager::GetOneSelectedComponent()
-{
-	for (int i = 0; i < CompCount; i++)
-	{
-		if (CompList[i]->IsSelected())
-			return CompList[i];
-	}
-	return nullptr;
-}
-
 Input* ApplicationManager::GetInput()
 {
 	return InputInterface;
@@ -363,12 +354,59 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 
 ////////////////////////////////////////////////////////////////////
 // Break all connections to/from a component
-void ApplicationManager::BreakConnections(Component* comp)
+void ApplicationManager::BreakConnections(Component* pComp)
 {
 	// TODO: Implement this to disconnect all wires connected to the component
 	// For now, this is a placeholder
 	// You'll need to iterate through all connections and remove ones
 	// that are connected to this component
+	if (!pComp) return;
+
+	// 1. Get the Pins of the component we are deleting
+	OutputPin* pCompOut = pComp->GetOutputPin();
+
+	// Check up to 3 inputs (covers most gates). 
+	InputPin* pCompIn0 = pComp->GetInputPin(0);
+	InputPin* pCompIn1 = pComp->GetInputPin(1);
+	InputPin* pCompIn2 = pComp->GetInputPin(2);
+
+	// 2. Loop through all components to find WIRES
+	for (int i = 0; i < CompCount; i++)
+	{
+		Component* c = CompList[i];
+
+		// Check if this component says "I am a connection"
+		if (c->IsConnection())
+		{
+			Connection* pConn = (Connection*)c;
+
+			bool shouldDelete = false;
+
+			// --- CHECK A: Is the wire starting FROM the deleted component? ---
+			if (pCompOut != nullptr && pConn->getSourcePin() == pCompOut)
+			{
+				shouldDelete = true;
+			}
+
+			// --- CHECK B: Is the wire going TO the deleted component? ---
+			InputPin* wireDest = pConn->getDestPin();
+
+			if (wireDest != nullptr)
+			{
+				if (wireDest == pCompIn0 || wireDest == pCompIn1 || wireDest == pCompIn2)
+				{
+					shouldDelete = true;
+				}
+			}
+
+			// 3. DELETE THE WIRE IF MATCHED
+			if (shouldDelete)
+			{
+				DeleteComponent(pConn);
+				i--; // Step back index since list shifted
+			}
+		}
+	}
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -695,7 +733,35 @@ void ApplicationManager::Load(ifstream& in)
 	}
 }
 
+Component* ApplicationManager::GetOneSelectedComponent()
+{
+	for (int i = 0; i < CompCount; i++)
+		if (CompList[i]->IsSelected())
+			return CompList[i];
 
+	return nullptr;
+}
+
+//////////////////////////////////////////////////////////////////
+// Remove a component from the list WITHOUT deleting it (Undo/Redo friendly)
+void ApplicationManager::RemoveComponent(Component* pComp)
+{
+	if (!pComp) return;
+
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i] == pComp)
+		{
+			// Shift remaining components
+			for (int j = i; j < CompCount - 1; j++)
+				CompList[j] = CompList[j + 1];
+
+			CompList[CompCount - 1] = nullptr;
+			CompCount--;
+			return;
+		}
+	}
+}
 
 
 ApplicationManager::~ApplicationManager()

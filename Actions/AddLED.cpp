@@ -1,4 +1,4 @@
-#include "AddLED.h"
+﻿#include "AddLED.h"
 #include "..\ApplicationManager.h"
 
 AddLED::AddLED(ApplicationManager* pApp) :Action(pApp)
@@ -19,7 +19,7 @@ void AddLED::ReadActionParameters()
 	pOut->PrintMsg("LED: Click to add an LED");
 
 	// Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	pOut->GetValidDrawingPoint(Cx, Cy, pIn);
 
 	// Clear Status Bar
 	pOut->ClearStatusBar();

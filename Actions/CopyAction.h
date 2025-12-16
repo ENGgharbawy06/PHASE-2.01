@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Action.h"
 
 class CopyAction : public Action
@@ -9,7 +9,7 @@ public:
     virtual void ReadActionParameters();
     virtual void Execute();
 
-    virtual void Undo()  {}  
-    virtual void Redo()  {} 
-
+    // Copy does NOT change the circuit → no undo/redo
+    virtual void Undo() {}
+    virtual void Redo() {}
 };

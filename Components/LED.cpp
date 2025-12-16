@@ -20,6 +20,16 @@ void LED::SetGraphicsInfo(GraphicsInfo NewGfx)
 	m_InputPin.setPosition(pinX, pinY);
 }
 
+InputPin* LED::GetInputPin(int index)
+{
+	// LED only has 1 pin at index 0
+	if (index == 0)
+	{
+		return &m_InputPin;
+	}
+	return nullptr;
+}
+
 
 void LED::Operate()
 {

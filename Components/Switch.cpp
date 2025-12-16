@@ -20,6 +20,11 @@ void Switch::Operate()
 		m_OutputPin.setStatus(LOW);
 }
 
+OutputPin* Switch::GetOutputPin()
+{
+	return &m_OutputPin;
+}
+
 void Switch::Draw(Output* pOut)
 {
 	pOut->DrawSWITCH(m_GfxInfo, selected);

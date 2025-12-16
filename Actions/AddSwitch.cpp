@@ -20,7 +20,7 @@ void AddSwitch::ReadActionParameters()
 	pOut->PrintMsg("Switch: Click to add a Switch");
 
 	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+	pOut->GetValidDrawingPoint(Cx, Cy, pIn);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();

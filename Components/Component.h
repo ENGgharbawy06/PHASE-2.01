@@ -8,6 +8,9 @@ using std::ofstream;
 using std::ifstream;
 using std::string;
 
+class InputPin;
+class OutputPin;
+
 class Component
 {
 private:
@@ -34,12 +37,17 @@ public:
 
     void SetLabel(const string& lbl) { m_Label = lbl; }
     string GetLabel() const { return m_Label; }
+    virtual bool IsConnection() const { return false; }
+    virtual OutputPin* GetOutputPin() { return nullptr; }
+    virtual InputPin* GetInputPin(int index) { return nullptr; }
 
     void SetID(int id) { m_ID = id; }
     int GetID() const { return m_ID; }
 
     virtual void Save(ofstream& out);
     virtual void Load(ifstream& in);
+
+
 
     virtual bool IsInside(int x, int y)
     {

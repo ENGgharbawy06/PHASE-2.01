@@ -10,6 +10,11 @@ Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPi
 void Connection::setSourcePin(OutputPin *pSrcPin)
 {	SrcPin = pSrcPin;	}
 
+bool Connection::IsConnection() const
+{
+	return true; // "Yes, I am a connection"
+}
+
 OutputPin* Connection::getSourcePin()
 {	return SrcPin;	}
 
@@ -126,6 +131,53 @@ bool Connection::IsInside(int x, int y)
 
 	return false;
 }
+Connection::~Connection()
+{
+	// 1. تنظيف الـ Input Pin (المدخل)
+	if (DstPin != nullptr)
+	{
+		// نخبر الـ Pin أنه لم يعد متصلاً بسلك
+		DstPin->setConnection(nullptr);
+	}
+
+	// 2. تنظيف الـ Output Pin (المخرج)
+	if (SrcPin != nullptr)
+	{
+		// نطلب من المصدر أن يحذف هذا السلك من قائمته
+		SrcPin->Disconnect(this);
+	}
+}
+
+void Connection::Disconnect()
+{
+	// تنظيف الـ Destination Pin
+	if (DstPin != nullptr)
+	{
+		DstPin->setConnection(nullptr);
+	}
+
+	// تنظيف الـ Source Pin
+	if (SrcPin != nullptr)
+	{
+		SrcPin->Disconnect(this);
+	}
+}
+
+// 2. دالة الإعادة (تستدعى عند الـ Undo)
+//void Connection::Reconnect()
+//{
+//	// إعادة ربط الـ Destination Pin
+//	if (DstPin != nullptr)
+//	{
+//		DstPin->setConnection(this);
+//	}
+//
+//	// إعادة ربط الـ Source Pin
+//	if (SrcPin != nullptr)
+//	{
+//		SrcPin->ConnectTo(this); // تأكد أن هذه الدالة موجودة في OutputPin
+//	}
+//}
 
 void Connection::Save(ofstream& out)
 {

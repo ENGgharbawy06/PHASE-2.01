@@ -17,3 +17,18 @@ Gate::Gate(int r_Inputs, int r_FanOut):m_OutputPin(r_FanOut)
 	m_OutputPin.setComponent(this);
 }
 
+OutputPin* Gate::GetOutputPin()
+{
+	return &m_OutputPin;
+}
+
+InputPin* Gate::GetInputPin(int index)
+{
+	// Safety check for array bounds
+	if (index >= 0 && index < m_Inputs)
+	{
+		return &m_InputPins[index];
+	}
+	return nullptr;
+}
+

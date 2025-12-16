@@ -1,53 +1,58 @@
 #include "PasteAction.h"
 #include "../ApplicationManager.h"
+#include "../GUI/Input.h"
+#include "../GUI/Output.h"
 #include "../Components/Component.h"
 
-// Constructor
 PasteAction::PasteAction(ApplicationManager* pApp)
-    : Action(pApp)
+    : Action(pApp), m_PastedComp(nullptr)
 {
 }
-// Execute the paste action
+
+void PasteAction::ReadActionParameters() {}
+
 void PasteAction::Execute()
 {
     Output* pOut = pManager->GetOutput();
     Input* pIn = pManager->GetInput();
 
-    // Get component from clipboard
-    Component* clip = pManager->GetClipboard();
-
-    // Check if clipboard is empty
-    if (!clip)
+    Component* pClip = pManager->GetClipboard();
+    if (!pClip)
     {
-        pOut->PrintMsg("Clipboard empty!");
+        pOut->PrintMsg("Paste failed: Clipboard is empty");
         return;
     }
 
-    // Get paste location from user click
+    pOut->PrintMsg("Click to paste component");
+
     int x, y;
     pIn->GetPointClicked(x, y);
 
-    // Set new position for pasted component (centered 100x100 box)
-    GraphicsInfo newGfx;
-    newGfx.x1 = x - 50;
-    newGfx.y1 = y - 50;
-    newGfx.x2 = x + 50;
-    newGfx.y2 = y + 50;
+    GraphicsInfo gfx = pClip->GetGraphicsInfo();
 
-    // Clone component to new location
-    Component* pasted = clip->Clone(newGfx);
+    int width = gfx.x2 - gfx.x1;
+    int height = gfx.y2 - gfx.y1;
 
-    // Validate clone succeeded
-    if (!pasted)
-    {
-        pOut->PrintMsg("Cannot paste this component");
-        return;
-    }
+    gfx.x1 = x - width / 2;
+    gfx.y1 = y - height / 2;
+    gfx.x2 = gfx.x1 + width;
+    gfx.y2 = gfx.y1 + height;
 
-    // Add to component list
-    pManager->AddComponent(pasted);
-    pOut->PrintMsg("Pasted!");
+    // CLONE happens here
+    m_PastedComp = pClip->Clone(gfx);
+    pManager->AddComponent(m_PastedComp);
+
+    pOut->PrintMsg("Component pasted");
 }
 
-// No parameters to read
-void PasteAction::ReadActionParameters() {}
+void PasteAction::Undo()
+{
+    if (m_PastedComp)
+        pManager->RemoveComponent(m_PastedComp);
+}
+
+void PasteAction::Redo()
+{
+    if (m_PastedComp)
+        pManager->AddComponent(m_PastedComp);
+}
