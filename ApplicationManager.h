@@ -82,7 +82,7 @@ public:
 	int GetSelectedCount() const;
 	void MoveSelected(int x, int y);
 	
-
+	void ExecuteCircuit();
 	void RecordAction(Action* pAct); // Beyzawed el action lel stack (LIFO concept)
 	void ExecuteUndo();
 	void ExecuteRedo();

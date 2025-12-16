@@ -193,32 +193,26 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		//                  SIMULATION ACTIONS
 		// ====================================================
 
-	case SIMULATE:   // The "Run" button inside Simulation toolbar
-		// pAct = new RunSimulation(this); // Uncomment if you have this action
+	case SIMULATE:
+		pAct = new Simulate(this);   // <--- THIS IS THE IMPORTANT CHANGE
 		break;
 
 	case CREATE_TRUTH_TABLE:
-		 pAct = new CreateTruthTable(this); // Uncomment if you have this action
+		pAct = new CreateTruthTable(this);
 		break;
 
-	case VALIDATE: // or ITM_VALIDATE depending on your enum
-
+	case VALIDATE:
 		pAct = new Validate(this);
-
 		break;
 
 	case EXIT:
-		break;
+		break;  // <--- Leave this as is
 	}
-
-	// ====================================================
-	//                  EXECUTION LOGIC
-	// ====================================================
 
 	// Execute the created action
 	if (pAct)
 	{
-		pAct->Execute(); // Execute
+		pAct->Execute();
 
 		// Handle Undo/Redo recording
 		if (pAct->isUndoable())
@@ -227,16 +221,32 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		}
 		else
 		{
-			delete pAct; // Delete non-undoable actions
+			delete pAct;
 			pAct = NULL;
 		}
 	}
+} 
+
+		
 
 
-
-
-
+void ApplicationManager::ExecuteCircuit()
+{
+	// Iterate multiple times to ensure signals propagate through all levels of the circuit
+	// (e.g., Switch -> Connection -> Gate -> Connection -> LED)
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < CompCount; j++)
+		{
+			if (CompList[j])
+				CompList[j]->Operate();
+		}
+	}
 }
+
+
+	
+
 
 
 void ApplicationManager::UpdateInterface()
@@ -630,6 +640,7 @@ void ApplicationManager::Save(ofstream& out)
 
 
 
+
 void ApplicationManager::Load(ifstream& in)
 {
 	ClearAll();
@@ -756,8 +767,3 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete OutputInterface;
 }
-
-
-
-
-
