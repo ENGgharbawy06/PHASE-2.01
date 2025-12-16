@@ -20,9 +20,9 @@
 #include "Actions\Move.h"
 #include "Actions\UndoAction.h"
 #include "Actions\RedoAction.h"
-//#include "Actions\CopyAction.h"
+#include "Actions\CopyAction.h"
 #include "Actions\Delete.h"
-//#include "Actions\PasteAction.h"
+#include "Actions\PasteAction.h"
 //#include "Actions\CutAction.h"
 
 #include "Actions/SaveAction.h"
@@ -161,12 +161,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 
-			/*case COPY:
-				pAct = new CopyAction(this);
-				break;*/
-				//case PASTE:
-				//	pAct = new PasteAction(this);
-				//	break;
+	case COPY:
+		pAct = new CopyAction(this);
+		break;
+
+	case PASTE:
+		pAct = new PasteAction(this);
+		break;
+		
 				//case CUT:
 				//	pAct = new CutAction(this);
 				//	break;
@@ -255,17 +257,6 @@ void ApplicationManager::UpdateInterface()
 	/*for (int i = 0; i < ConnCount; i++)
 		ConnCount[i]->Draw(OutputInterface);*/
 }
-
-Component* ApplicationManager::GetOneSelectedComponent()
-{
-	for (int i = 0; i < CompCount; i++)
-	{
-		if (CompList[i]->IsSelected())
-			return CompList[i];
-	}
-	return nullptr;
-}
-
 Input* ApplicationManager::GetInput()
 {
 	return InputInterface;
@@ -695,7 +686,35 @@ void ApplicationManager::Load(ifstream& in)
 	}
 }
 
+Component* ApplicationManager::GetOneSelectedComponent()
+{
+	for (int i = 0; i < CompCount; i++)
+		if (CompList[i]->IsSelected())
+			return CompList[i];
 
+	return nullptr;
+}
+
+//////////////////////////////////////////////////////////////////
+// Remove a component from the list WITHOUT deleting it (Undo/Redo friendly)
+void ApplicationManager::RemoveComponent(Component* pComp)
+{
+	if (!pComp) return;
+
+	for (int i = 0; i < CompCount; i++)
+	{
+		if (CompList[i] == pComp)
+		{
+			// Shift remaining components
+			for (int j = i; j < CompCount - 1; j++)
+				CompList[j] = CompList[j + 1];
+
+			CompList[CompCount - 1] = nullptr;
+			CompCount--;
+			return;
+		}
+	}
+}
 
 
 ApplicationManager::~ApplicationManager()
