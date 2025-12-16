@@ -9,7 +9,7 @@ public:
     virtual void ReadActionParameters();
     virtual void Execute();
 
-    // Copy does NOT change the circuit → no undo/redo
+ 
     virtual void Undo() {}
     virtual void Redo() {}
 };
