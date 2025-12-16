@@ -52,7 +52,7 @@ void CutAction::Undo()
 {
     if (!CompToCut) return;
 
-    // 🔁 Undo CUT = put component back
+    // 🔁 Undo CUT = put component bacK
     pManager->AddComponent(CompToCut);
     pManager->UpdateInterface();
 }
