@@ -36,13 +36,13 @@ void CutAction::Execute()
         return;
     }
 
-    // 1️⃣ Store SAME component in clipboard
+    // Store SAME component in clipboard
     pManager->SetClipboard(CompToCut);
 
-    // 2️⃣ Remove component from circuit (NO delete)
+    //  Remove component from circuit (NO delete)
     pManager->RemoveComponent(CompToCut);
 
-    // 3️⃣ Refresh UI
+    //  Refresh UI
     pManager->UpdateInterface();
 
     pOut->PrintMsg("Component cut!");
