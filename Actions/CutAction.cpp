@@ -48,20 +48,20 @@ void CutAction::Execute()
     pOut->PrintMsg("Component cut!");
 }
 
-void CutAction::Undo()
-{
-    if (!CompToCut) return;
-
-    // 🔁 Undo CUT = put component back
-    pManager->AddComponent(CompToCut);
-    pManager->UpdateInterface();
-}
-
-void CutAction::Redo()
-{
-    if (!CompToCut) return;
-
-    // 🔁 Redo CUT = remove it again
-    pManager->RemoveComponent(CompToCut);
-    pManager->UpdateInterface();
-}
+//void CutAction::Undo()
+//{
+//    if (!CompToCut) return;
+//
+//    // 🔁 Undo CUT = put component back
+//    pManager->AddComponent(CompToCut);
+//    pManager->UpdateInterface();
+//}
+//
+//void CutAction::Redo()
+//{
+//    if (!CompToCut) return;
+//
+//    // 🔁 Redo CUT = remove it again
+//    pManager->RemoveComponent(CompToCut);
+//    pManager->UpdateInterface();
+//}
