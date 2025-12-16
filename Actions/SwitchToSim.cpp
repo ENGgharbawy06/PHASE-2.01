@@ -23,9 +23,6 @@ void SwitchToSim::Execute()
 
 	pOut->ClearStatusBar();
 
-	// 3. Create/Refresh the bottom toolbar (if consistent across modes)
-	pOut->CreateBottomToolBar();
-
 	pManager->UpdateInterface();
 
 	pOut->PrintMsg("Switched to Simulation Mode.");

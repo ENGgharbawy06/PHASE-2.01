@@ -67,8 +67,15 @@ void Output::ClearDrawingArea() const
 {
 	pWind->SetPen(BLACK, 1);
 	pWind->SetBrush(WHITE);
-	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height -UI.ToolBarHeight- UI.StatusBarHeight); //start drawing after the left toolbar and top toolbar
-	
+
+	int yLimit = UI.height - UI.StatusBarHeight - UI.ToolBarHeight;
+
+	if (UI.AppMode == SIMULATION)
+	{
+		yLimit = UI.height - UI.StatusBarHeight;
+	}
+
+	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, yLimit);
 }
 //Draws the menu (toolbar) in the Design mode
 void Output::CreateDesignToolBar() const
