@@ -39,7 +39,7 @@ void Move::Execute()
 			pOut->PrintMsg("Move Component: Click on the new destination.");
 
 			int destX, destY;
-			pIn->GetPointClicked(destX, destY); // User clicks destination
+			pOut->GetValidDrawingPoint(destX, destY, pIn);
 
 			// Calculate the center of the component
 			GraphicsInfo GInfo = pComp->GetGraphicsInfo();
@@ -56,8 +56,9 @@ void Move::Execute()
 			// forcing flow to the 'else' block logic below is cleaner, but we duplicate for clarity:
 			pOut->PrintMsg("Move Connection: Click Reference Point, then Destination.");
 			int x1, y1, x2, y2;
-			pIn->GetPointClicked(x1, y1);
-			pIn->GetPointClicked(x2, y2);
+			pOut->GetValidDrawingPoint(x1, y1, pIn);
+			pOut->PrintMsg("Click Destination...");
+			pOut->GetValidDrawingPoint(x2, y2, pIn);
 			dx = x2 - x1;
 			dy = y2 - y1;
 		}
@@ -67,11 +68,11 @@ void Move::Execute()
 	{
 		pOut->PrintMsg("Move Selected: Click on a Reference Point (Start).");
 		int x1, y1;
-		pIn->GetPointClicked(x1, y1);
+		pOut->GetValidDrawingPoint(x1, y1, pIn);
 
 		pOut->PrintMsg("Click on the Destination Point (End).");
 		int x2, y2;
-		pIn->GetPointClicked(x2, y2);
+		pOut->GetValidDrawingPoint(x2, y2, pIn);
 
 		dx = x2 - x1;
 		dy = y2 - y1;
