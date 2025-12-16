@@ -8,11 +8,11 @@ AND3::AND3(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(3, r_FanOut)
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 
 	// Pin 1 (Top)
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 14);
 	// Pin 2 (Middle)
 	m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
 	// Pin 3 (Bottom)
-	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }
 	
 
@@ -21,13 +21,13 @@ AND3::AND3(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(3, r_FanOut)
 		Component::SetGraphicsInfo(NewGfx);
 
 		// Pin 1 (Top)
-		m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+		m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 14);
 
 		// Pin 2 (Middle)
 		m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
 
 		// Pin 3 (Bottom)
-		m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+		m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 	}
 
 void AND3::Operate()
