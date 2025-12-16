@@ -16,8 +16,8 @@ public:
     virtual void ReadActionParameters();
     virtual void Execute();
 
-    virtual void Undo() {}
-    virtual void Redo() {}
+    virtual void Undo();
+    virtual void Redo();
     virtual bool isUndoable() const { return true; }
 };
 
