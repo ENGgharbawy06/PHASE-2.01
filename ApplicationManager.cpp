@@ -63,20 +63,20 @@ ApplicationManager::ApplicationManager()
 
 }
 
-//////////////////////////////////////////////////////////////////
+
 void ApplicationManager::AddComponent(Component* pComp)
 {
 	CompList[CompCount++] = pComp;
 }
 
-////////////////////////////////////////////////////////////////////
+
 ActionType ApplicationManager::GetUserAction()
 {
 	//Call input to get what action is required from the user
 	return InputInterface->GetUserAction();
 }
 
-///////////////////////////////////////////////////////////////////
+
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
@@ -328,7 +328,7 @@ bool ApplicationManager::CheckCollision(int newX, int newY, int newWidth, int ne
 	return false; // Safe to place
 }
 
-////////////////////////////////////////////////////////////////////
+
 // Delete a component from the list
 void ApplicationManager::DeleteComponent(Component* pComp)
 {
@@ -346,22 +346,18 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 
 			CompList[CompCount - 1] = nullptr;
 			CompCount--;
-			OutputInterface->PrintMsg("Debug: Component found and removed from list.");
+			OutputInterface->PrintMsg("Component found and removed from list.");
 			return;
 			break;
 		}
 	}
-	OutputInterface->PrintMsg("Debug: Component NOT found in list!");
+	OutputInterface->PrintMsg("Component NOT found in list!");
 }
 
-////////////////////////////////////////////////////////////////////
 // Break all connections to/from a component
 void ApplicationManager::BreakConnections(Component* pComp)
 {
-	// TODO: Implement this to disconnect all wires connected to the component
-	// For now, this is a placeholder
-	// You'll need to iterate through all connections and remove ones
-	// that are connected to this component
+	
 	if (!pComp) return;
 
 	// 1. Get the Pins of the component we are deleting
@@ -744,7 +740,6 @@ Component* ApplicationManager::GetOneSelectedComponent()
 	return nullptr;
 }
 
-//////////////////////////////////////////////////////////////////
 // Remove a component from the list WITHOUT deleting it (Undo/Redo friendly)
 void ApplicationManager::RemoveComponent(Component* pComp)
 {
