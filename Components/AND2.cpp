@@ -28,8 +28,7 @@ void AND2::Operate()
 }
 
 
-// Function Draw
-// Draws 2-input AND gate
+/
 void AND2::Draw(Output* pOut)
 {
 	//Call output class and pass gate drawing info to it.
@@ -43,11 +42,10 @@ int AND2::GetOutPinStatus()
 }
 
 
-//returns status of Inputpin #n
+//returns status of Inputpin #n (n 1->3)
 int AND2::GetInputPinStatus(int n)	
 {
-	return m_InputPins[n-1].getStatus();	//n starts from 1 but array index starts from 0.
-}
+	return m_InputPins[n-1].getStatus();	
 
 //Set status of an input pin ot HIGH or LOW
 void AND2::setInputPinStatus(int n, STATUS s)
@@ -55,7 +53,7 @@ void AND2::setInputPinStatus(int n, STATUS s)
 	m_InputPins[n-1].setStatus(s);
 }
 
-//
+// Function to clone the component
 Component* AND2::Clone(const GraphicsInfo& newGfx) const
 {
 	return new AND2(newGfx, AND2_FANOUT);
@@ -64,15 +62,15 @@ Component* AND2::Clone(const GraphicsInfo& newGfx) const
 
 void AND2::SetGraphicsInfo(GraphicsInfo NewGfx)
 {
-	Component::SetGraphicsInfo(NewGfx); // تحديث مكان البوابة الأساسي
+	Component::SetGraphicsInfo(NewGfx);	// Gharbawy : used in moving components while it connected
 
-	// تحديث مكان الـ Pins عشان تمشي مع البوابة
+	
 	m_GfxInfo.x1 = NewGfx.x1;
 	m_GfxInfo.y1 = NewGfx.y1;
 	m_GfxInfo.x2 = NewGfx.x2;
 	m_GfxInfo.y2 = NewGfx.y2;
 
-	// نفس الكود اللي في الـ Constructor
+	// Ghrabwy : after movintg this puts the new pins positions
 	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
 	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }
