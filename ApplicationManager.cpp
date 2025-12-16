@@ -35,7 +35,7 @@
 #include "Actions/Validate.h"
 #include "Actions/CreateTruthTable.h"
 #include "Actions/Probing.h"
-
+#include "Actions\EditLabel.h"
 #include "Actions\AddLabel.h"
 #include <string>
 using std::string;
@@ -171,7 +171,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		
 	case CUT:
 		pAct = new CutAction(this);
-					break;
+		break;
+
+	case EDIT_LABEL:
+		pAct = new EditLabel(this);
+		break;
 
 	//case DEL:
 	//	//TODO: Create Delete Action here

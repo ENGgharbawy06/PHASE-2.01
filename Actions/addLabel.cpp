@@ -1,4 +1,4 @@
-#include "AddLabel.h"
+﻿#include "AddLabel.h"
 #include "..\ApplicationManager.h"
 #include "..\GUI\Input.h"
 #include "..\GUI\Output.h"
@@ -35,6 +35,14 @@ void AddLabel::ReadActionParameters()
         return;
     }
 
+    if (pComp->GetLabel() != "")
+    {
+        pOut->PrintMsg("Error: Component already has a label! You can edit it instead.");
+        // نفرغ النص عشان نوقف الدالة في Execute
+        labelText = "";
+        return;
+    }
+
     // Step 2: Get label text from user
     pOut->PrintMsg("Enter label text:");
     labelText = pIn->GetString(pOut);
@@ -45,14 +53,16 @@ void AddLabel::ReadActionParameters()
         return;
     }
 
+    pComp->SetLabel(labelText);
+
     // Step 3: Get component graphics info to position label
     GraphicsInfo compGfx = pComp->GetGraphicsInfo();
 
     // Position label above the component
     labelGfx.x1 = (compGfx.x1 + compGfx.x2) / 2 - 20; // Center horizontally
-    labelGfx.y1 = compGfx.y1 - 20; // 20 pixels above component
+    labelGfx.y1 = compGfx.y1 - 8; // 20 pixels above component
     labelGfx.x2 = labelGfx.x1 + 40;
-    labelGfx.y2 = labelGfx.y1 + 15;
+    labelGfx.y2 = labelGfx.y1 + 12;
 }
 
 void AddLabel::Execute()
