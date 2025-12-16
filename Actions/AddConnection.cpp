@@ -11,6 +11,7 @@ AddConnection::AddConnection(ApplicationManager* pApp)
     DstGate = nullptr;
     SrcPin = nullptr;
     DstPin = nullptr;
+	m_pConnection=nullptr;
 }
 
 
@@ -135,44 +136,47 @@ void AddConnection::Execute()
 	 if (!SrcPin || !DstPin)
 		return;
 	// Create the connection
-	Connection* pConn = new Connection(GInfo, SrcPin, DstPin);
+	 m_pConnection = new Connection(GInfo, SrcPin, DstPin); //For undo-redo
 
 	// Add the connection to the application manager
-	pManager->AddComponent(pConn);
+	 pManager->AddComponent(m_pConnection);
 	// Connect the pins
-	SrcPin->ConnectTo(pConn);
+	SrcPin->ConnectTo(m_pConnection);
 	DstPin->connect();  // Mark input pin as connected
 
-	DstPin->setConnection(pConn);
+	DstPin->setConnection(m_pConnection);
 }
 
-//Mariam//
-//void Connection::Operate()
-//{
-//	// Safety Check: Ensure pins exist to avoid crashes
-//	if (SrcPin && DstPin)
-//	{
-//		// 1. Get the status from the source (The output of the previous gate)
-//		STATUS s = (STATUS)SrcPin->getStatus();
-//
-//		// 2. Pass it to the destination (The input of the next gate)
-//		DstPin->setStatus(s);
-//	}
-//}
-
-AddConnection::~AddConnection()
-{
-}
 void AddConnection::Undo()
 {
-	// Remove the connection from the application manager
-	// Disconnect the pins
-	// Note: You need to implement these functionalities in ApplicationManager and Pin classes
+	// Safety check: law mafi4 connection, mate3mel4 7aga
+	if (m_pConnection == nullptr) return;
+
+	// 1. Remove the connection from the ApplicationManager (Visuals)
+	// This takes it off the screen but DOES NOT delete it from memory.
+	//Law fi connection wel user clicked undo, remove mn el screen 
+	// bas ma tms7hash mn el memory 3ashan law 3ayz yredo
+	pManager->RemoveComponent(m_pConnection);
+
+	//Disconnect 3a4an el simulation yozbot
+	m_pConnection->Disconnect();
 }
 
 void AddConnection::Redo()
 {
-	// Re-add the connection to the application manager
-	// Reconnect the pins
-	// Note: You need to implement these functionalities in ApplicationManager and Pin classes
+	// nafs el safety check
+	if (m_pConnection == nullptr) return;
+
+	// Connect tani ka visuals
+	pManager->AddComponent(m_pConnection);
+
+	//7ot el pins tani
+
+	SrcPin->ConnectTo(m_pConnection);
+	DstPin->connect();
+	DstPin->setConnection(m_pConnection);
+}
+
+AddConnection::~AddConnection()
+{
 }
