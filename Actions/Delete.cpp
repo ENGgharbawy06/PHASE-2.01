@@ -14,7 +14,7 @@ void Delete::ReadActionParameters()
     Output* pOut = pManager->GetOutput();
     Input* pIn = pManager->GetInput();
 
-    pOut->PrintMsg("Delete Mode: Click components to select, then press ENTER...");
+	pOut->PrintMsg("Delete Mode: Click components to select, then press ENTER then press delete icon ..."); // dt el  taree2a eli han3mel beha el delete 
 
     // clear old selection
     pManager->UnselectAll();
