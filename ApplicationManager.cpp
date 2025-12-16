@@ -23,7 +23,7 @@
 #include "Actions\CopyAction.h"
 #include "Actions\Delete.h"
 #include "Actions\PasteAction.h"
-//#include "Actions\CutAction.h"
+#include "Actions\CutAction.h"
 
 #include "Actions/SaveAction.h"
 #include "Actions/LoadAction.h"
@@ -169,9 +169,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new PasteAction(this);
 		break;
 		
-				//case CUT:
-				//	pAct = new CutAction(this);
-				//	break;
+	case CUT:
+		pAct = new CutAction(this);
+					break;
 
 	//case DEL:
 	//	//TODO: Create Delete Action here
