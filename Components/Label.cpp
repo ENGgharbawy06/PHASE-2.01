@@ -4,17 +4,17 @@
 Label::Label(const GraphicsInfo& r_GfxInfo, const std::string& txt)
 {
     m_GfxInfo = r_GfxInfo;
-    m_Text = txt;
+    SetLabel(txt);
 }
 
 void Label::Draw(Output* pOut)
 {
-    pOut->DrawLabel(m_GfxInfo, m_Text);
+    pOut->DrawLabel(m_GfxInfo, GetLabel());
 }
 
 void Label::SetText(const std::string& txt)
 {
-    m_Text = txt;
+    SetLabel(txt);
 }
 
 std::string Label::GetText() const
@@ -27,7 +27,7 @@ int Label::GetInputPinStatus(int n) { return -1; }
 void Label::setInputPinStatus(int n, STATUS s) {}
 Component* Label::Clone(const GraphicsInfo& newGfx) const
 {
-    return new Label(newGfx, m_Text);
+    return new Label(newGfx, GetLabel());
 }
 
 void Label::Save(ofstream& out)
@@ -36,7 +36,7 @@ void Label::Save(ofstream& out)
         << GetID() << " "
         << (GetLabel() == "" ? "$" : GetLabel()) << " "
         << m_GfxInfo.x1 << " " << m_GfxInfo.y1 << " "
-        << m_Text << "\n";
+        << GetLabel() << "\n";
 }
 
 void Label::Load(ifstream& in)

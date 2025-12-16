@@ -27,6 +27,7 @@ public:
     virtual void Draw(Output* pOut) = 0;
 
     virtual bool IsGate() const { return false; }
+    virtual bool IsLabel() const { return false; }
     virtual int GetOutPinStatus() = 0;
     virtual int GetInputPinStatus(int n) = 0;
     virtual void setInputPinStatus(int n, STATUS s) = 0;
@@ -35,7 +36,7 @@ public:
     virtual void SetSelected(bool select) { selected = select; }
     virtual bool IsSelected() const { return selected; }
 
-    void SetLabel(const string& lbl) { m_Label = lbl; }
+    virtual void SetLabel(const string& lbl) { m_Label = lbl; }
     string GetLabel() const { return m_Label; }
     virtual bool IsConnection() const { return false; }
     virtual OutputPin* GetOutputPin() { return nullptr; }

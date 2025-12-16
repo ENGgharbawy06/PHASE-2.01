@@ -95,12 +95,12 @@ enum BottomMenuItem
 	ITM_REDO_B,
 	ITM_SAVE_B,
 	ITM_LOAD_B,
-	ITM_EDIT_B,
 	ITM_delete_B,
 	ITM_copy_B,
 	ITM_paste_B,
 	ITM_cut_B,
 	ITM_Move,
+	ITM_EDIT_B,
 	ITM_Label,
 	ITM_BTM_CNT
 	

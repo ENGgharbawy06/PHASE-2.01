@@ -115,12 +115,12 @@ void Output::CreateBottomToolBar() const
 	BottomItemImages[ITM_REDO_B] ="..\\Images\\Menu\\Redo.jpg";
 	BottomItemImages[ITM_SAVE_B] = "..\\Images\\Menu\\Save.jpg";
 	BottomItemImages[ITM_LOAD_B] = "..\\Images\\Menu\\Load.jpg";
-	BottomItemImages[ITM_EDIT_B] = "..\\Images\\Menu\\Edit.jpg";
 	BottomItemImages[ITM_delete_B] ="..\\Images\\Menu\\delete.jpg";
 	BottomItemImages[ITM_paste_B] = "..\\Images\\Menu\\Paste.jpg";
 	BottomItemImages[ITM_copy_B] = "..\\Images\\Menu\\Copy.jpg";
 	BottomItemImages[ITM_cut_B] = "..\\Images\\Menu\\cut.jpg";
 	BottomItemImages[ITM_Move] = "..\\Images\\Menu\\Move.jpg";
+	BottomItemImages[ITM_EDIT_B] = "..\\Images\\Menu\\Edit.jpg";
 	BottomItemImages[ITM_Label] = "..\\Images\\Menu\\Label.jpg";
 
 	

@@ -135,8 +135,8 @@ ActionType Input::GetUserAction()
 			case ITM_SAVE_B: return SAVE;                // save and load actions
 			case ITM_LOAD_B: return LOAD;
 			case ITM_delete_B: return DEL;
-			case ITM_EDIT_B: return EDIT_LABEL;
 			case ITM_Move: return MOVE;
+			case ITM_EDIT_B: return EDIT_LABEL;
 			case ITM_Label: return ADD_LABEL;
 
 			default: return BOT_TOOL;	//A click on empty place in desgin toolbar

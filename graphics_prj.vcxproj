@@ -158,6 +158,7 @@
 	<ClCompile Include="Actions\AddLabel.cpp" />
 	<ClCompile Include="Components\Label.cpp" />
 	<ClCompile Include="Actions\Delete.cpp" />
+	<ClCompile Include="Actions\EditLabel.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -241,6 +242,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="Components\AND2.h" />
+    <ClInclude Include="Actions\EditLabel.h" />
     <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Components\Connection.h" />
     <ClInclude Include="Components\Gate.h" />
