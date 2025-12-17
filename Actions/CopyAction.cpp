@@ -16,12 +16,12 @@ void CopyAction::Execute()
 
     // get ONE selected component
     Component* pComp = pManager->GetOneSelectedComponent();
-    if (!pComp)
+	if (!pComp)   // if no component is selected
     {
-        pOut->PrintMsg("Copy failed: No component selected");
+		pOut->PrintMsg("Copy failed: No component selected"); // print error message 
         return;
     }
 
-    pManager->SetClipboard(pComp);
-    pOut->PrintMsg("Component copied");
+    pManager->SetClipboard(pComp); 
+	pOut->PrintMsg("Component copied");  / / print success message
 }
