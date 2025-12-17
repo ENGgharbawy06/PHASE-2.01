@@ -5,38 +5,35 @@
 
 class Connection :	public Component
 {
-	//Component*	SrcCmpnt;	//Connection source component
-	//Component*	DstCmpnt;	//Connection Destination component
-	//int		DstPin;		//The Input pin to which this connection is linked
-	OutputPin* SrcPin;	//The Source pin of this connection (an output pin of certain Component)
-	InputPin* DstPin;	//The Destination pin of this connection (an input pin of certain Component)
-public:
-	//Connection(const GraphicsInfo &r_GfxInfo, Component *pS=NULL,Component *pD=NULL, int Pin=0);
-	Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin);
+	OutputPin* SrcPin;	
+	InputPin* DstPin;
 
-	virtual void Operate() ;	//Calculates the output according to the inputs
-	virtual void Draw(Output* pOut);	//for each component to Draw itself
+public:
+	Connection(const GraphicsInfo& r_GfxInfo, OutputPin* pSrcPin, InputPin* pDstPin); //constructor
+
+	virtual void Operate();	// bta5d el signal mn el source w t7otoa fe el destination
+	virtual void Draw(Output* pOut); 	// بترسم ياسطا مش محتاجة شرح 
 
 	
-	void setSourcePin(OutputPin *pSrcPin);
-	void setDestPin(InputPin *pDstPin);
-	OutputPin* getSourcePin();
-	InputPin* getDestPin();
-	virtual bool IsConnection() const;
+	void setSourcePin(OutputPin *pSrcPin); //setter 
+	void setDestPin(InputPin* pDstPin); //setter
+	OutputPin* getSourcePin(); // pointer to source pin
+	InputPin* getDestPin(); //  poiner to destination pin
+	virtual bool IsConnection() const; //بتسال لو دي كونكشن ولا لا 
 
 
-	virtual int GetOutPinStatus();	//returns status of outputpin if LED, return -1
-	virtual int GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
+	virtual int GetOutPinStatus();	//getter
+	virtual int GetInputPinStatus(int n);	 //getter
 
-	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
-	virtual Component* Clone(const GraphicsInfo& newGfx) const override; // Clone function to create a copy of the component
+	virtual void setInputPinStatus(int n, STATUS s);	//manual setter 
+	virtual Component* Clone(const GraphicsInfo& newGfx) const override; //copy
 
-	virtual void Save(ofstream& out) override;
+	virtual void Save(ofstream& out) override; 
 	virtual void Load(ifstream& in) override;
 
 	virtual bool IsInside(int x, int y) override;
-	~Connection();
-	void Disconnect(); // تفصل السلك عن الـ Pins
-	//void Reconnect();  // تعيد توصيل السلك بالـ Pins
+	~Connection(); //destructor
+	void Disconnect(); // بستخدمها لما اجي افصل ال connection.
+	//void Reconnect(); 
 
 };

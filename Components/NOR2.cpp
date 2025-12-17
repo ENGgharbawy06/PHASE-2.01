@@ -15,9 +15,9 @@ void NOR2::SetGraphicsInfo(GraphicsInfo NewGfx)
 {
     Component::SetGraphicsInfo(NewGfx);
 
-    // Pin 1 (Top)
+   
     m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 16);
-    // Pin 2 (Bottom)
+   
     m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 17);
 }
 
