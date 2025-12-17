@@ -328,7 +328,7 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 	{
 		if (CompList[i] == pComp)
 		{
-			//delete CompList[i]; Commented for undo/redo purposes
+			
 
 			// Shift remaining components
 			for (int j = i; j < CompCount - 1; j++)
@@ -399,18 +399,18 @@ void ApplicationManager::BreakConnections(Component* pComp)
 
 //setting up the clipboard
 
-void ApplicationManager::SetClipboard(Component* c)
+void ApplicationManager::SetClipboard(Component* c)   
 {
 	Clipboard = c;
 }
 
-Component* ApplicationManager::GetClipboard() const
+Component* ApplicationManager::GetClipboard() const  
 {
 	return Clipboard;
 }
 
 
-void ApplicationManager::SetSelected(Component* pComponent)
+void ApplicationManager::SetSelected(Component* pComponent) 
 {
 
 	SelectedComponent = pComponent;
