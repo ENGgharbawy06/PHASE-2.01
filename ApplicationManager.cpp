@@ -27,6 +27,8 @@
 
 #include "Actions/SaveAction.h"
 #include "Actions/LoadAction.h"
+
+//#include "Actions/TOGGLE_SWITCHES.h"
 #include "Actions/SwitchToSim.h"
 #include "Actions/SwitchToDesign.h"
 #include "Actions/Simulate.h"
@@ -198,6 +200,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case VALIDATE:
 		pAct = new Validate(this);
 		break;
+
+	//case TOGGLE_SWITCHES: // <--- Add this case
+
+	//	pAct = new TOGGLE_SWITCHES(this);
+	//	break;
 
 	case EXIT:
 		break;  
