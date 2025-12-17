@@ -4,16 +4,16 @@ class INV : public Gate
 {
 	public:
 	INV(const GraphicsInfo &r_GfxInfo, int r_FanOut);
-	virtual void Operate();	//Calculates the output according to the inputs
-	virtual void Draw(Output* pOut);	//for each component to Draw itself
-	virtual int GetOutPinStatus();	//returns status of outputpin
-	virtual int GetInputPinStatus(int n);	//returns status of Inputpin # n
-	virtual void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
-	virtual Component* Clone(const GraphicsInfo& newGfx) const override; // Clone function to create a copy of the component
+	virtual void Operate();	
+	virtual void Draw(Output* pOut);	
+	virtual int GetOutPinStatus();	
+	virtual int GetInputPinStatus(int n);	
+	virtual void setInputPinStatus(int n, STATUS s);	
+	virtual Component* Clone(const GraphicsInfo& newGfx) const override; 
 	virtual ~INV();
 	void SetGraphicsInfo(GraphicsInfo NewGfx);
 	
-	// ⭐⭐⭐
+	
 	virtual void Save(ofstream& out);
 	virtual void Load(ifstream& in); 
 };

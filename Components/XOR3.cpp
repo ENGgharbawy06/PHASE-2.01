@@ -118,9 +118,9 @@ void XOR3::Load(ifstream& in)
 	m_GfxInfo.y2 = y + UI.XOR3_Height;
 
 	// Reset pin positions
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 10);
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 17);
 	m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
-	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 10);
+	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 17);
 }
 
 XOR3::~XOR3()

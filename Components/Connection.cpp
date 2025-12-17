@@ -2,7 +2,6 @@
 #include "Gate.h"
 
 Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin,InputPin *pDstPin):Component(r_GfxInfo)	
-	
 {
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
@@ -47,21 +46,21 @@ void Connection::Draw(Output* pOut)
 		m_GfxInfo.y2 = DstPin->getPositionY();
 	}
 
-	// 2. رسم السلك بالإحداثيات الجديدة
+	
 	pOut->DrawConnection(m_GfxInfo, selected);
 }
 
 
 
-int Connection::GetOutPinStatus()	//returns status of outputpin if LED, return -1
+int Connection::GetOutPinStatus()	
 {
 	return DstPin->getStatus();
 }
 
 
-int Connection::GetInputPinStatus(int n)	//returns status of Inputpin # n if SWITCH, return -1
+int Connection::GetInputPinStatus(int n)	
 {
-	return SrcPin->getStatus();	//n is ignored as connection has only one input pin (src pin)	
+	return SrcPin->getStatus();		
 }
 
 void Connection::setInputPinStatus(int n, STATUS s)
@@ -133,30 +132,30 @@ bool Connection::IsInside(int x, int y)
 }
 Connection::~Connection()
 {
-	// 1. تنظيف الـ Input Pin (المدخل)
+	 
 	if (DstPin != nullptr)
 	{
-		// نخبر الـ Pin أنه لم يعد متصلاً بسلك
+		
 		DstPin->setConnection(nullptr);
 	}
 
-	// 2. تنظيف الـ Output Pin (المخرج)
+	
 	if (SrcPin != nullptr)
 	{
-		// نطلب من المصدر أن يحذف هذا السلك من قائمته
+		
 		SrcPin->Disconnect(this);
 	}
 }
 
 void Connection::Disconnect()
 {
-	// تنظيف الـ Destination Pin
+	
 	if (DstPin != nullptr)
 	{
 		DstPin->setConnection(nullptr);
 	}
 
-	// تنظيف الـ Source Pin
+	
 	if (SrcPin != nullptr)
 	{
 		SrcPin->Disconnect(this);

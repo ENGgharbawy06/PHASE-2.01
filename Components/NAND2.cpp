@@ -12,14 +12,12 @@ NAND2::NAND2(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(2, r_FanOut)
 
 void NAND2::SetGraphicsInfo(GraphicsInfo NewGfx)
 {
-	// 1. تحديث إحداثيات البوابة نفسها باستخدام دالة الأب
 	Component::SetGraphicsInfo(NewGfx);
 
-	// 2. تحديث إحداثيات الـ Pins بناءً على المكان الجديد
-	// Pin 1 (Top)
+	
 	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 17);
 
-	// Pin 2 (Bottom)
+	
 	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }
 
@@ -33,24 +31,23 @@ void NAND2::Operate()
 	else
 		m_OutputPin.setStatus(LOW);
 }
-// Function Draw
-// Draws 2-input NAND gate
+
 void NAND2::Draw(Output* pOut)
 {
-	//Call output class and pass gate drawing info to it.
+	
 	pOut->DrawNAND2(m_GfxInfo, selected);
 }
-//returns status of outputpin
+
 int NAND2::GetOutPinStatus()	
 {
 	return m_OutputPin.getStatus();
 }
-//returns status of Inputpin #n
+
 int NAND2::GetInputPinStatus(int n)	
 {
-	return m_InputPins[n-1].getStatus();	//n starts from 1 but array index starts from 0.
+	return m_InputPins[n-1].getStatus();	
 }
-//Set status of an input pin ot HIGH or LOW
+
 void NAND2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n-1].setStatus(s);
@@ -87,12 +84,12 @@ void NAND2::Load(ifstream& in)
 	m_GfxInfo.x1 = x;
 	m_GfxInfo.y1 = y;
 
-	// الحجم الحقيقي للـ NAND2 حسب UI
+	
 	m_GfxInfo.x2 = x + UI.NAND2_Width;
 	m_GfxInfo.y2 = y + UI.NAND2_Height;
 
-	// ضبط أماكن الـ Pins
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
+	
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 17);
 	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }
 

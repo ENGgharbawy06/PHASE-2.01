@@ -13,14 +13,14 @@ OR2::OR2(const GraphicsInfo &r_GfxInfo, int r_FanOut):Gate(2, r_FanOut)
 
 void OR2::SetGraphicsInfo(GraphicsInfo NewGfx)
 {
-	// 1. تحديث إحداثيات البوابة نفسها باستخدام دالة الأب
+	
 	Component::SetGraphicsInfo(NewGfx);
 
 
-	// Pin 1 (Top)
+
 	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 18);
 
-	// Pin 2 (Bottom)
+	
 	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 17);
 }
 
@@ -34,24 +34,23 @@ void OR2::Operate()
 	else
 		m_OutputPin.setStatus(LOW);
 }
-// Function Draw
-// Draws 2-input OR gate
+
 void OR2::Draw(Output* pOut)
 {
-	//Call output class and pass gate drawing info to it.
+	
 	pOut->DrawOR2(m_GfxInfo, selected);
 }
-//returns status of outputpin
+
 int OR2::GetOutPinStatus()	
 {
 	return m_OutputPin.getStatus();
 }
-//returns status of Inputpin #n
+
 int OR2::GetInputPinStatus(int n)	
 {
-	return m_InputPins[n-1].getStatus();	//n starts from 1 but array index starts from 0.
+	return m_InputPins[n-1].getStatus();	
 }
-//Set status of an input pin ot HIGH or LOW
+
 void OR2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n-1].setStatus(s);
@@ -87,8 +86,8 @@ void OR2::Load(ifstream& in)
 	m_GfxInfo.x2 = x + UI.OR2_Width;
 	m_GfxInfo.y2 = y + UI.OR2_Height;
 
-	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
-	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
+	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 18);
+	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 17);
 }
 
 OR2::~OR2()
