@@ -1,7 +1,7 @@
 #include "AddANDgate2.h"
 #include "..\ApplicationManager.h"
 
-AddANDgate2::AddANDgate2(ApplicationManager *pApp):Action(pApp)  //test test test 
+AddANDgate2::AddANDgate2(ApplicationManager *pApp):Action(pApp)  
 {
 
 	pComp = NULL;
@@ -53,7 +53,7 @@ void AddANDgate2::Execute()
 	if (pManager->CheckCollision(GInfo.x1, GInfo.y1, Len, Wdth, nullptr))
 	{
 		pManager->GetOutput()->PrintMsg("Error: Space is occupied! Cannot place component here.");
-		return; // <--- STOP here if there is a collision
+		return; // STOP el program law fi collision
 	}
 
 
