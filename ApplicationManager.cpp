@@ -560,48 +560,49 @@ void ApplicationManager::ClearAll()
 
 
 
-Component* ApplicationManager::CreateComponentByType(const string& type, const GraphicsInfo& gfx)
+Component* ApplicationManager::CreateComponentByType(
+	const string& type, const GraphicsInfo& gfx)
 {
 	if (type == "SWTCH")
 		return new Switch(gfx, SWITCH_FANOUT);
 
-	if (type == "LED")
+	else if (type == "LED")
 		return new LED(gfx, 1);
 
-	if (type == "AND2")
+	else if (type == "AND2")
 		return new AND2(gfx, AND2_FANOUT);
 
-	if (type == "OR2")
+	else if (type == "OR2")
 		return new OR2(gfx, OR2_FANOUT);
 
-	if (type == "NAND2")
+	else if (type == "NAND2")
 		return new NAND2(gfx, NAND2_FANOUT);
 
-	if (type == "NOR2")
+	else if (type == "NOR2")
 		return new NOR2(gfx, NOR2_FANOUT);
 
-	if (type == "NOR3")
+	else if (type == "NOR3")
 		return new NOR3(gfx, NOR3_FANOUT);
 
-	if (type == "XOR2")
+	else if (type == "XOR2")
 		return new XOR2(gfx, XOR2_FANOUT);
 
-	if (type == "XNOR2")
+	else if (type == "XNOR2")
 		return new XNOR2(gfx, XNOR2_FANOUT);
 
-	if (type == "AND3")
+	else if (type == "AND3")
 		return new AND3(gfx, AND3_FANOUT);
 
-	if (type == "XOR3")
+	else if (type == "XOR3")
 		return new XOR3(gfx, XOR3_FANOUT);
 
-	if (type == "INV")
+	else if (type == "INV")
 		return new INV(gfx, INV_FANOUT);
 
-	if (type == "BUFF")
+	else if (type == "BUFF")
 		return new BUFF(gfx, BUFF_FANOUT);
 
-	if (type == "LABEL")
+	else if (type == "LABEL")
 		return new Label(gfx, "");
 
 	return nullptr;
@@ -760,4 +761,5 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete OutputInterface;
 }
+
 
