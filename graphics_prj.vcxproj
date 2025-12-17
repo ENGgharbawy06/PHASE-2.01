@@ -156,6 +156,7 @@
 	<ClCompile Include="Actions\RedoAction.cpp" />
 	<ClCompile Include="Actions\Simulate.cpp" />
 	<ClCompile Include="Actions\Probing.cpp" />
+	<ClCompile Include="Actions\Probe.cpp" />
 	<ClCompile Include="Actions\AddLabel.cpp" />
 	<ClCompile Include="Components\Label.cpp" />
 	<ClCompile Include="Actions\Delete.cpp" />
