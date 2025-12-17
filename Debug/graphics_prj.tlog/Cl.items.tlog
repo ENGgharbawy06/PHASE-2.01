@@ -27,6 +27,8 @@ C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\CreateTruthTable.cpp
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\Validate.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Validate.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\RedoAction.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\RedoAction.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\Simulate.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Simulate.obj
+C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\Probing.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Probing.obj
+C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\Probe.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Probe.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\AddLabel.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\AddLabel.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Components\Label.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Label.obj
 C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Actions\Delete.cpp;C:\Users\Dell\source\repos\ENGgharbawy06\PHASE-2.01\Debug\Delete.obj
