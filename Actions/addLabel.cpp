@@ -11,7 +11,7 @@ AddLabel::AddLabel(ApplicationManager* pApp) : Action(pApp)
 
 AddLabel::~AddLabel()
 {
-	// Destructor
+	
 
 }
 
@@ -20,13 +20,13 @@ void AddLabel::ReadActionParameters()
     Output* pOut = pManager->GetOutput();
     Input* pIn = pManager->GetInput();
 
-    // Step 1: Ask user to select a component
+    
     pOut->PrintMsg("Click on a component to add a label");
 
     int x, y;
     pIn->GetPointClicked(x, y);
 
-    // Find the component at clicked position
+    
     Component* pComp = pManager->GetComponentAt(x, y);
 
     if (!pComp)
@@ -38,12 +38,12 @@ void AddLabel::ReadActionParameters()
     if (pComp->GetLabel() != "")
     {
         pOut->PrintMsg("Error: Component already has a label! You can edit it instead.");
-        // نفرغ النص عشان نوقف الدالة في Execute
+       
         labelText = "";
         return;
     }
 
-    // Step 2: Get label text from user
+    
     pOut->PrintMsg("Enter label text:");
     labelText = pIn->GetString(pOut);
 
@@ -55,12 +55,12 @@ void AddLabel::ReadActionParameters()
 
     pComp->SetLabel(labelText);
 
-    // Step 3: Get component graphics info to position label
+    
     GraphicsInfo compGfx = pComp->GetGraphicsInfo();
 
-    // Position label above the component
-    labelGfx.x1 = (compGfx.x1 + compGfx.x2) / 2 - 20; // Center horizontally
-    labelGfx.y1 = compGfx.y1 - 8; // 20 pixels above component
+    
+    labelGfx.x1 = (compGfx.x1 + compGfx.x2) / 2 - 20; 
+    labelGfx.y1 = compGfx.y1 - 8; 
     labelGfx.x2 = labelGfx.x1 + 40;
     labelGfx.y2 = labelGfx.y1 + 12;
 }
@@ -69,7 +69,7 @@ void AddLabel::Execute()
 {
     ReadActionParameters();
 
-    // Check if we got valid parameters
+   
     if (labelText.empty())
         return;
 
