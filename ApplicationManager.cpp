@@ -34,6 +34,7 @@
 #include "Actions/ChangeSwitch.h"
 #include "Actions/Validate.h"
 #include "Actions/CreateTruthTable.h"
+#include "Actions/Probe.h"
 #include "Actions/Probing.h"
 #include "Actions\EditLabel.h"
 #include "Actions\AddLabel.h"
@@ -203,8 +204,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case CHANGE_SWITCH:               
 		pAct = new ChangeSwitch(this);  
 		break;
-
 	
+	case PROBE:
+		pAct = new Probe(this);
+		break;
 
 	case EXIT:
 		break;  
