@@ -1,77 +1,25 @@
-#ifndef APPLICATION_MANAGER_H
-#define APPLICATION_MANAGER_H
+#ifndef _TOGGLE_SWITCHES_H
+#define _TOGGLE_SWITCHES_H
 
-#include "Defs.h"
-#include "GUI/Output.h"          // Fixed slash
-#include "GUI/Input.h"           // Fixed slash
-#include "Actions/Action.h"      // Fixed slash
-#include "Components/Component.h" // Fixed slash
-#include <fstream>
-#include <string>
+#include "Action.h"
+#include "../Components/Switch.h"
 
-using std::string;
-using std::ofstream;
-using std::ifstream;
-
-class ApplicationManager
+class TOGGLE_SWITCHES : public Action
 {
-	enum { MaxCompCount = 200 };
-
 private:
-	int CompCount;
-	Component* CompList[MaxCompCount];
-
-	Output* OutputInterface;
-	Input* InputInterface;
-
-	Component* Clipboard;
-	Component* SelectedComponent;
-
-	Action* UndoStack[MaxUndoCount];
-	int UndoCount;
-	int UndoPos;
+	int x, y;          // Coordinates where the user clicked
+	Switch* pSwitch;   // Pointer to the switch being toggled
+	bool oldState;     // To store the state before toggling (for Undo)
 
 public:
-	Component* GetComponent(int index) const;
-	int GetCompCount() const;
+	TOGGLE_SWITCHES(ApplicationManager* pApp);
+	virtual ~TOGGLE_SWITCHES();
 
-	ApplicationManager();
-	~ApplicationManager();
-
-	ActionType GetUserAction();
-	void ExecuteAction(ActionType);
-	void UpdateInterface();
-
-	Output* GetOutput();
-	Input* GetInput();
-
-	void AddComponent(Component* pComp);
-	void DeleteComponent(Component* pComp);
-	Component* GetComponentAt(int x, int y);
-	void BreakConnections(Component* comp);
-
-	void SetClipboard(Component* c);
-	Component* GetClipboard() const;
-
-	void RemoveComponent(Component* pComp);
-	void SetSelected(Component* pComponent);
-	Component* GetSelected() const;
-	void UnselectAll();
-	int GetSelectedCount() const;
-	void MoveSelected(int x, int y);
-
-	void ExecuteCircuit();
-	void RecordAction(Action* pAct);
-	void ExecuteUndo();
-	void ExecuteRedo();
-
-	void ClearAll();
-	Component* CreateComponentByType(const string& type, const GraphicsInfo& gfx);
-	void Save(ofstream& out);
-	void Load(ifstream& in);
-
-	bool CheckCollision(int newX, int newY, int newWidth, int newHeight, Component* skipComp = nullptr);
-	Component* GetOneSelectedComponent();
+	virtual void ReadActionParameters();
+	virtual void Execute();
+	virtual void Undo();
+	virtual void Redo();
 };
 
 #endif
+TOGGLE_SWITCHES

@@ -1,75 +1,84 @@
-#include "ActionTOGGLE_SWITCHES.h"
-#include "..\ApplicationManager.h"
+#include "TOGGLE_SWITCHES.h"
+#include "../ApplicationManager.h"
 
-ActionToggleSwitches::ActionToggleSwitches(ApplicationManager* pApp) : Action(pApp)
+TOGGLE_SWITCHES::TOGGLE_SWITCHES(ApplicationManager* pApp) : Action(pApp)
+{
+	pSwitch = nullptr;
+	x = 0;
+	y = 0;
+	oldState = false; // Initialize to safe default
+}
+
+TOGGLE_SWITCHES::~TOGGLE_SWITCHES()
 {
 }
 
-ActionToggleSwitches::~ActionToggleSwitches()
+void TOGGLE_SWITCHES::ReadActionParameters()
 {
+	// Get the Input interface
+	Input* pIn = pManager->GetInput();
+
+	// Wait for the user to click on a component (the switch)
+	pIn->GetPointClicked(x, y);
 }
 
-void ActionToggleSwitches::ReadActionParameters()
+void TOGGLE_SWITCHES::Execute()
 {
-	// No parameters needed (button click)
-}
+	// 1. Get user click coordinates
+	ReadActionParameters();
 
-void ActionToggleSwitches::Execute()
-{
-	Output* pOut = pManager->GetOutput();
+	// 2. Find the component at these coordinates
+	Component* pComp = pManager->GetComponentAt(x, y);
 
-	// 1. Determine the Target State
-	// Logic: If *any* switch is OFF, we turn ALL ON. 
-	//        Only if *all* are already ON do we turn them OFF.
-	bool targetState = true; // Default to turning ON (HIGH)
-	bool allAreOn = true;
+	// 3. Check if the component is a Switch using dynamic_cast
+	// (Note: This requires #include "Switch.h" in the header or here)
+	pSwitch = dynamic_cast<Switch*>(pComp);
 
-	int count = pManager->GetCompCount();
-	for (int i = 0; i < count; ++i)
+	if (pSwitch)
 	{
-		Switch* pSwitch = dynamic_cast<Switch*>(pManager->GetComponent(i));
-		if (pSwitch)
-		{
-			// Check if this switch is OFF (Low)
-			if (pSwitch->GetOutPinStatus() == LOW)
-			{
-				allAreOn = false;
-				break; // Found one that is OFF, so our goal is to turn everything ON
-			}
-		}
-	}
+		// Save old state for Undo/Redo logic
+		oldState = pSwitch->IsSelected();
 
-	if (allAreOn)
-	{
-		targetState = false; // Turn OFF (LOW)
-		pOut->PrintMsg("Master Switch: Turning ALL Switches OFF.");
-	}
-	else
-	{
-		targetState = true; // Turn ON (HIGH)
-		pOut->PrintMsg("Master Switch: Turning ALL Switches ON.");
-	}
+		// Toggle the state (Set it to the opposite of what it was)
+		pSwitch->SetSelected(!oldState);
 
-	// 2. Apply the Target State to All Switches
-	for (int i = 0; i < count; ++i)
-	{
-		Switch* pSwitch = dynamic_cast<Switch*>(pManager->GetComponent(i));
-		if (pSwitch)
-		{
-			// In your Switch code, 'selected' controls the ON/OFF state in Operate()
-			pSwitch->SetSelected(targetState);
-		}
+		// 4. Recalculate the circuit to show the new result
+		pManager->ExecuteCircuit();
 	}
-
-	// 3. Simulate and Update
-	pManager->ExecuteCircuit(); // Recalculate the whole circuit
-	pManager->UpdateInterface(); // Redraw to show changes (LEDs lighting up etc.)
 }
 
-void ActionToggleSwitches::Undo()
+void TOGGLE_SWITCHES::Undo()
 {
+	if (pSwitch)
+	{
+		// Restore the old state
+		pSwitch->SetSelected(oldState);
+
+		// Recalculate circuit to reflect the undo
+		pManager->ExecuteCircuit();
+	}
 }
 
-void ActionToggleSwitches::Redo()
+void TOGGLE_SWITCHES::Redo()
 {
+	if (pSwitch)
+	{
+
+		pSwitch->SetSelected(!oldState);
+
+
+		pManager->ExecuteCircuit();
+	}
+}
+
+void TOGGLE_SWITCHES::Redo()
+{
+	if (pSwitch)
+	{
+		// Re-apply the toggle (opposite of oldState)
+		pSwitch->SetSelected(!oldState);
+
+		// Recalculate circuit to reflect the redo
+		pManager->ExecuteCircuit();
+	}
 }
