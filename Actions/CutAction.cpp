@@ -14,12 +14,12 @@ void CutAction::ReadActionParameters()
     Output* pOut = pManager->GetOutput();
     Input* pIn = pManager->GetInput();
 
-    pOut->PrintMsg("Select a component to CUT...");
+	pOut->PrintMsg("Select a component to CUT...");  // message hattla3 lel user
 
     int x, y;
     pIn->GetPointClicked(x, y);
 
-    CompToCut = pManager->GetComponentAt(x, y);
+	CompToCut = pManager->GetComponentAt(x, y); // hana5od el coordinates w ngeb el component el mawgooda feha
 
     pOut->ClearStatusBar();
 }
