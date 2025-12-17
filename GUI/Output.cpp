@@ -23,7 +23,7 @@ Input* Output::CreateInput() const
 	Input* pIn = new Input(pWind);
 	return pIn;
 }
-//Interface Functions
+
 
 window* Output::CreateWind(int wd, int h, int x, int y) const
 {
@@ -103,11 +103,10 @@ void Output::CreateDesignToolBar() const
 	MenuItemImages[ITM_SIM_MODE] = "..\\Images\\Menu\\Menu_changeMode.jpg";
 
 
-	//Draw menu item one image at a time
 	for (int i = 0; i < ITM_DSN_CNT; i++) 
 		pWind->DrawImage(MenuItemImages[i],i*UI.ToolItemWidth,0,UI.ToolItemWidth, UI.ToolBarHeight);
 
-	//This is a line under the toolbar
+	
 	pWind->SetPen(BLACK,3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 }
@@ -177,7 +176,7 @@ void Output::CreateSimulationToolBar() const
 void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool sel) const
 {
 	string GateImage;
-	if (sel)	// use highlighted image when sel
+	if (sel)	// use highlighted image when selected
 		GateImage = "..\\Images\\Gates\\Gate_AND2_Hi.jpg";
 	else
 		GateImage = "..\\Images\\Gates\\Gate_AND2.jpg";
@@ -205,7 +204,7 @@ void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		GateImage = "..\\Images\\Gates\\Gate_OR2.jpg";
 
-	// Draw OR2 gate
+	
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
@@ -217,7 +216,7 @@ void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		GateImage = "..\\Images\\Gates\\Gate_XOR2.jpg";
 
-	// Draw XOR2 gate
+	
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.XOR2_Width, UI.XOR2_Height);
 }
 
@@ -264,7 +263,7 @@ void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		GateImage = "..\\Images\\Gates\\Gate_NOR2.jpg";
 
-	// Draw NOR2 gate
+	
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
@@ -276,7 +275,7 @@ void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		GateImage = "..\\Images\\Gates\\Gate_XOR3.jpg";
 
-	// Draw XOR3 gate
+	
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
@@ -288,7 +287,7 @@ void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		GateImage = "..\\Images\\Gates\\Gate_AND3.jpg";
 
-	// Draw AND3 gate
+	
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
@@ -300,7 +299,7 @@ void Output::DrawNOR3(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		GateImage = "..\\Images\\Gates\\Gate_NOR3.jpg";
 
-	// Draw NOR3 gate
+	
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
@@ -312,7 +311,7 @@ void Output::DrawINV(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		GateImage = "..\\Images\\Gates\\Gate_INV.jpg";
 
-	// Draw INV gate
+	
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
@@ -324,7 +323,7 @@ void Output::DrawBUFF(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		GateImage = "..\\Images\\Gates\\Gate_BUFF.jpg";
 
-	// Draw BUFF gate
+	
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
@@ -336,7 +335,7 @@ void Output::DrawSWITCH(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		GateImage = "..\\Images\\Gates\\Gate_SWITCH.jpg";
 
-	// Draw BUFF gate
+	
 	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.OR2_Width, UI.OR2_Height);
 }
 
@@ -348,12 +347,12 @@ void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool sel) const
 	else
 		pWind->SetPen(UI.ConnColor, 3);
 
-	// Draw Straight Line if the points of X or the points of y are equal 
+	
 	if (r_GfxInfo.x1 == r_GfxInfo.x2 || r_GfxInfo.y1 == r_GfxInfo.y2) {
 		pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y1, r_GfxInfo.x2, r_GfxInfo.y2);
 		return;
 	}
-//if the points not equal we will make L connection to avoid overlapping
+
 	int midx = (r_GfxInfo.x1 + r_GfxInfo.x2) / 2;
 	pWind->DrawLine(r_GfxInfo.x1, r_GfxInfo.y1, midx, r_GfxInfo.y1);
 	pWind->DrawLine(midx, r_GfxInfo.y1, midx, r_GfxInfo.y2);

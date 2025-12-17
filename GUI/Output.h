@@ -2,27 +2,27 @@
 #include "..\Defs.h"
 #include "Input.h"
 
-class Output	//The application manager should have a pointer to this class
+class Output	
 {
 private:
-	window* pWind;	//Pointer to the Graphics Window
+	window* pWind;	
 	
 public:
-	Output(); // Performs the Window Initialization
-	Input* CreateInput() const; //creates a pointer to the Input object
+	Output(); 
+	Input* CreateInput() const; 
 	void ChangeTitle(string Title) const;
 
 	void CreateDesignToolBar() const;	//Tool bar of the design mode
 	void CreateSimulationToolBar() const;//Tool bar of the simulation mode
-	void CreateStatusBar() const;	//Create Status bar
-	void CreateBottomToolBar() const; // Create Bottom ToolBar
+	void CreateStatusBar() const;	//Status bar
+	void CreateBottomToolBar() const; // Bottom ToolBar
 	void ClearStatusBar() const;		//Clears the status bar
 	void ClearDrawingArea() const;	//Clears the drawing area
 	void GetValidDrawingPoint(int& x, int& y, Input* pIn) const;
 
 	window* CreateWind(int wd, int h, int x, int y) const; //Creates user interface window
 	
-    // Draws 2-input AND gate
+    
 	void DrawAND2(GraphicsInfo r_GfxInfo, bool selected = false) const;
 	void DrawNAND2(GraphicsInfo r_GfxInfo, bool selected=false) const;
 	void DrawNOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
@@ -38,7 +38,7 @@ public:
 	void DrawSWITCH(GraphicsInfo r_GfxInfo, bool selected=false) const;
 	void DrawLabel(const GraphicsInfo& GfxInfo, const std::string& txt)const;
 
-	// Draws Connection
+	
 	void DrawConnection(GraphicsInfo r_GfxInfo, bool selected = false) const;
 
 	void DrawString(int x, int y, string msg) const;
