@@ -159,6 +159,7 @@ void Output::CreateSimulationToolBar() const
 	MenuItemImages[ITM_TRUTH_TABLE] = "..\\Images\\Menu\\Menu_TruthTable.jpg";
 	MenuItemImages[ITM_DSN_MODE] = "..\\Images\\Menu\\Menu_changeMode.jpg";
 	MenuItemImages[ITM_CHANGE_SWITCH] = "..\\Images\\Menu\\Menu_ChangeSwitch.jpg";
+	MenuItemImages[ITM_PROBE] = "..\\Images\\Menu\\Probe.jpg";
 	MenuItemImages[ITM_EXIT2] = "..\\Images\\Menu\\Menu_Exit.jpg";
 
 	// Draw menu items
