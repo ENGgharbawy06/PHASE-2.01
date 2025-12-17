@@ -10,6 +10,7 @@ private:
 	// Parameters for the rectangular area to be occupied by the LED
 	int Cx, Cy;	// Center point of the component
 	int x1, y1, x2, y2;	// Two corners of the rectangular area
+	LED* pLED;
 public:
 	AddLED(ApplicationManager* pApp);
 	virtual ~AddLED(void);
