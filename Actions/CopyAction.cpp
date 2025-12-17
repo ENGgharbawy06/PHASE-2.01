@@ -23,5 +23,5 @@ void CopyAction::Execute()
     }
 
     pManager->SetClipboard(pComp); 
-	pOut->PrintMsg("Component copied");  / / print success message
+	pOut->PrintMsg("Component copied");  // print success message
 }
