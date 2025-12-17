@@ -97,4 +97,8 @@ void LED::Load(ifstream& in)
 	m_GfxInfo.y1 = y;
 	m_GfxInfo.x2 = x + UI.LED_Width;
 	m_GfxInfo.y2 = y + UI.LED_Height;
+
+	int pinX = m_GfxInfo.x1 + (m_GfxInfo.x2 - m_GfxInfo.x1) / 2;
+	int pinY = m_GfxInfo.y2; 
+	m_InputPin.setPosition(pinX, pinY);
 }

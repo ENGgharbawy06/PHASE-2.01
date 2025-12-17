@@ -14,7 +14,7 @@ void INV::SetGraphicsInfo(GraphicsInfo NewGfx)
 {
 	Component::SetGraphicsInfo(NewGfx);
 
-	// Pin is in the middle
+	
 	m_InputPins[0].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
 }
 
@@ -26,24 +26,23 @@ void INV::Operate()
 	else
 		m_OutputPin.setStatus(HIGH);
 }
-// Function Draw	
-// Draws 3-input INV gate
+
 void INV::Draw(Output* pOut)
 {
-	//Call output class and pass gate drawing info to it.
+	
 	pOut->DrawINV(m_GfxInfo, selected);
 }
-//returns status of outputpin
+
 int INV::GetOutPinStatus()
 {
 	return m_OutputPin.getStatus();
 }
-//returns status of Inputpin #n
+
 int INV::GetInputPinStatus(int n)
 {
-	return m_InputPins[n - 1].getStatus();	//n starts from 1 but array index starts from 0.
+	return m_InputPins[n - 1].getStatus();	
 }
-//Set status of an input pin ot HIGH or LOW
+
 void INV::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
@@ -81,11 +80,11 @@ void INV::Load(ifstream& in)
 	m_GfxInfo.x1 = x;
 	m_GfxInfo.y1 = y;
 
-	// حجم الـ INV حسب UI
+	
 	m_GfxInfo.x2 = x + UI.INV_Width;
 	m_GfxInfo.y2 = y + UI.INV_Height;
 
-	// pin الوحيد
+	
 	m_InputPins[0].setPosition(
 		m_GfxInfo.x1,
 		(m_GfxInfo.y1 + m_GfxInfo.y2) / 2

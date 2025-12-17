@@ -28,7 +28,7 @@ void AND2::Operate()
 }
 
 
-/
+
 void AND2::Draw(Output* pOut)
 {
 	//Call output class and pass gate drawing info to it.
@@ -43,9 +43,10 @@ int AND2::GetOutPinStatus()
 
 
 //returns status of Inputpin #n (n 1->3)
-int AND2::GetInputPinStatus(int n)	
+int AND2::GetInputPinStatus(int n)
 {
-	return m_InputPins[n-1].getStatus();	
+	return m_InputPins[n - 1].getStatus();
+}
 
 //Set status of an input pin ot HIGH or LOW
 void AND2::setInputPinStatus(int n, STATUS s)
