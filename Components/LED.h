@@ -25,7 +25,7 @@ public:
     virtual void Load(ifstream& in) override;
     void SetGraphicsInfo(GraphicsInfo NewGfx);
 
-    // Helper function to get the input pin pointer
+   
     InputPin* GetInputPin();
 };
 

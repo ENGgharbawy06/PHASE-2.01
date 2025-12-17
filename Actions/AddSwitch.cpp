@@ -29,10 +29,10 @@ void AddSwitch::ReadActionParameters()
 
 void AddSwitch::Execute()
 {
-	//Get Center point of the Gate
+	
 	ReadActionParameters();
 
-	//Calculate the rectangle Corners
+	
 	int Len = UI.AND2_Width;		// width of the switch (uses default gate width)
 	int Wdth = UI.AND2_Height;		// height of the switch (uses default gate height)
 
@@ -46,13 +46,13 @@ void AddSwitch::Execute()
 	if (pManager->CheckCollision(GInfo.x1, GInfo.y1, Len, Wdth, nullptr))
 	{
 		pManager->GetOutput()->PrintMsg("Error: Space is occupied! Cannot place component here.");
-		return; // <--- STOP here if there is a collision
+		return; 
 	}
 
-	//Create the Switch
+	
 	Switch* pSwitch = new Switch(GInfo, SWITCH_FANOUT);
 
-	//Add the component to the list of components
+	
 	pManager->AddComponent(pSwitch);
 }
 

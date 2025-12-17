@@ -8,14 +8,14 @@ void LoadAction::ReadActionParameters() {}
 
 void LoadAction::Execute()
 {
-    ifstream in("circuit.txt");
+    ifstream in("circuit.txt");  
     if (!in.is_open())
     {
-        pManager->GetOutput()->PrintMsg("Error: Cannot open circuit.txt");
+        pManager->GetOutput()->PrintMsg("Error: Cannot open circuit.txt"); 
         return;
     }
 
-    pManager->Load(in);
+	pManager->Load(in);      // Load the circuit from the file
 
     pManager->GetOutput()->PrintMsg("Circuit Loaded Successfully.");
 }

@@ -7,9 +7,9 @@
 class AddSwitch : public Action
 {
 private:
-	//Parameters for rectangular area to be occupied by the Switch
+	
 	int Cx, Cy;	//Center point of the component
-	int x1, y1, x2, y2;	//Two corners of the rectangluar area
+	int x1, y1, x2, y2;	// corners of the rectangluar area
 public:
 	AddSwitch(ApplicationManager* pApp);
 	virtual ~AddSwitch(void);

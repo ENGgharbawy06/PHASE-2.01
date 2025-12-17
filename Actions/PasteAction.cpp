@@ -28,8 +28,8 @@ void PasteAction::Execute()
     int x, y;
     pIn->GetPointClicked(x, y);
 
-    GraphicsInfo gfx = pClip->GetGraphicsInfo();
-
+    GraphicsInfo gfx = pClip->GetGraphicsInfo(); 
+	                                             // hena el size beta3 el component el mawgod fe el clipboard
     int width = gfx.x2 - gfx.x1;
     int height = gfx.y2 - gfx.y1;
 
@@ -39,7 +39,7 @@ void PasteAction::Execute()
     gfx.y2 = gfx.y1 + height;
 
     // CLONE happens here
-    m_PastedComp = pClip->Clone(gfx);
+	m_PastedComp = pClip->Clone(gfx);                // create a new component by cloning the clipboard component
     pManager->AddComponent(m_PastedComp);
 
     pOut->PrintMsg("Component pasted");
@@ -48,11 +48,11 @@ void PasteAction::Execute()
 void PasteAction::Undo()
 {
     if (m_PastedComp)
-        pManager->RemoveComponent(m_PastedComp);
+		pManager->RemoveComponent(m_PastedComp);     // remove from circuit but do NOT delete
 }
 
 void PasteAction::Redo()
 {
     if (m_PastedComp)
-        pManager->AddComponent(m_PastedComp);
+		pManager->AddComponent(m_PastedComp);    // add back to circuit
 }

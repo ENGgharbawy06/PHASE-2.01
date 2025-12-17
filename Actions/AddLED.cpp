@@ -50,8 +50,7 @@ void AddLED::Execute()
 
 	// Create the LED
 	// LED has 0 output fanout, but the constructor might require an integer.
-	// We pass 1 or 0 as it doesn't really matter for an Output component.
-	LED* pLED = new LED(GInfo, 1);
+	pLED = new LED(GInfo, 1);
 
 	// Add the component to the list of components
 	pManager->AddComponent(pLED);
@@ -59,8 +58,23 @@ void AddLED::Execute()
 
 void AddLED::Undo()
 {
+	if (pLED != nullptr)
+	{
+		// Remove it from the screen/list but keep it in memory
+		// We use BreakConnections just in case (though unlikely for a fresh LED)
+		pManager->BreakConnections(pLED);
+		pManager->RemoveComponent(pLED);
+
+		pManager->GetOutput()->PrintMsg("Undo: Removed the LED.");
+	}
 }
 
 void AddLED::Redo()
 {
+	if (pLED != nullptr)
+	{
+		// Add it back to the list
+		pManager->AddComponent(pLED);
+		pManager->GetOutput()->PrintMsg("Redo: Restored the LED.");
+	}
 }

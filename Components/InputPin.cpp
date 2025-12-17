@@ -4,7 +4,7 @@
 InputPin::InputPin()
 {
 	isConnected = false;
-	pComp = nullptr;  // Initialize to nullptr
+	pComp = nullptr;  
 	m_Connection = nullptr;
 	m_X = 0;
 	m_Y = 0;
@@ -15,7 +15,7 @@ void InputPin::setComponent(Component* pCmp)
 	this->pComp = pCmp;
 }
 
-Component* InputPin::getComponent() const  // Add const here!
+Component* InputPin::getComponent() const  
 {
 	return pComp;
 }
@@ -46,7 +46,7 @@ void InputPin::setConnection(Connection* pConn)
 	m_Connection = pConn;
 	if (pConn == nullptr)
 	{
-		isConnected = false; // <--- لازم تقول له خلاص مفيش توصيل
+		isConnected = false; 
 	}
 	else
 	{

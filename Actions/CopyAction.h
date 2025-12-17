@@ -1,13 +1,13 @@
 ﻿#pragma once
 #include "Action.h"
 
-class CopyAction : public Action
+class CopyAction : public Action 
 {
 public:
-    CopyAction(ApplicationManager* pApp);
+	CopyAction(ApplicationManager* pApp); 
 
     virtual void ReadActionParameters();
-    virtual void Execute();
+    virtual void Execute(); 
 
  
     virtual void Undo() {}

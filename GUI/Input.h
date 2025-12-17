@@ -8,17 +8,17 @@ class Output;
 class Input		
 {
 private:
-	window *pWind;	//Pointer to the Graphics Window
+	window *pWind;	
 	mutable int LastClickX, LastClickY; 
 	mutable bool IsDragging;
 	mutable int DragX1, DragY1, DragX2, DragY2;
 
 public:
 	Input(window*);
-	void GetPointClicked(int &, int &);	//Get coordinate where user clicks
-	string GetString(Output*);		//Returns a string entered by the user
+	void GetPointClicked(int &, int &);	
+	string GetString(Output*);		
 
-	ActionType GetUserAction(); //Reads the user click and maps it to an action
+	ActionType GetUserAction(); 
 
 	void GetLastClick(int &x, int &y) const;
 	

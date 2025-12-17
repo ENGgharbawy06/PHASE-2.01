@@ -1,14 +1,6 @@
 #ifndef _GATE_H
 #define _GATE_H
 
-/*
-  Class Gate
-  -----------
-  - Base class for all types of gates
-  - Each gate has n inputs pins and one output pin
-*/
-
-
 #include "InputPin.h"
 #include "OutputPin.h"
 #include "Component.h"
@@ -16,13 +8,13 @@
 class Gate:public Component
 {
 protected:
-	InputPin* m_InputPins;	//Array of input pins of the Gate
-	OutputPin m_OutputPin;	//The Gate output pin
-	int m_Inputs;		//No. of input pins of that Gate.
+	InputPin* m_InputPins;	
+	OutputPin m_OutputPin;	
+	int m_Inputs;		
 public:
 	Gate(int r_Inputs, int r_FanOut);
 	//InputPin* GetInputPin(int n) { return &m_InputPins[n]; }
-	bool IsGate() const { return true; } // is this a gate ?
+	bool IsGate() const { return true; } 
 	//OutputPin* GetOutputPin() { return &m_OutputPin; }
 	int GetInputPinCount() const { return m_Inputs; }
 
