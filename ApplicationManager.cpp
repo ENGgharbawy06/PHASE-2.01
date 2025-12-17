@@ -714,6 +714,10 @@ void ApplicationManager::Load(ifstream& in)
 		
 		if (Gate* g = dynamic_cast<Gate*>(src))
 			srcPin = g->GetOutputPin();
+		else if (Switch* s = dynamic_cast<Switch*>(src)) 
+		{
+			srcPin = s->GetOutputPin();
+		}
 
 		// الطرف المستقبل
 		if (Gate* g = dynamic_cast<Gate*>(dst))
@@ -722,9 +726,20 @@ void ApplicationManager::Load(ifstream& in)
 			dstPin = L->GetInputPin();
 
 		if (!srcPin || !dstPin) continue;
-
 		GraphicsInfo gfx;
-		gfx.x1 = gfx.y1 = gfx.x2 = gfx.y2 = 0;
+
+		if (srcPin && dstPin)
+		{
+			gfx.x1 = srcPin->getPositionX();
+			gfx.y1 = srcPin->getPositionY();
+			gfx.x2 = dstPin->getPositionX();
+			gfx.y2 = dstPin->getPositionY();
+		}
+		else
+		{
+			// Fallback safety if pins are null (shouldn't happen due to check above)
+			gfx.x1 = gfx.y1 = gfx.x2 = gfx.y2 = 0;
+		}
 
 		Connection* conn = new Connection(gfx, srcPin, dstPin);
 		CompList[CompCount++] = conn;
