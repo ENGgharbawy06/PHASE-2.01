@@ -164,6 +164,7 @@ ActionType Input::GetUserAction()
 			case ITM_SIMULATE: return SIMULATE;
 			case ITM_TRUTH_TABLE: return CREATE_TRUTH_TABLE;
 			case ITM_DSN_MODE: return DSN_MODE;
+			case ITM_PROBE: return PROBE;
 			case ITM_CHANGE_SWITCH: return CHANGE_SWITCH;
 			case ITM_EXIT2: return EXIT;
 			default: return SIM_TOOL;	
