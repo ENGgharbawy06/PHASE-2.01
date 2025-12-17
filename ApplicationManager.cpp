@@ -63,20 +63,20 @@ ApplicationManager::ApplicationManager()
 
 }
 
-//////////////////////////////////////////////////////////////////
+
 void ApplicationManager::AddComponent(Component* pComp)
 {
 	CompList[CompCount++] = pComp;
 }
 
-////////////////////////////////////////////////////////////////////
+
 ActionType ApplicationManager::GetUserAction()
 {
 	//Call input to get what action is required from the user
 	return InputInterface->GetUserAction();
 }
 
-///////////////////////////////////////////////////////////////////
+
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
@@ -193,32 +193,26 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		//                  SIMULATION ACTIONS
 		// ====================================================
 
-	case SIMULATE:   // The "Run" button inside Simulation toolbar
-		// pAct = new RunSimulation(this); // Uncomment if you have this action
+	case SIMULATE:
+		pAct = new Simulate(this);   // <--- THIS IS THE IMPORTANT CHANGE
 		break;
 
 	case CREATE_TRUTH_TABLE:
-		 pAct = new CreateTruthTable(this); // Uncomment if you have this action
+		pAct = new CreateTruthTable(this);
 		break;
 
-	case VALIDATE: // or ITM_VALIDATE depending on your enum
-
+	case VALIDATE:
 		pAct = new Validate(this);
-
 		break;
 
 	case EXIT:
-		break;
+		break;  // <--- Leave this as is
 	}
-
-	// ====================================================
-	//                  EXECUTION LOGIC
-	// ====================================================
 
 	// Execute the created action
 	if (pAct)
 	{
-		pAct->Execute(); // Execute
+		pAct->Execute();
 
 		// Handle Undo/Redo recording
 		if (pAct->isUndoable())
@@ -227,16 +221,32 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		}
 		else
 		{
-			delete pAct; // Delete non-undoable actions
+			delete pAct;
 			pAct = NULL;
 		}
 	}
+} 
+
+		
 
 
-
-
-
+void ApplicationManager::ExecuteCircuit()
+{
+	// Iterate multiple times to ensure signals propagate through all levels of the circuit
+	// (e.g., Switch -> Connection -> Gate -> Connection -> LED)
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < CompCount; j++)
+		{
+			if (CompList[j])
+				CompList[j]->Operate();
+		}
+	}
 }
+
+
+	
+
 
 
 void ApplicationManager::UpdateInterface()
@@ -318,7 +328,7 @@ bool ApplicationManager::CheckCollision(int newX, int newY, int newWidth, int ne
 	return false; // Safe to place
 }
 
-////////////////////////////////////////////////////////////////////
+
 // Delete a component from the list
 void ApplicationManager::DeleteComponent(Component* pComp)
 {
@@ -336,22 +346,18 @@ void ApplicationManager::DeleteComponent(Component* pComp)
 
 			CompList[CompCount - 1] = nullptr;
 			CompCount--;
-			OutputInterface->PrintMsg("Debug: Component found and removed from list.");
+			OutputInterface->PrintMsg("Component found and removed from list.");
 			return;
 			break;
 		}
 	}
-	OutputInterface->PrintMsg("Debug: Component NOT found in list!");
+	OutputInterface->PrintMsg("Component NOT found in list!");
 }
 
-////////////////////////////////////////////////////////////////////
 // Break all connections to/from a component
 void ApplicationManager::BreakConnections(Component* pComp)
 {
-	// TODO: Implement this to disconnect all wires connected to the component
-	// For now, this is a placeholder
-	// You'll need to iterate through all connections and remove ones
-	// that are connected to this component
+	
 	if (!pComp) return;
 
 	// 1. Get the Pins of the component we are deleting
@@ -634,6 +640,7 @@ void ApplicationManager::Save(ofstream& out)
 
 
 
+
 void ApplicationManager::Load(ifstream& in)
 {
 	ClearAll();
@@ -733,7 +740,6 @@ Component* ApplicationManager::GetOneSelectedComponent()
 	return nullptr;
 }
 
-//////////////////////////////////////////////////////////////////
 // Remove a component from the list WITHOUT deleting it (Undo/Redo friendly)
 void ApplicationManager::RemoveComponent(Component* pComp)
 {
@@ -761,8 +767,3 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete OutputInterface;
 }
-
-
-
-
-

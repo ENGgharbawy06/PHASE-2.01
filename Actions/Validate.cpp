@@ -3,7 +3,6 @@
 #include "..\Components\Gate.h"
 #include "..\Components\LED.h"
 
-// Constructor
 Validate::Validate(ApplicationManager* pApp) : Action(pApp)
 {
 }
@@ -25,11 +24,11 @@ void Validate::Execute()
 	// =================================================================================
 	// CASE 1: CHECK IF CIRCUIT IS EMPTY
 	// =================================================================================
-	// If there are no components, we cannot validate.
+	// If there are no components, the circuit is technically invalid/empty.
 	if (pManager->GetCompCount() == 0)
 	{
 		pOut->PrintMsg("Validation Failed: The circuit is empty. Please add gates first.");
-		return; // STOP EXECUTION HERE.
+		return; // <--- STOP EXECUTION HERE (Do not print "Successful")
 	}
 
 	// =================================================================================
@@ -105,4 +104,3 @@ void Validate::Redo()
 {
 	// Validation cannot be redone
 }
-
