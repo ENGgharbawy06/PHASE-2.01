@@ -22,9 +22,7 @@ void AddConnection::ReadActionParameters()
 
 	int x, y;
 
-    // ===============================
-	// Select source gate (output pin)
-    // ===============================
+    
 	pOut->PrintMsg("Select source gate (output pin)");
 	pIn->GetPointClicked(x, y);
 
@@ -46,9 +44,7 @@ void AddConnection::ReadActionParameters()
 		return;
 	}
 
-    // ===============================
-	// Select destination gate or LED (input)
-    // ===============================
+   
 	pOut->PrintMsg("Select destination gate (input pin)");
 	pIn->GetPointClicked(x, y);
 
@@ -101,7 +97,6 @@ void AddConnection::ReadActionParameters()
 
 		LED* pled = static_cast<LED*>(pComp);
 
-		// FIX: Used 'pled' instead of 'led'
 		if (!pled->GetInputPin()->getIsConnected())
 		{
 			DstPin = pled->GetInputPin();
@@ -116,12 +111,11 @@ void AddConnection::ReadActionParameters()
 		return;
 	}
 
-    // ===============================
-	// Graphics info (pin-to-pin)
-	GInfo.x1 = SrcPin->getPositionX();  // Changed from getPosition().x
-	GInfo.y1 = SrcPin->getPositionY();  // Changed from getPosition().y
-	GInfo.x2 = DstPin->getPositionX();  // Changed from getPosition().x
-	GInfo.y2 = DstPin->getPositionY();  // Changed from getPosition().y
+    
+	GInfo.x1 = SrcPin->getPositionX(); 
+	GInfo.y1 = SrcPin->getPositionY();  
+	GInfo.x2 = DstPin->getPositionX();  
+	GInfo.y2 = DstPin->getPositionY(); 
 
 	pOut->ClearStatusBar();
 
@@ -130,7 +124,7 @@ void AddConnection::ReadActionParameters()
 }
 void AddConnection::Execute()
 {
-	// Read action parameters
+	
 	ReadActionParameters();
 	// If parameters are invalid, return
 	 if (!SrcPin || !DstPin)
