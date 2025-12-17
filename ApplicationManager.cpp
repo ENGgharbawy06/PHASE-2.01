@@ -65,9 +65,11 @@ ApplicationManager::ApplicationManager()
 
 void ApplicationManager::AddComponent(Component* pComp)
 {
+								        // Assign a unique ID based on the current count
+	pComp->SetID(CompCount);
+
 	CompList[CompCount++] = pComp;
 }
-
 
 ActionType ApplicationManager::GetUserAction()
 {
@@ -755,3 +757,4 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete OutputInterface;
 }
+
