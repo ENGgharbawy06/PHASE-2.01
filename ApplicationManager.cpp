@@ -28,7 +28,6 @@
 #include "Actions/SaveAction.h"
 #include "Actions/LoadAction.h"
 
-#include "Actions/TOGGLE_SWITCHES.h"
 #include "Actions/SwitchToSim.h"
 #include "Actions/SwitchToDesign.h"
 #include "Actions/Simulate.h"
@@ -206,10 +205,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new Validate(this);
 		break;
 
-	//case TOGGLE_SWITCHES: // <--- Add this case
+	case CHANGE_SWITCH:               // <--- Make sure this is PLURAL (matches Defs.H)
+		pAct = new ChangeSwitch(this);  // <--- The class name is usually CamelCase (matches your .h file)
+		break;
 
-	//	pAct = new TOGGLE_SWITCHES(this);
-	//	break;
+	
 
 	case EXIT:
 		break;  // <--- Leave this as is
