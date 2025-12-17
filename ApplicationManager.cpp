@@ -177,9 +177,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	
-	// ====================================================
-	//                  MODE SWITCHING
-	// ====================================================
+	//MODE SWITCHING
 
 	case SIM_MODE:   // User clicked "Simulation Mode" button
 		pAct = new SwitchToSim(this);
@@ -189,12 +187,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new SwitchToDesign(this);
 		break;
 
-		// ====================================================
-		//                  SIMULATION ACTIONS
-		// ====================================================
+		//SIMULATION ACTIONS
 
 	case SIMULATE:
-		pAct = new Simulate(this);   // <--- THIS IS THE IMPORTANT CHANGE
+		pAct = new Simulate(this);   
 		break;
 
 	case CREATE_TRUTH_TABLE:
@@ -206,15 +202,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case EXIT:
-		break;  // <--- Leave this as is
+		break;  
 	}
 
-	// Execute the created action
 	if (pAct)
 	{
 		pAct->Execute();
 
-		// Handle Undo/Redo recording
+		// Handle Undo/Redo (to see if the action is undoable or not)
 		if (pAct->isUndoable())
 		{
 			RecordAction(pAct);
@@ -234,6 +229,7 @@ void ApplicationManager::ExecuteCircuit()
 {
 	// Iterate multiple times to ensure signals propagate through all levels of the circuit
 	// (e.g., Switch -> Connection -> Gate -> Connection -> LED)
+	//beyebda2 3and switch aw gate w beye5las 3and gate aw led
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < CompCount; j++)
@@ -245,10 +241,6 @@ void ApplicationManager::ExecuteCircuit()
 }
 
 
-	
-
-
-
 void ApplicationManager::UpdateInterface()
 {
 
@@ -256,8 +248,7 @@ void ApplicationManager::UpdateInterface()
 	for (int i = 0; i < CompCount; i++)
 		CompList[i]->Draw(OutputInterface);
 
-	/*for (int i = 0; i < ConnCount; i++)
-		ConnCount[i]->Draw(OutputInterface);*/
+	
 }
 Input* ApplicationManager::GetInput()
 {
@@ -269,13 +260,10 @@ Output* ApplicationManager::GetOutput()
 	return OutputInterface;
 }
 
-// Find component at given coordinates
 Component* ApplicationManager::GetComponentAt(int x, int y)
 {
 	for (int i = 0; i < CompCount; i++)
 	{
-		// Gates use the standard IsInside (Rectangle) defined in Component.h
-		// Connections use the custom IsInside (Lines) we are about to add
 		if (CompList[i]->IsInside(x, y))
 		{
 			return CompList[i];
@@ -284,12 +272,12 @@ Component* ApplicationManager::GetComponentAt(int x, int y)
 	return nullptr;
 }
 
-// ====================================================
-//            COLLISION DETECTION HELPER
-// ====================================================
+//COLLISION DETECTION HELPER
+//3a4an el MOVE kanet bete3mel overlap 3ala components w connections tanya
+
 bool ApplicationManager::CheckCollision(int newX, int newY, int newWidth, int newHeight, Component* skipComp)
 {
-	// 1. Calculate the rectangle of the component we are trying to PLACE/MOVE
+	// Calculate the rectangle of the component we are trying to PLACE/MOVE (lel move button)
 	int newLeft = newX;
 	int newRight = newX + newWidth;
 	int newTop = newY;
@@ -299,20 +287,17 @@ bool ApplicationManager::CheckCollision(int newX, int newY, int newWidth, int ne
 	{
 		Component* c = CompList[i];
 
-		// Skip invalid components or the one we are currently moving (to avoid self-collision)
-		// Also skip Connections (wires don't block placement)
+		
 		if (c == nullptr || c == skipComp || dynamic_cast<Connection*>(c))
 			continue;
 
-		// 2. Get the rectangle of the EXISTING component in the list
-		GraphicsInfo gfx = c->GetGraphicsInfo(); // Ensure your Component class has GetGraphicsInfo()
+		GraphicsInfo gfx = c->GetGraphicsInfo(); 
 
 		int existingLeft = gfx.x1;
 		int existingRight = gfx.x2;
 		int existingTop = gfx.y1;
 		int existingBottom = gfx.y2;
 
-		// 3. AABB Intersection Check (The "No-Touchy" Logic)
 		// Two rectangles overlap if:
 		// (Left1 < Right2) AND (Right1 > Left2) AND (Top1 < Bottom2) AND (Bottom1 > Top2)
 
@@ -325,7 +310,7 @@ bool ApplicationManager::CheckCollision(int newX, int newY, int newWidth, int ne
 		}
 	}
 
-	return false; // Safe to place
+	return false; 
 }
 
 
@@ -360,7 +345,7 @@ void ApplicationManager::BreakConnections(Component* pComp)
 	
 	if (!pComp) return;
 
-	// 1. Get the Pins of the component we are deleting
+	//Get the Pins of the component we are deleting
 	OutputPin* pCompOut = pComp->GetOutputPin();
 
 	// Check up to 3 inputs (covers most gates). 
@@ -368,7 +353,7 @@ void ApplicationManager::BreakConnections(Component* pComp)
 	InputPin* pCompIn1 = pComp->GetInputPin(1);
 	InputPin* pCompIn2 = pComp->GetInputPin(2);
 
-	// 2. Loop through all components to find WIRES
+	//Loop through all components to find WIRES
 	for (int i = 0; i < CompCount; i++)
 	{
 		Component* c = CompList[i];
@@ -380,13 +365,13 @@ void ApplicationManager::BreakConnections(Component* pComp)
 
 			bool shouldDelete = false;
 
-			// --- CHECK A: Is the wire starting FROM the deleted component? ---
+			//CHECK 1: Is the wire starting FROM the deleted component?
 			if (pCompOut != nullptr && pConn->getSourcePin() == pCompOut)
 			{
 				shouldDelete = true;
 			}
 
-			// --- CHECK B: Is the wire going TO the deleted component? ---
+			//CHECK 2: Is the wire going TO the deleted component?
 			InputPin* wireDest = pConn->getDestPin();
 
 			if (wireDest != nullptr)
@@ -397,7 +382,7 @@ void ApplicationManager::BreakConnections(Component* pComp)
 				}
 			}
 
-			// 3. DELETE THE WIRE IF MATCHED
+			//DELETE THE WIRE IF MATCHED
 			if (shouldDelete)
 			{
 				DeleteComponent(pConn);
@@ -407,8 +392,8 @@ void ApplicationManager::BreakConnections(Component* pComp)
 	}
 }
 
-////////////////////////////////////////////////////////////////////
-// Clipboard operations
+//setting up the clipboard
+
 void ApplicationManager::SetClipboard(Component* c)
 {
 	Clipboard = c;
@@ -419,7 +404,6 @@ Component* ApplicationManager::GetClipboard() const
 	return Clipboard;
 }
 
-//////////////////////////////////////////////////////////////////
 
 void ApplicationManager::SetSelected(Component* pComponent)
 {
@@ -440,6 +424,7 @@ void ApplicationManager::UnselectAll()
 	}
 	SelectedComponent = nullptr;
 }
+
 int ApplicationManager::GetSelectedCount() const
 {
 	int count = 0;
@@ -452,6 +437,7 @@ int ApplicationManager::GetSelectedCount() const
 }
 
 // Moves all selected components by the calculated difference
+
 void ApplicationManager::MoveSelected(int dx, int dy)
 {
 	for (int i = 0; i < CompCount; i++)
@@ -466,7 +452,6 @@ void ApplicationManager::MoveSelected(int dx, int dy)
 			GInfo.y1 += dy;
 			GInfo.y2 += dy;
 
-			// Optional: Add boundary checks here to prevent moving outside window
 			if (GInfo.x1 < 0) continue; // Example check
 			if (GInfo.y1 < UI.ToolBarHeight) continue; // Don't move into toolbar
 
@@ -478,8 +463,8 @@ void ApplicationManager::RecordAction(Action* pAct)
 {
 	if (!pAct->isUndoable()) return;
 
-	// 1. If we are somewhere in the middle (because we undid some actions), 
-	//    we must delete the "future" actions before adding a new one.
+	//If we are somewhere in the middle (because we undid some actions), 
+	//we must delete the "future" actions before adding a new one.
 	while (UndoCount > UndoPos + 1)
 	{
 		UndoCount--;
@@ -488,7 +473,7 @@ void ApplicationManager::RecordAction(Action* pAct)
 		UndoStack[UndoCount] = NULL;
 	}
 
-	// 2. If stack is full, shift everything left to make room at the end
+	//If stack is full, shift everything left to make room at the end
 	if (UndoCount == MaxUndoCount)
 	{
 		if (UndoStack[0]) delete UndoStack[0]; // Delete oldest action
@@ -501,7 +486,7 @@ void ApplicationManager::RecordAction(Action* pAct)
 		UndoPos--;   // Position moves back one
 	}
 
-	// 3. Add the new action
+	//Add the new action
 	UndoPos++;
 	UndoStack[UndoPos] = pAct;
 	UndoCount++;
@@ -648,7 +633,6 @@ void ApplicationManager::Load(ifstream& in)
 	int count;
 	in >> count;
 
-	// badal el vector
 	const int MAXMAP = 500;
 	Component* idMap[MAXMAP];
 
@@ -715,7 +699,6 @@ void ApplicationManager::Load(ifstream& in)
 		if (Gate* g = dynamic_cast<Gate*>(src))
 			srcPin = g->GetOutputPin();
 
-		// الطرف المستقبل
 		if (Gate* g = dynamic_cast<Gate*>(dst))
 			dstPin = g->GetInputPin(pinNo - 1);
 		else if (LED* L = dynamic_cast<LED*>(dst))
