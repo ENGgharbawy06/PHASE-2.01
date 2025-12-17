@@ -33,9 +33,7 @@ void CreateTruthTable::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput(); // Need Input to wait for click
 
-	// ---------------------------------------------------------
-	// 1. INITIALIZATION & COMPONENT COUNTING
-	// ---------------------------------------------------------
+
 
 	if (m_SwitchList) { delete[] m_SwitchList; m_SwitchList = NULL; }
 	if (m_LEDList) { delete[] m_LEDList; m_LEDList = NULL; }
@@ -67,9 +65,6 @@ void CreateTruthTable::Execute()
 		return;
 	}
 
-	// ---------------------------------------------------------
-	// 2. FILL COMPONENT LISTS & SORT
-	// ---------------------------------------------------------
 	m_SwitchList = new Component * [m_NumSwitches];
 	m_LEDList = new Component * [m_NumLEDs];
 
@@ -99,9 +94,7 @@ void CreateTruthTable::Execute()
 		}
 	}
 
-	// ---------------------------------------------------------
-	// 3. PREPARE DRAWING AREA
-	// ---------------------------------------------------------
+
 	// Clear the circuit to make room for the table
 	pOut->ClearDrawingArea();
 	pOut->PrintMsg("Truth Table generated. Click anywhere to return to circuit.");
@@ -129,9 +122,7 @@ void CreateTruthTable::Execute()
 
 	currentY += rowHeight;
 
-	// ---------------------------------------------------------
-	// 4. GENERATE ROWS & SIMULATE
-	// ---------------------------------------------------------
+
 	
 	// Save original states
 	int* originalStates = new int[m_NumSwitches];
@@ -187,9 +178,7 @@ void CreateTruthTable::Execute()
 		currentY += rowHeight;
 	}
 
-	// ---------------------------------------------------------
-	// 5. WAIT AND RESTORE
-	// ---------------------------------------------------------
+
 	
 	// Wait for user to click ANYWHERE to finish
 	int x, y;
