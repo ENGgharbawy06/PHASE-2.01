@@ -25,7 +25,6 @@ CreateTruthTable::~CreateTruthTable()
 
 void CreateTruthTable::ReadActionParameters()
 {
-	// No parameters needed from the user
 }
 
 void CreateTruthTable::Execute()
@@ -107,13 +106,13 @@ void CreateTruthTable::Execute()
 	int currentX = startX;
 	int currentY = startY;
 
-	// Draw Headers (S0, S1... L0, L1...)
+	// Draw Headers (el switches wel leds)
 	for (int i = 0; i < m_NumSwitches; ++i)
 	{
 		pOut->DrawString(currentX, currentY, "S" + to_string(i));
 		currentX += colWidth;
 	}
-	currentX += 10; // Space between Inputs and Outputs
+	currentX += 10; // SPACING
 	for (int i = 0; i < m_NumLEDs; ++i)
 	{
 		pOut->DrawString(currentX, currentY, "L" + to_string(i));
@@ -132,7 +131,7 @@ void CreateTruthTable::Execute()
 		originalStates[i] = pSwitch->GetOutputPin()->getStatus();
 	}
 
-	int numRows = 1 << m_NumSwitches; // 2^N
+	int numRows = 1 << m_NumSwitches;
 
 	for (int i = 0; i < numRows; ++i)
 	{
