@@ -1,149 +1,77 @@
-//#ifndef TOGGLE_SWITCHES_H
-//#define TOGGLE_SWITCHES_H
-//
-////This header file contains some definitions to be used all over the application
-//
-////All possible actions
-//enum ActionType
-//{
-//	ADD_BUFF,			//Add 1-input Buffer gate
-//	ADD_INV,			//Add 1-input Inverter gate
-//	ADD_AND_GATE_2,		//Add 2-input AND gate
-//	ADD_OR_GATE_2,		//Add 2-input OR gate
-//	ADD_NAND_GATE_2,	//Add 2-input NAND gate
-//	ADD_NOR_GATE_2,		//Add 2-input NOR gate
-//	ADD_XOR_GATE_2,		//Add 2-input XOR gate
-//	ADD_XNOR_GATE_2,	//Add 2-input XNOR gate
-//	ADD_AND_GATE_3,		//Add 3-input AND gate
-//	ADD_NOR_GATE_3,		//Add 3-input NOR gate
-//	ADD_XOR_GATE_3,		//Add 3-input XOR gate
-//	ADD_SWITCH,			//Add Switch
-//	ADD_LED,			//Add LED
-//	ADD_CONNECTION,		//Add Wire Connection
-//
-//	ADD_LABEL,			//Add Label to a Component, a Connection
-//	EDIT_LABEL,			//Edit Label of a Component, a Connection
-//
-//	CREATE_TRUTH_TABLE,	//Create Truth Table of the Circuit
-//
-//	CHANGE_SWITCH,		//Change Switch Status in Simulation Mode
-//
-//	SELECT,		//Select a Component, a Connection
-//	DEL,		//Delete a Component, a Connection
-//	MOVE,		//Move a Component, a Connection
-//
-//	SAVE,		//Save the whole Circuit to a file
-//	LOAD,		//Load a Circuit from a file
-//
-//	COPY,
-//	PASTE,
-//	CUT,
-//
-//	UNDO,		//Undo the last Action performed
-//	REDO,		//Redo the last Action canceled (BONUS)
-//
-//	DSN_MODE,	//Switch to Design mode
-//	SIM_MODE,	//Switch to Simulation mode
-//
-//	EXIT,		//Exit the application
-//
-//	STATUS_BAR,		//A click on the status bar
-//	DSN_TOOL,	//A click on an empty place in the design tool bar
-//	BOT_TOOL,   //A click on an empty place in the bottom tool bar
-//	SIM_TOOL,	//A click on an empty place in the simulation tool bar
-//
-//	VALIDATE,
-//	SIMULATE,
-//	TOGGLE_SWITCHES,  // <--- THIS IS THE MISSING PART CAUSING YOUR ERROR
-//};
-//
-//enum STATUS
-//{
-//	LOW,
-//	HIGH
-//};
-//
-//
-//enum MODE	//Modes of operation
-//{
-//	DESIGN,
-//	SIMULATION
-//};
-//
-//enum DsgnMenuItem //The items of the design menu
-//{
-//	ITM_AND2,
-//	ITM_OR2,
-//	ITM_NAND2,
-//	ITM_NOR2,
-//	ITM_XOR2,
-//	ITM_XNOR2,
-//	ITM_AND3,
-//	ITM_XOR3,
-//	ITM_NOR3,
-//	ITM_INV,
-//	ITM_BUFF,
-//	ITM_SWITCH,
-//	ITM_CONNECTION,
-//	ITM_LED,
-//	ITM_SIM_MODE,
-//	ITM_EXIT,
-//	ITM_DSN_CNT		//no. of design menu items ==> This should be the last line in this enum
-//};
-//
-//enum BottomMenuItem
-//{
-//	ITM_UNDO_B,
-//	ITM_REDO_B,
-//	ITM_SAVE_B,
-//	ITM_LOAD_B,
-//	ITM_delete_B,
-//	ITM_copy_B,
-//	ITM_paste_B,
-//	ITM_cut_B,
-//	ITM_Move,
-//	ITM_EDIT_B,
-//	ITM_Label,
-//	ITM_BTM_CNT
-//};
-//
-//enum SimMenuItem //The items of the simulation menu
-//{
-//	ITM_VALIDATE,      // Validate circuit
-//	ITM_SIMULATE,      // Start/Run simulation
-//	ITM_TRUTH_TABLE,   // Generate truth table
-//	ITM_TOGGLE_SWITCHES, // <--- ALSO NEEDED FOR THE TOOLBAR BUTTON
-//	ITM_DSN_MODE,      // Switch back to design mode   
-//	ITM_CHANGE_SWITCH, // Change switch status
-//	ITM_EXIT2,
-//	ITM_SIM_CNT //no. of simulation menu items ==> This should be the last line in this enum
-//};
-//
-//// Maximum number of input pins that can be connected to any output pin
-//#define MAX_CONNS 20
-//#define MaxUndoCount 50
-//
-//// Default fan out
-//enum FANOUT
-//{
-//	AND2_FANOUT = 50,    // Default fan out of 2-input AND gate
-//	OR2_FANOUT = 50,     // Default fan out of 2-input OR gate
-//	NAND2_FANOUT = 50,   // Default fan out of 2-input NAND gate
-//	NOR2_FANOUT = 50,    // Default fan out of 2-input NOR gate
-//	XOR2_FANOUT = 50,    // Default fan out of 2-input XOR gate
-//	XNOR2_FANOUT = 50,   // Default fan out of 2-input XNOR gate
-//	AND3_FANOUT = 50,    // Default fan out of 3-input AND gate
-//	NOR3_FANOUT = 50,    // Default fan out of 3-input NOR gate
-//	XOR3_FANOUT = 50,    // Default fan out of 3-input XOR gate
-//	BUFF_FANOUT = 50,    // Default fan out of Buffer gate
-//	INV_FANOUT = 50,     // Default fan out of Inverter gate
-//	SWITCH_FANOUT = 50
-//};
-//
-//// Each component occupies a rectangular area so it needs 2 points to represent that area
-//struct GraphicsInfo
-//{
-//	int x1, y1, x2, y2;
-//};
-//
-//#endif
+#ifndef APPLICATION_MANAGER_H
+#define APPLICATION_MANAGER_H
+
+#include "Defs.h"
+#include "GUI/Output.h"          // Fixed slash
+#include "GUI/Input.h"           // Fixed slash
+#include "Actions/Action.h"      // Fixed slash
+#include "Components/Component.h" // Fixed slash
+#include <fstream>
+#include <string>
+
+using std::string;
+using std::ofstream;
+using std::ifstream;
+
+class ApplicationManager
+{
+	enum { MaxCompCount = 200 };
+
+private:
+	int CompCount;
+	Component* CompList[MaxCompCount];
+
+	Output* OutputInterface;
+	Input* InputInterface;
+
+	Component* Clipboard;
+	Component* SelectedComponent;
+
+	Action* UndoStack[MaxUndoCount];
+	int UndoCount;
+	int UndoPos;
+
+public:
+	Component* GetComponent(int index) const;
+	int GetCompCount() const;
+
+	ApplicationManager();
+	~ApplicationManager();
+
+	ActionType GetUserAction();
+	void ExecuteAction(ActionType);
+	void UpdateInterface();
+
+	Output* GetOutput();
+	Input* GetInput();
+
+	void AddComponent(Component* pComp);
+	void DeleteComponent(Component* pComp);
+	Component* GetComponentAt(int x, int y);
+	void BreakConnections(Component* comp);
+
+	void SetClipboard(Component* c);
+	Component* GetClipboard() const;
+
+	void RemoveComponent(Component* pComp);
+	void SetSelected(Component* pComponent);
+	Component* GetSelected() const;
+	void UnselectAll();
+	int GetSelectedCount() const;
+	void MoveSelected(int x, int y);
+
+	void ExecuteCircuit();
+	void RecordAction(Action* pAct);
+	void ExecuteUndo();
+	void ExecuteRedo();
+
+	void ClearAll();
+	Component* CreateComponentByType(const string& type, const GraphicsInfo& gfx);
+	void Save(ofstream& out);
+	void Load(ifstream& in);
+
+	bool CheckCollision(int newX, int newY, int newWidth, int newHeight, Component* skipComp = nullptr);
+	Component* GetOneSelectedComponent();
+};
+
+#endif
