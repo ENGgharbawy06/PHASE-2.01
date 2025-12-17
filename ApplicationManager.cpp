@@ -200,8 +200,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new Validate(this);
 		break;
 
-	case CHANGE_SWITCH:               // <--- Make sure this is PLURAL (matches Defs.H)
-		pAct = new ChangeSwitch(this);  // <--- The class name is usually CamelCase (matches your .h file)
+	case CHANGE_SWITCH:               
+		pAct = new ChangeSwitch(this);  
 		break;
 
 	
