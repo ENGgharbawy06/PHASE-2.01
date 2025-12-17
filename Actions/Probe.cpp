@@ -2,6 +2,7 @@
 #include "..\ApplicationManager.h"
 #include "..\Components\Connection.h" 
 #include "..\Components\Component.h"
+#include "..\GUI\Output.h"
 
 Probe::Probe(ApplicationManager* pApp) : Action(pApp)
 {
@@ -21,30 +22,48 @@ void Probe::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMsg("Probe Mode: Click on a Connection or Component to check its status...");
+	// Print the initial message ONCE so we don't overwrite results later
+	pOut->PrintMsg("Probe Mode: Click on a Connection or Component to check status (Click Toolbar/Statusbar to exit)");
 
-	int x, y;
-	pIn->GetPointClicked(x, y); // Wait for user click
-
-	// Check if the user clicked on a component
-	Component* pComp = pManager->GetComponentAt(x, y);
-
-	if (pComp != nullptr)
+	// Loop to allow probing multiple components without re-selecting the tool
+	while (true)
 	{
-		// Polymorphism in action: GetOutPinStatus() works for Gates and Connections
-		int status = pComp->GetOutPinStatus();
+		int x = 0, y = 0;
+		pIn->GetPointClicked(x, y); // Wait for user click
+		// The previous message stays on the status bar while waiting here
 
-		string label = pComp->GetLabel();
-		if (label == "") label = "Component";
+		// Check if the user clicked outside the drawing area
+		if (y < UI.ToolBarHeight || y > UI.height - UI.StatusBarHeight)
+		{
+			pOut->PrintMsg("Exiting Probe Mode.");
+			break; // Exit if clicked outside drawing area (e.g. Toolbar)
+		}
 
-		if (status == HIGH)
-			pOut->PrintMsg(label + " Status: HIGH (1)");
+		Component* pComp = pManager->GetComponentAt(x, y);
+
+		if (pComp != nullptr)
+		{
+			int status = pComp->GetOutPinStatus();
+			string label = pComp->GetLabel();
+			if (label == "") label = "Component";
+
+			// Build the message string
+			string msg = label + " Status: ";
+			if (status == HIGH)
+				msg += "HIGH (1)";
+			else
+				msg += "LOW (0)";
+
+			// Append instruction so user knows the tool is still active
+			msg += "   [Click again to probe another]";
+
+			pOut->PrintMsg(msg);
+		}
 		else
-			pOut->PrintMsg(label + " Status: LOW (0)");
-	}
-	else
-	{
-		pOut->PrintMsg("No component found at this position.");
+		{
+			// Do NOT break here. Just ask to try again.
+			pOut->PrintMsg("No component found. Click again to probe.");
+		}
 	}
 }
 
@@ -54,4 +73,10 @@ void Probe::Undo()
 
 void Probe::Redo()
 {
+}
+
+// Returning false prevents the ApplicationManager from recording this action
+bool Probe::isUndoable() const
+{
+	return false;
 }

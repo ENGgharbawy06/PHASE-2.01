@@ -13,6 +13,7 @@ public:
 	virtual void Execute();
 	virtual void Undo();
 	virtual void Redo();
+	virtual bool isUndoable() const;
 };
 
 #endif
