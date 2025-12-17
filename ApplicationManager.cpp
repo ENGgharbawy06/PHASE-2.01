@@ -559,8 +559,8 @@ void ApplicationManager::ClearAll()
 }
 
 
-
-Component* ApplicationManager::CreateComponentByType(
+//creates and return component bases on a text name 
+Component* ApplicationManager::CreateComponentByType( 
 	const string& type, const GraphicsInfo& gfx)
 {
 	if (type == "SWTCH")
@@ -761,5 +761,6 @@ ApplicationManager::~ApplicationManager()
 		delete CompList[i];
 	delete OutputInterface;
 }
+
 
 
