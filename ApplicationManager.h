@@ -67,7 +67,6 @@ public:
 	//Breaks all connections to/from a component
 	void BreakConnections(Component* comp);
 
-	// ==== Clipboard operations ====
 	void SetClipboard(Component* c);
 	Component* GetClipboard() const;
 
@@ -87,8 +86,6 @@ public:
 	void ExecuteUndo();
 	void ExecuteRedo();
 
-	/*void AddConnection(Connection* pConn);
-	Connection* GetConnectionAt(int x, int y);*/
 
 
 	void ClearAll();

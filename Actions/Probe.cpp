@@ -14,7 +14,6 @@ Probe::~Probe()
 
 void Probe::ReadActionParameters()
 {
-	// We only need to wait for a click in Execute()
 }
 
 void Probe::Execute()
@@ -75,7 +74,6 @@ void Probe::Redo()
 {
 }
 
-// Returning false prevents the ApplicationManager from recording this action
 bool Probe::isUndoable() const
 {
 	return false;

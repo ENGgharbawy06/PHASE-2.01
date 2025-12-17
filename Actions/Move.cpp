@@ -66,8 +66,7 @@ void Move::Execute()
     int dx = 0, dy = 0;
     Component* pComp = nullptr; // Pointer to the single selected component (if count == 1)
 
-    // --- CALCULATE DISPLACEMENT (dx, dy) ---
-    // Handle Case 1: Single Component
+    //Single Component case handeling
     if (count == 1)
     {
         pComp = pManager->GetOneSelectedComponent();
@@ -110,9 +109,8 @@ void Move::Execute()
         dy = y2 - y1;
     }
 
-    // --- VALIDATION PHASE ---
 
-    // We need to iterate over ALL selected components to ensure NONE of them violate rules
+    // Benet2aked en mafi4 ay component violates the move rules
     for (int i = 0; i < pManager->GetCompCount(); i++)
     {
         Component* c = pManager->GetComponent(i);
@@ -135,12 +133,10 @@ void Move::Execute()
             }
 
             // Skip strict collision/logic checks for Connections themselves 
-            // (connections are flexible lines, usually don't "collide" with things in the same way)
             if (dynamic_cast<Connection*>(c))
                 continue;
 
             // 2. COMPONENT COLLISION CHECK (Other Gates)
-            // Skip checking against itself (c)
             if (pManager->CheckCollision(newX1, newY1, newWidth, newHeight, c))
             {
                 pOut->PrintMsg("Error: Move causes overlap with another component.");
@@ -218,7 +214,6 @@ void Move::Execute()
         }
     }
 
-    // --- APPLY MOVE ---
     // If we reached here, all checks passed
     pManager->MoveSelected(dx, dy);
     pOut->PrintMsg("Move completed.");
