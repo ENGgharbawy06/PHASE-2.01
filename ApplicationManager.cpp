@@ -27,7 +27,6 @@
 
 #include "Actions/SaveAction.h"
 #include "Actions/LoadAction.h"
-
 #include "Actions/SwitchToSim.h"
 #include "Actions/SwitchToDesign.h"
 #include "Actions/Simulate.h"
@@ -44,7 +43,6 @@
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
-	/*ConnCount = 0;*/
 	Clipboard = nullptr;
 	SelectedComponent = nullptr;
 
