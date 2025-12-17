@@ -2,11 +2,11 @@
 
 LED::LED(const GraphicsInfo& r_GfxInfo, int r_FanOut) : Component(r_GfxInfo)
 {
-	// Associate the input pin with this component
+	
 	m_InputPin.setComponent(this);
 	int pinX = r_GfxInfo.x1 + (r_GfxInfo.x2 - r_GfxInfo.x1) / 2;
 
-	// Calculate the Bottom Y of the LED (Common for LED inputs)
+	
 	int pinY = r_GfxInfo.y2;
 
 	m_InputPin.setPosition(pinX, pinY);
@@ -14,9 +14,9 @@ LED::LED(const GraphicsInfo& r_GfxInfo, int r_FanOut) : Component(r_GfxInfo)
 void LED::SetGraphicsInfo(GraphicsInfo NewGfx)
 {
 	Component::SetGraphicsInfo(NewGfx);
-	// Update Input Pin position
+	
 	int pinX = m_GfxInfo.x1 + (m_GfxInfo.x2 - m_GfxInfo.x1) / 2;
-	int pinY = m_GfxInfo.y2; // Bottom Y of the LED
+	int pinY = m_GfxInfo.y2; 
 	m_InputPin.setPosition(pinX, pinY);
 }
 
@@ -33,13 +33,13 @@ InputPin* LED::GetInputPin(int index)
 
 void LED::Operate()
 {
-	// LED has no logical operation affecting outputs, it's visual.
+	// LED mlhash logical operation effect 3la el output
 }
 
 void LED::Draw(Output* pOut)
 {
-	// If input pin is HIGH, draw the Highlighted image (Lit up)
-	// Otherwise, draw the normal image (Dark)
+	// lw el input high, draw highlighted image (On)
+	// lw la draw normal image (Off)
 	if (m_InputPin.getStatus() == HIGH)
 	{
 		pOut->DrawLED(m_GfxInfo, true); // true = draw highlighted
@@ -52,7 +52,7 @@ void LED::Draw(Output* pOut)
 
 int LED::GetOutPinStatus()
 {
-	return -1; // LED has no output pin
+	return -1; // LED m3ndhash input pin
 }
 
 int LED::GetInputPinStatus(int n)

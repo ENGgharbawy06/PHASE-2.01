@@ -31,30 +31,25 @@ void AND2::Operate()
 
 void AND2::Draw(Output* pOut)
 {
-	//Call output class and pass gate drawing info to it.
 	pOut->DrawAND2(m_GfxInfo,selected);
 }
 
-//returns status of outputpin
 int AND2::GetOutPinStatus()	
 {
 	return m_OutputPin.getStatus();
 }
 
-
-//returns status of Inputpin #n (n 1->3)
 int AND2::GetInputPinStatus(int n)
 {
 	return m_InputPins[n - 1].getStatus();
 }
 
-//Set status of an input pin ot HIGH or LOW
 void AND2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n-1].setStatus(s);
 }
 
-// Function to clone the component
+
 Component* AND2::Clone(const GraphicsInfo& newGfx) const
 {
 	return new AND2(newGfx, AND2_FANOUT);
@@ -98,11 +93,11 @@ void AND2::Load(ifstream& in)
 	m_GfxInfo.x1 = x;
 	m_GfxInfo.y1 = y;
 
-	// حجم ال AND2 حسب UI عندك
+	
 	m_GfxInfo.x2 = x + UI.AND2_Width;
 	m_GfxInfo.y2 = y + UI.AND2_Height;
 
-	// إعادة ضبط أماكن Pins
+	
 	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 15);
 	m_InputPins[1].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 15);
 }

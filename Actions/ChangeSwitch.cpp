@@ -11,8 +11,7 @@ ChangeSwitch::~ChangeSwitch(void)
 
 void ChangeSwitch::ReadActionParameters()
 {
-	// This action does not require any parameters (clicks) from the user
-	// It applies immediately when the button is pressed.
+	
 }
 
 void ChangeSwitch::Execute()

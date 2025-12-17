@@ -94,7 +94,7 @@ void CreateTruthTable::Execute()
 	}
 
 
-	// Clear the circuit to make room for the table
+	// Clear the circuit 
 	pOut->ClearDrawingArea();
 	pOut->PrintMsg("Truth Table generated. Click anywhere to return to circuit.");
 
@@ -106,7 +106,7 @@ void CreateTruthTable::Execute()
 	int currentX = startX;
 	int currentY = startY;
 
-	// Draw Headers (el switches wel leds)
+	// Draw Headers (el switches w el leds)
 	for (int i = 0; i < m_NumSwitches; ++i)
 	{
 		pOut->DrawString(currentX, currentY, "S" + to_string(i));
@@ -123,7 +123,7 @@ void CreateTruthTable::Execute()
 
 
 	
-	// Save original states
+	
 	int* originalStates = new int[m_NumSwitches];
 	for (int i = 0; i < m_NumSwitches; ++i)
 	{

@@ -11,7 +11,7 @@ void Connection::setSourcePin(OutputPin *pSrcPin)
 
 bool Connection::IsConnection() const
 {
-	return true; // "Yes, I am a connection"
+	return true; 
 }
 
 OutputPin* Connection::getSourcePin()
@@ -29,7 +29,7 @@ void Connection::Operate()
 {
 	if (SrcPin && DstPin)
 	{
-		//Status of connection destination pin = status of connection source pin
+		
 		DstPin->setStatus((STATUS)SrcPin->getStatus());
 	}
 }
@@ -79,7 +79,7 @@ bool Connection::IsInside(int x, int y)
 	int Tolerance = 4;
 	int midx = (m_GfxInfo.x1 + m_GfxInfo.x2) / 2;
 
-	// Helper variables to calculate distance without std::abs
+	
 	int distY1 = y - m_GfxInfo.y1;
 	if (distY1 < 0) distY1 = -distY1; // Absolute value
 
@@ -89,9 +89,7 @@ bool Connection::IsInside(int x, int y)
 	int distY2 = y - m_GfxInfo.y2;
 	if (distY2 < 0) distY2 = -distY2; // Absolute value
 
-	// ---------------------------------------------------
-	// 1. Check First Horizontal Segment (Source -> Mid)
-	// ---------------------------------------------------
+	
 	if (distY1 <= Tolerance)
 	{
 		// Calculate min and max X manually
@@ -102,9 +100,7 @@ bool Connection::IsInside(int x, int y)
 			return true;
 	}
 
-	// ---------------------------------------------------
-	// 2. Check Vertical Segment (at Mid)
-	// ---------------------------------------------------
+	
 	if (distX <= Tolerance)
 	{
 		// Calculate min and max Y manually
@@ -115,9 +111,7 @@ bool Connection::IsInside(int x, int y)
 			return true;
 	}
 
-	// ---------------------------------------------------
-	// 3. Check Second Horizontal Segment (Mid -> Dest)
-	// ---------------------------------------------------
+	
 	if (distY2 <= Tolerance)
 	{
 		// Calculate min and max X manually
@@ -185,7 +179,7 @@ void Connection::Save(ofstream& out)
 
 	if (!srcComp || !dstComp) return;
 
-	// Find which input pin number this is (1-based)
+	
 	int pinNum = 1;
 	if (Gate* g = dynamic_cast<Gate*>(dstComp))
 	{
@@ -206,6 +200,4 @@ void Connection::Save(ofstream& out)
 
 void Connection::Load(ifstream& in)
 {
-	// Connections are loaded in ApplicationManager::Load()
-	// This function is not used directly
 }

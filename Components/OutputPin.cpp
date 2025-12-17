@@ -1,12 +1,12 @@
 ﻿#include "OutputPin.h"
 #include "Connection.h"
-#include "Component.h" // <--- ضروري هنا عشان نقدر نستخدم دوال Component
+#include "Component.h" 
 
 OutputPin::OutputPin(int r_FanOut)
 {
 	m_Conn = 0;
 	m_FanOut = r_FanOut > MAX_CONNS ? MAX_CONNS : r_FanOut;
-	pComp = nullptr; // <--- استخدم nullptr أو NULL (بحروف كبيرة) وليس Null
+	pComp = nullptr; 
 }
 
 bool OutputPin::ConnectTo(Connection* r_Conn)
@@ -26,11 +26,10 @@ bool OutputPin::Disconnect(Connection* r_Conn)
 	{
 		if (m_Connections[i] == r_Conn)
 		{
-			// لقد وجدنا السلك! لنحذفه.
-			// الطريقة: نضع آخر سلك في القائمة مكان السلك المحذوف (للملء الفراغ)
+			
 			m_Connections[i] = m_Connections[m_Conn - 1];
-			m_Connections[m_Conn - 1] = nullptr; // تصفير المكان الأخير
-			m_Conn--; // تقليل العدد الفعلي
+			m_Connections[m_Conn - 1] = nullptr; 
+			m_Conn--;
 			return true;
 		}
 	}
@@ -49,7 +48,6 @@ void OutputPin::DisconnectAll()
 	m_Conn = 0;
 }
 
-// تنفيذ الدالة بنفس الاسم الموجود في الـ header
 void OutputPin::setComponent(Component* pCmp)
 {
 	pComp = pCmp;
@@ -58,13 +56,13 @@ void OutputPin::setComponent(Component* pCmp)
 int OutputPin::getPositionX() const
 {
 	if (pComp)
-		return pComp->GetGraphicsInfo().x2; // الـ Output بيكون عند الحافة اليمنى (x2)
+		return pComp->GetGraphicsInfo().x2; 
 	return 0;
 }
 
 int OutputPin::getPositionY() const
 {
 	if (pComp)
-		return (pComp->GetGraphicsInfo().y1 + pComp->GetGraphicsInfo().y2) / 2; // في منتصف الارتفاع
+		return (pComp->GetGraphicsInfo().y1 + pComp->GetGraphicsInfo().y2) / 2; 
 	return 0;
 }
