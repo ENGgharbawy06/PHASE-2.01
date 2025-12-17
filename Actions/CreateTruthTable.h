@@ -5,7 +5,7 @@
 class CreateTruthTable : public Action
 {
 private:
-	// Dynamic arrays (pointers to pointers)
+	
 	Component** m_SwitchList;
 	Component** m_LEDList;
 

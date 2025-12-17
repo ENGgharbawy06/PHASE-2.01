@@ -6,7 +6,7 @@
 class Pin
 {
 protected:
-	STATUS m_Status;	//Status of the Pin
+	STATUS m_Status;
 public:
 	Pin();
 	void setStatus(STATUS r_Status);

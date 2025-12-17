@@ -16,13 +16,13 @@ void XOR3::SetGraphicsInfo(GraphicsInfo NewGfx)
 {
 	Component::SetGraphicsInfo(NewGfx);
 
-	// Pin 1 (Top)
+	
 	m_InputPins[0].setPosition(m_GfxInfo.x1, m_GfxInfo.y1 + 17);
 
-	// Pin 2 (Middle)
+	
 	m_InputPins[1].setPosition(m_GfxInfo.x1, (m_GfxInfo.y1 + m_GfxInfo.y2) / 2);
 
-	// Pin 3 (Bottom)
+	
 	m_InputPins[2].setPosition(m_GfxInfo.x1, m_GfxInfo.y2 - 17);
 }
 
@@ -48,11 +48,11 @@ void XOR3::Operate()
 }
 
 
-// Function Draw
+
 // Draws 3-input XOR gate
 void XOR3::Draw(Output* pOut)
 {
-	//Call output class and pass gate drawing info to it.
+	
 	pOut->DrawXOR3(m_GfxInfo, selected);
 }
 
@@ -79,16 +79,6 @@ Component* XOR3::Clone(const GraphicsInfo& newGfx) const
 {
 	return new XOR3(newGfx, XOR3_FANOUT);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 void XOR3::Save(ofstream& out)

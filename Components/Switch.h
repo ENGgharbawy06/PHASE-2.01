@@ -9,9 +9,9 @@ public:
 	virtual void Operate();	// Calculates the output according to the selection status
 	virtual void Draw(Output* pOut); // Draws the switch
 
-	virtual int GetOutPinStatus();	// returns status of outputpin
-	virtual int GetInputPinStatus(int n);	// returns -1 as switch has no inputs
-	virtual void setInputPinStatus(int n, STATUS s); // does nothing
+	virtual int GetOutPinStatus();	
+	virtual int GetInputPinStatus(int n);	
+	virtual void setInputPinStatus(int n, STATUS s); 
 	virtual OutputPin* GetOutputPin();
 
 	virtual Component* Clone(const GraphicsInfo& newGfx) const;

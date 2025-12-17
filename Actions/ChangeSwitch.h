@@ -10,11 +10,11 @@ public:
 	ChangeSwitch(ApplicationManager* pApp);
 	virtual ~ChangeSwitch(void);
 
-	//Reads parameters required for action to execute
+	
 	virtual void ReadActionParameters();
 
 
-	//Execute action (Change all switches)
+	
 	virtual void Execute();
 
 	virtual void Undo();

@@ -50,8 +50,8 @@ void Label::Load(ifstream& in)
     if (lbl != "$")
         SetLabel(lbl);
 
-    // Read the text (rest of the line)
-    in.ignore(); // Skip space after y coordinate
+    
+    in.ignore(); 
     getline(in, m_Text);
 
     m_GfxInfo.x1 = x;
