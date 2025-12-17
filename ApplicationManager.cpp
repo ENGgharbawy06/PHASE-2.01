@@ -28,7 +28,7 @@
 #include "Actions/SaveAction.h"
 #include "Actions/LoadAction.h"
 
-#include "Actions/TOGGLE_SWITCHES.h"
+//#include "Actions/TOGGLE_SWITCHES.h"
 #include "Actions/SwitchToSim.h"
 #include "Actions/SwitchToDesign.h"
 #include "Actions/Simulate.h"
@@ -67,6 +67,9 @@ ApplicationManager::ApplicationManager()
 
 void ApplicationManager::AddComponent(Component* pComp)
 {
+	// Assign a unique ID based on the current count
+	pComp->SetID(CompCount);
+
 	CompList[CompCount++] = pComp;
 }
 
